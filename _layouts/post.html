@@ -1,8 +1,12 @@
 {% include header %}
 <h1>{{ page.title }}</h1>
 <hr>
+{% if page.date %}
 <p class='date'>{{ page.date | date: "%B %e, %Y" }}</p>
+{% endif %}
+{% if page.meta %}
 <p class='description'>{{ page.meta }}</p>
+{% endif %}
 <hr>
 {{ content }}
 <hr>
@@ -10,5 +14,5 @@
 <p>Follow me on <a href="https://twitter.com/#!/jacklmoore" rel='me'>Twitter</a>, <a href="https://github.com/jackmoore" rel='me'>Github</a>, or <a href="/rss">RSS</a>.</p>
 <hr>
 <h2>This site is on Github</h2>
-<p>If you have corrections/suggestions for this page, file an issue for it on Github or email me.  If you have a question about the material, it is probably better to ask Stack Overflow.  I no longer have the time to respond to individual questions, sorry.</p>
+<p>If you have corrections/suggestions for this page, <a href='https://github.com/jackmoore/jackmoore.github.com'>file an issue</a> for it on Github or <a href='mailto:hello@jacklmoore.com'>email me</a>.  If you have a question about the material, it is probably better to ask Stack Overflow.  I no longer have the time to respond to individual queries, sorry.</p>
 {% include footer %}
