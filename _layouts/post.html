@@ -1,0 +1,14 @@
+{% include header %}
+<h1>{{ page.title }}</h1>
+<hr>
+<p class='date'>{{ page.date | date: "%B %e, %Y" }}</p>
+<p class='description'>{{ page.meta }}</p>
+<hr>
+{{ content }}
+<hr>
+<h2>Hey You,</h2>
+<p>Follow me on <a href="https://twitter.com/#!/jacklmoore" rel='me'>Twitter</a>, <a href="https://github.com/jackmoore" rel='me'>Github</a>, or <a href="/rss">RSS</a>.</p>
+<hr>
+<h2>This site is on Github</h2>
+<p>If you have corrections/suggestions for this page, file an issue for it on Github or email me.  If you have a question about the material, it is probably better to ask Stack Overflow.  I no longer have the time to respond to individual questions, sorry.</p>
+{% include footer %}

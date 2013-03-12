@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<title>jQuery Accordion Demo</title>
+		<style>
+			* { margin:0; padding:0; font-family:sans-serif; }
+
+			body { width:350px; }
+
+			.head, li, h2 { margin-bottom:15px; }
+
+			.head { 
+				text-decoration:none; 
+				font-size:20px; 
+				display:block;
+			}
+
+			.content { 
+				display:none;
+			}
+
+			#improved li {
+				position:relative;
+				overflow:hidden;
+			}
+		</style>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('#original .head').click(function(e){
+					e.preventDefault();
+					$(this).closest('li').find('.content').slideToggle();
+				});
+
+				$('#improved .head').click(function(e){
+					e.preventDefault();
+					$(this).closest('li').find('.content').not(':animated').slideToggle();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h2>Original Version</h2>
+		<ul id='original'>
+			<li>
+				<a href='#' class='head'>Heading 1</a>
+				<div class='content'>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dapibus varius urna, ac venenatis arcu convallis consequat. In augue est, posuere auctor facilisis varius, dictum ac risus. Donec nibh justo, aliquam sed tempus quis, lobortis sed orci. Aliquam condimentum, erat eget luctus commodo, mauris velit porta nulla, cursus placerat lectus tortor ac enim. Phasellus scelerisque luctus ligula, a consequat orci posuere rutrum. Sed ipsum nisi, ullamcorper eget fermentum a, dignissim sed dolor. Nam arcu nulla, aliquam non molestie vitae, condimentum at lorem. Nam et consectetur augue.</p>
+				</div>
+			</li>
+			<li>
+				<a href='#' class='head'>Heading 2</a>
+				<div class='content'>
+					<p>Vivamus id elementum risus. In sit amet mi nulla, ac sollicitudin odio. Phasellus laoreet leo vitae velit lobortis at condimentum odio placerat. Nam sapien eros, accumsan id porttitor a, commodo ut urna. Cras dignissim metus quis enim placerat lobortis.</p>
+
+					<p>Nam arcu nulla, aliquam non molestie vitae, condimentum at lorem. Nam et consectetur augue. Phasellus varius ligula ac dui porta ullamcorper. Aliquam nunc sapien, hendrerit at adipiscing vel, ornare at justo. Nam vitae velit aliquet erat fringilla imperdiet. Phasellus diam urna, consectetur sit amet lacinia at, consequat non neque.</p>
+				</div>
+			</li>
+			<li>
+				<a href='#' class='head'>Heading 3</a>
+				<div class='content'>
+					<p>Phasellus scelerisque luctus ligula, a consequat orci posuere rutrum. Sed ipsum nisi, ullamcorper eget fermentum a, dignissim sed dolor. Mauris viverra pretium ante, eu mollis nisi volutpat quis. Nunc neque erat, pharetra in feugiat eget, faucibus id sem. Vivamus id elementum risus. In sit amet mi nulla, ac sollicitudin odio. Phasellus laoreet leo vitae velit lobortis at condimentum odio placerat. Nam sapien eros, accumsan id porttitor a, commodo ut urna. Cras dignissim metus quis enim placerat lobortis.</p>
+				</div>
+			</li>
+		</ul>
+		<h2>Improved Version</h2>
+		<ul id='improved'>
+			<li>
+				<a href='#' class='head'>Heading 1</a>
+				<div class='content'>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dapibus varius urna, ac venenatis arcu convallis consequat. In augue est, posuere auctor facilisis varius, dictum ac risus. Donec nibh justo, aliquam sed tempus quis, lobortis sed orci. Aliquam condimentum, erat eget luctus commodo, mauris velit porta nulla, cursus placerat lectus tortor ac enim. Phasellus scelerisque luctus ligula, a consequat orci posuere rutrum. Sed ipsum nisi, ullamcorper eget fermentum a, dignissim sed dolor. Nam arcu nulla, aliquam non molestie vitae, condimentum at lorem. Nam et consectetur augue.</p>
+				</div>
+			</li>
+			<li>
+				<a href='#' class='head'>Heading 2</a>
+				<div class='content'>
+					<p>Vivamus id elementum risus. In sit amet mi nulla, ac sollicitudin odio. Phasellus laoreet leo vitae velit lobortis at condimentum odio placerat. Nam sapien eros, accumsan id porttitor a, commodo ut urna. Cras dignissim metus quis enim placerat lobortis.</p>
+
+					<p>Nam arcu nulla, aliquam non molestie vitae, condimentum at lorem. Nam et consectetur augue. Phasellus varius ligula ac dui porta ullamcorper. Aliquam nunc sapien, hendrerit at adipiscing vel, ornare at justo. Nam vitae velit aliquet erat fringilla imperdiet. Phasellus diam urna, consectetur sit amet lacinia at, consequat non neque.</p>
+				</div>
+			</li>
+			<li>
+				<a href='#' class='head'>Heading 3</a>
+				<div class='content'>
+					<p>Phasellus scelerisque luctus ligula, a consequat orci posuere rutrum. Sed ipsum nisi, ullamcorper eget fermentum a, dignissim sed dolor. Mauris viverra pretium ante, eu mollis nisi volutpat quis. Nunc neque erat, pharetra in feugiat eget, faucibus id sem. Vivamus id elementum risus. In sit amet mi nulla, ac sollicitudin odio. Phasellus laoreet leo vitae velit lobortis at condimentum odio placerat. Nam sapien eros, accumsan id porttitor a, commodo ut urna. Cras dignissim metus quis enim placerat lobortis.</p>
+				</div>
+			</li>
+		</ul>
+	</body>
+</html>

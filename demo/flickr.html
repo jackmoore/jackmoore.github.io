@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+	<head>
+		<title>ColorBox Flickr Demo</title>
+		<style>
+			a {margin-left:10px;}
+		</style>
+		<link rel="stylesheet" href="/colorbox/example1/colorbox.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="/colorbox/jquery.colorbox.js"></script>
+		<script>
+			
+			var params = {
+				id: '68459092@N06', // my Flickr User ID
+				format: 'json',
+				jsoncallback: '?'
+			},
+			feedURL = 'http://api.flickr.com/services/feeds/photos_public.gne',
+			feedQuery = decodeURIComponent($.param(params));
+
+			function buildLinks(json) {
+				var photo,
+				$links = $(), 
+				$thumb,
+				$anchor;
+
+				while ( photo = json.items.pop() ){
+					$anchor = $('<a/>').attr({
+						// get the medium-large size photo
+						href: photo.media.m.replace('_m', '_z'),
+						title: photo.title
+					});
+
+					$thumb = $('<img/>').attr({
+						// get the small-square size thumbnail photo
+						src: photo.media.m.replace('_m', '_s'),
+						alt: photo.title
+					}).appendTo($anchor);
+
+					$links = $links.add($anchor);
+				}
+
+				$links.colorbox({rel:'flickr', speed:0});
+
+				// Wait until the DOM has loaded before trying to append to the body
+				$(document).ready(function () {
+					$('body').append($links);
+				});
+			}
+
+			$.getJSON(feedURL + '?' + feedQuery, buildLinks);
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
