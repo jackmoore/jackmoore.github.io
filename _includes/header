@@ -17,7 +17,7 @@
 			<nav>
 				<a href='/'><span>About</span></a>
 				<a href='/notes'><span>Archive</span></a>
-				<a href='/rss'><span class='rss'>RSS</span></a>
+				<a href='/rss.xml'><span class='rss'>RSS</span></a>
 			</nav>
 		</header>
 		<div id='content'>

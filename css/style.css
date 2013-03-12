@@ -431,9 +431,11 @@ nav a:hover span {
   font-size: 10px;
 }
 html.home article {
-  height: 495px;
   background: url("/img/howdy.jpg") left top no-repeat;
   color: #fff;
+}
+html.home article, html.home aside {
+  height: 495px;
 }
 html.home .description {
   width: 440px;
@@ -452,6 +454,9 @@ html.home .sellsword h2 {
   padding: 0;
   line-height: 1.3;
   font-size: 16px;
+}
+html.home .recent-posts {
+  display: none;
 }
 html#error404 article {
   height: 600px;
