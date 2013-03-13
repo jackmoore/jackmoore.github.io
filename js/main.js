@@ -1,9 +1,10 @@
 // Analytics
 (function() {
-	var	_gaq = [['_setAccount', 'UA-7069470-2'], ['_trackPageview']],
-		t = 'script',
+	var t = 'script',
 		g = document.createElement(t),
 		s = document.getElementsByTagName(t)[0];
+
+	window._gaq = [['_setAccount', 'UA-7069470-2'], ['_trackPageview']];
 
 	g.src = '//www.google-analytics.com/ga.js';
 	s.parentNode.insertBefore(g, s);
@@ -11,12 +12,12 @@
 	// Error logging
 	window.onerror = function(msg, url, line){
 		var err = [url, line, msg].join(' : ');
-		_gaq.push(['_trackEvent', 'Errors', 'log', err, null, true]);
+		window._gaq.push(['_trackEvent', 'Errors', 'log', err, null, true]);
 	};
 
 	// Download Tracking
 	$(document).on('click', 'a[href$=".zip"]', function(){
-		_gaq.push(['_trackEvent', 'Download', 'click', this.href]);
+		window._gaq.push(['_trackEvent', 'Download', 'click', this.href]);
 	});
 })();
 
