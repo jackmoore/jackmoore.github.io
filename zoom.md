@@ -21,11 +21,14 @@ permalink: /zoom/
   <img src='https://raw.github.com/jackmoore/zoom/master/roxy.jpg' width='290' height='320' alt='Roxy on the Ohoopee'/>
 </span>
 
-## Download
 
-<p><a href='https://github.com/jackmoore/zoom/archive/master.zip'>Current version</a> ( Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a> | <a href='http://github.com/jackmoore/zoom/tree/master'>Github</a> )</p>
+<h2><a href='https://github.com/jackmoore/zoom/archive/master.zip' style='text-decoration: underline;'>Download</a></h2>
 
-Supported for: Chrome, Firefox, Safari, Opera, Internet Explorer 7+.
+<p>Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a>.  Source on <a href='http://github.com/jackmoore/zoom'>Github</a> (<a href='http://github.com/jackmoore/zoom#changelog'>changelog</a>).<br/>
+  Compatible with: jQuery 1.7+ in Chrome, Firefox, Safari, Opera, Internet Explorer 7+.</p>
+<p>
+<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=zoom&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="97" height="20"></iframe>
+<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=zoom&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></p>
 
 ## Instructions
 

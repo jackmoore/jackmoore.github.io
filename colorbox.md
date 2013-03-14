@@ -15,11 +15,13 @@ permalink: /colorbox/
 <a href='/colorbox/example4/' class='demo'>4</a>
 <a href='/colorbox/example5/' class='demo'>5</a>
 
-## Download
+<h2><a href='https://github.com/jackmoore/colorbox/archive/master.zip' style='text-decoration: underline;'>Download</a></h2>
 
-<a href='https://github.com/jackmoore/colorbox/archive/master.zip'>Current version</a> ( Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a> | <a href='http://github.com/jackmoore/colorbox'>Github</a> | <a href='http://github.com/jackmoore/colorbox#changelog'>Changelog</a> )
-
-Supported for: jQuery 1.3.2+ in Firefox, Safari, Chrome, Opera, Internet Explorer 6, 7, 8, 9, 10.<br/>
+<p>Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a>.  Source on <a href='http://github.com/jackmoore/colorbox'>Github</a> (<a href='http://github.com/jackmoore/colorbox#changelog'>changelog</a>).<br/>
+  Compatible with: jQuery 1.3.2+ in Firefox, Safari, Chrome, Opera, Internet Explorer 6, 7, 8, 9, 10.</p>
+<p>
+<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=colorbox&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="97" height="20"></iframe>
+<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=colorbox&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></p>
 
 ## Features
 

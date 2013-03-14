@@ -1,7 +1,7 @@
 ---
 title: jQuery Wheelzoom
 layout: post
-meta: A plugin to enlarge IMG elements on mousewheel or touchpad scroll.
+meta: A plugin to zoom IMG elements on mousewheel or touchpad scroll.
 permalink: /wheelzoom/
 ---
 
@@ -19,13 +19,13 @@ permalink: /wheelzoom/
 	$('#ex1').wheelzoom();
 </script>
 
-## Download
+<h2><a href='https://raw.github.com/jackmoore/wheelzoom/master/jquery.wheelzoom.js' style='text-decoration: underline;'>Download</a></h2>
 
-<p><a href='https://raw.github.com/jackmoore/wheelzoom/master/jquery.wheelzoom.js'>Current version</a> ( Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a> | <a href='http://github.com/jackmoore/wheelzoom/tree/master'>Github</a> )</p>
-
-
-Support: Chrome, Firefox 17+, Safari, Opera, Internet Explorer 9+.
-
+<p>Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a>.<br/>
+  Compatible with: Chrome, Firefox 17+, Safari, Opera, Internet Explorer 9+.</p>
+<p>
+<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=wheelzoom&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="97" height="20"></iframe>
+<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=wheelzoom&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></p>
 
 ## Usage:
 

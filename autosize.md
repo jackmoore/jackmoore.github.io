@@ -9,18 +9,18 @@ permalink: /autosize/
 
 ## Demo
 
-<span>Try typing something...</span><br/>
 <textarea id='ta1'>Autosize with no animation.  Try typing something...</textarea>
 <textarea id='ta2'>Autosize with a CSS transition.</textarea>
 <script src='/js/jquery.js'></script>
 <script src='https://raw.github.com/jackmoore/autosize/master/jquery.autosize.js'></script>
 
-## Download
+<h2><a href='https://github.com/jackmoore/autosize/archive/master.zip' style='text-decoration: underline;'>Download</a></h2>
 
-<p><a href='https://github.com/jackmoore/autosize/archive/master.zip'>Current Version</a> ( Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a> | <a href='http://github.com/jackmoore/autosize/tree/master'>Github</a> | <a href='http://github.com/jackmoore/autosize#changelog'>Changelog</a> )</p>
-
-
-Supported for: jQuery 1.4.3+ in Chrome, Firefox 4+, Safari 5+, Internet Explorer 6+, Opera 11+.
+<p>Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a>.  Source on <a href='http://github.com/jackmoore/autosize'>Github</a> (<a href='http://github.com/jackmoore/autosize#changelog'>changelog</a>).<br/>
+  Compatible with: jQuery 1.7+ in Chrome, Firefox 4+, Safari 5+, Internet Explorer 6+, Opera 11+.</p>
+<p>
+<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=autosize&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="97" height="20"></iframe>
+<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=autosize&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></p>
 
 ## Usage
 

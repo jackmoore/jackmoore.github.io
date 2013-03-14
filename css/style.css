@@ -48,8 +48,7 @@ p,
 nav,
 table,
 footer,
-pre,
-iframe {
+pre {
   margin-bottom: 14px;
 }
 a:link,
