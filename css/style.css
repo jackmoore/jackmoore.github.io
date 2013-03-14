@@ -457,10 +457,16 @@ html.home .sellsword h2 {
 html.home .recent-posts {
   display: none;
 }
-html#error404 article {
-  height: 600px;
+html.error404 article {
+  height: 575px;
   background: url("/img/404.png") center center no-repeat;
   text-indent: -9999px;
+}
+html.error404 aside {
+  height: 575px;
+}
+html.error404 .recent-posts {
+  display: none;
 }
 
 
