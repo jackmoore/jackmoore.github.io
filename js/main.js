@@ -11,13 +11,12 @@
 
 	// Error logging
 	window.onerror = function(msg, url, line){
-		var err = [url, line, msg].join(' : ');
-		window._gaq.push(['_trackEvent', 'Errors', 'log', err, null, true]);
+		window._gaq.push(['_trackEvent', 'Errors', url+':'+line+' Error: '+msg+' ']);
 	};
 
 	// Download Tracking
 	$(document).on('click', 'a[href$=".zip"]', function(){
-		window._gaq.push(['_trackEvent', 'Download', 'click', this.href]);
+		window._gaq.push(['_trackEvent', 'Downloads', this.href]);
 	});
 })();
 

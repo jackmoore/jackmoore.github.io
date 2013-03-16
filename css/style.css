@@ -1,3 +1,4 @@
+/* Reset */
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -5,6 +6,40 @@
   margin: 0;
   padding: 0;
   border: 0;
+}
+
+/* Icons */
+@font-face {
+  font-family: 'icons';
+  src: url('icons.woff') format('woff'), url('icons.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+[class*="icon-"] {
+  font-family: 'icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+.icon--inline {
+  margin-right: 5px;
+}
+.icon-twitter:before {
+  content: "\f099";
+  color: #0099EC;
+}
+.icon-calendar:before {
+  content: "\f073";
+}
+.icon-download-alt:before {
+  content: "\f019";
+}
+.icon-rss:before {
+  content: "\f09e";
 }
 
 html {
@@ -62,7 +97,7 @@ a:hover {
 h1,
 h2,
 h3 {
-  margin: 20px 0 6px;
+  margin: 15px 0 6px;
   padding: 4px 0;
   font-weight: 600;
   font-family: 'open sans', sans-serif;
@@ -78,21 +113,21 @@ h2 {
 h3 {
   font-size: 16px;
 }
-ul,
-ol {
-  margin: 10px 10px 10px 30px;
-}
-ul li,
-ol li {
-  margin-bottom: 2px;
-}
 ul {
-  margin-left: 10px;
-}
-ul li {
   list-style: none;
-  padding-left: 16px;
-  background: url("/img/bullet.png") 0 0.5em no-repeat;
+  margin: 0 0 10px 0;
+}
+li {
+  margin: 0 0 4px 12px;
+  position: relative;
+}
+li:before {
+  content: '•';
+  color: #bbb;
+  font-size: 18px;
+  position: absolute;
+  left: -12px;
+  line-height: 1;
 }
 hr {
   height: 1px;
@@ -117,14 +152,19 @@ pre code {
   padding: 0;
   background: none;
 }
+
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
 .alert {
   padding: 10px;
   color: #b94a48;
   background-color: #f2dede;
   border: 1px solid #eed3d7;
-}
-.honeypot {
-  display: none;
 }
 .weak {
   opacity: 0.5;
@@ -158,7 +198,7 @@ iframe.demo {
   overflow: hidden;
   display: block;
 }
-#content {
+.main {
   padding-right: 315px;
   position: relative;
 }
@@ -168,19 +208,19 @@ footer {
 }
 article,
 aside {
-  background: #fff;
+  background:#fff;
   position: relative;
-  border-radius: 4px;
+  border-radius:4px;
 }
 article {
-  padding: 25px 25px 10px;
+  padding: 25px 25px 10px 25px;
 }
 article img {
   max-width: 100%;
 }
 aside {
   width: 310px;
-  padding: 0 10px 10px 10px;
+  padding: 15px 10px 10px 10px;
   position: absolute;
   top: 0;
   right: 0;
@@ -197,6 +237,9 @@ aside li {
   background: none;
   border-top: 1px solid #ebebeb;
 }
+aside li:before {
+  display: none;
+}
 aside li a {
   line-height: 1.9em;
   display: inline-block;
@@ -204,28 +247,19 @@ aside li a {
 header {
   font-weight: bold;
   height: 80px;
+  overflow: hidden;
 }
 header a:link,
 header a:visited {
   color: #222;
 }
-header a.me {
-  display: block;
-  background: url("/img/howdy.png") left center no-repeat;
-  height: 80px;
-  padding-left: 80px;
-  margin-right: 5px;
-  line-height: 80px;
-  float: left;
-}
+
 header a.twitter,
 header a.github {
-  background: #fff url("/img/icons.png") 3px 4px no-repeat;
   display: block;
   float: left;
   width: 30px;
   height: 30px;
-  text-indent: -9999px;
   border-radius: 100px;
   margin-left: 5px;
   margin-top: 25px;
@@ -239,10 +273,36 @@ header a.twitter:hover,
 header a.github:hover {
   background-color: #ffd204;
 }
-header a.twitter.twitter,
-header a.github.twitter {
-  background-position: 3px -43px;
+header .twitter {
+  font-size: 18px;
+  text-align: center;
+  padding-top: 3px;
 }
+header .github {
+  background: #fff url("/img/icons.png") 3px 4px no-repeat;
+  text-indent: -9999px;
+}
+
+.me {
+  line-height: 80px;
+  vertical-align: top;
+  float: left;
+}
+.me:hover {
+  background: none;
+}
+.me:before {
+  display: inline-block;
+  content: '';
+  background: url("/img/jackmoore.jpg") center center no-repeat;
+  background-size: contain;
+  border:3px solid #fff;
+  border-radius: 100px;
+  width: 74px;
+  height: 74px;
+  margin: 3px 5px 0 0;
+}
+
 #fork {
   position: absolute;
   top: 0;
@@ -262,8 +322,6 @@ textarea {
   margin-right: 10px;
   -webkit-transition: background-color linear 0.1s;
   -moz-transition: background-color linear 0.1s;
-  -ms-transition: background-color linear 0.1s;
-  -o-transition: background-color linear 0.1s;
   transition: background-color linear 0.1s;
   border-radius: 4px;
 }
@@ -340,11 +398,9 @@ nav span {
   padding: 0 10px;
   margin-top: 8px;
   position: relative;
-  -webkit-transition: background-color 0.2s, margin-top 0.2s;
-  -moz-transition: background-color 0.2s, margin-top 0.2s;
-  -ms-transition: background-color 0.2s, margin-top 0.2s;
-  -o-transition: background-color 0.2s, margin-top 0.2s;
-  transition: background-color, margin-top 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
 }
 nav span:before {
   content: '';
@@ -384,6 +440,9 @@ nav a:hover span {
   background: none;
   padding: 0;
 }
+.tags li:before {
+  display: none;
+}
 .tags a {
   padding: 0 6px;
   line-height: 1.8em;
@@ -408,7 +467,7 @@ nav a:hover span {
 }
 .date {
   color: #9b9ea3;
-  margin: -7px 0 10px;
+  margin: -5px 0 10px;
   font-size: 13px;
 }
 .archive__item {
@@ -429,43 +488,33 @@ nav a:hover span {
   line-height: 55px;
   font-size: 10px;
 }
-html.home article {
+
+.home article {
   background: url("/img/howdy.jpg") left top no-repeat;
   color: #fff;
 }
-html.home article, html.home aside {
+.home article, 
+.home aside {
   height: 495px;
 }
-html.home .description {
+.home .description {
   width: 440px;
 }
-html.home .sellsword {
-  background: #fff url("/img/html5med.png") 9px center no-repeat;
-  background-color: rgba(255,255,255,0.6);
-  color: #222;
-  padding: 10px 15px 10px 52px;
-  float: left;
-  margin-top: 20px;
-  border-radius: 4px;
-}
-html.home .sellsword h2 {
-  margin: 0;
-  padding: 0;
-  line-height: 1.3;
-  font-size: 16px;
-}
-html.home .recent-posts {
+.home .recent-posts {
   display: none;
 }
-html.error404 article {
+.error404 article {
   height: 575px;
   background: url("/img/404.png") center center no-repeat;
   text-indent: -9999px;
 }
-html.error404 aside {
+.error404 aside {
   height: 575px;
 }
-html.error404 .recent-posts {
+
+.error404 .recent-posts,
+.home .recent-posts,
+.archive .recent-posts {
   display: none;
 }
 
@@ -485,6 +534,7 @@ html.error404 .recent-posts {
 
 .zoom {
   display:inline-block;
+  position: relative;
 }
 
 /* magnifying glass icon */

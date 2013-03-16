@@ -1,1 +1,1 @@
-window.jQuery || document.write('<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"><\/script>');
+window.jQuery || document.write('<script src="http://code.jquery.com/jquery-1.9.1.js"><\/script>');

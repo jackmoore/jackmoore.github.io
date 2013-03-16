@@ -3,3 +3,6 @@ permalink: /notes/:title
 auto: true
 pygments: true
 markdown: redcarpet
+# RSS
+title: Jack Moore
+description: Front-end development blog

@@ -18,7 +18,7 @@ class: archive
 
 {% for post in site.posts %}
 <div class='archive__item{% for tag in post.tags %} tag-{{ tag | replace:' ','-' | downcase }}{% endfor %}'>
-	<p class='date'>{{ post.date | date: "%b %e, %Y" }}</p> 
+	<p class='date'>{{ post.date | date: "%b. %e, %Y" }}</p> 
 	<h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
 </div>
 {% endfor %}
