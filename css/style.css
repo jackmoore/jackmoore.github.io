@@ -86,10 +86,12 @@ footer,
 pre {
   margin-bottom: 14px;
 }
+a {
+  text-decoration: none;
+}
 a:link,
 a:visited {
   color: #1e87dd;
-  text-decoration: none;
 }
 a:hover {
   background-color: #ffface;
@@ -184,10 +186,10 @@ a.demo {
   margin-right: 1px;
   border-radius: 50px;
   text-decoration: none;
+  background: #1e87dd;
 }
 a.demo:visited,
 a.demo:link {
-  background: #1e87dd;
   color: #fff;
 }
 a.demo:hover {
@@ -284,6 +286,7 @@ header .github {
 }
 
 .me {
+  display: inline-block;
   line-height: 80px;
   vertical-align: top;
   float: left;
@@ -301,6 +304,7 @@ header .github {
   width: 74px;
   height: 74px;
   margin: 3px 5px 0 0;
+  vertical-align: top;
 }
 
 #fork {
@@ -384,8 +388,7 @@ nav {
   margin-top: 14px;
   float: right;
 }
-nav a:link,
-nav a:visited {
+nav a:link {
   background: #f5f4f2;
   float: left;
   height: 44px;

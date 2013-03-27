@@ -10,8 +10,7 @@ permalink: /zoom/
 ## Demo
 
 <script src='/js/jquery.js'></script>
-
-<script src='https://raw.github.com/jackmoore/zoom/master/jquery.zoom.js'></script>
+<script src='/js/jquery.zoom.js'></script>
 
 <span class='zoom' id='ex1'>
   <span>Hover</span>

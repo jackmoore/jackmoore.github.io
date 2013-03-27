@@ -12,7 +12,7 @@ permalink: /autosize/
 <textarea id='ta1'>Autosize with no animation.  Try typing something...</textarea>
 <textarea id='ta2'>Autosize with a CSS transition.</textarea>
 <script src='/js/jquery.js'></script>
-<script src='https://raw.github.com/jackmoore/autosize/master/jquery.autosize.js'></script>
+<script src='/js/jquery.autosize.js'></script>
 
 <h2><a href='https://github.com/jackmoore/autosize/archive/master.zip' style='text-decoration: underline;'>Download</a></h2>
 

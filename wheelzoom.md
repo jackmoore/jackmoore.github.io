@@ -10,8 +10,7 @@ permalink: /wheelzoom/
 ## Demo
 
 <script src='/js/jquery.js'></script>
-
-<script src='https://raw.github.com/jackmoore/wheelzoom/master/jquery.wheelzoom.js'></script>
+<script src='/js/jquery.wheelzoom.js'></script>
 
 <img id='ex1' src='https://raw.github.com/jackmoore/wheelzoom/master/daisy.jpg' width='555' height='320' alt='Daisy on the Ohoopee'/>
 
