@@ -39,7 +39,7 @@ $(document).ready(function(){
   $('a.photo').zoom({url: 'photo-big.jpg'});
 });
 
-// Using ColorBox with Zoom
+// Using Colorbox with Zoom
 $(document).ready(function(){
   $('a.photo').zoom({
     url: 'photo-big.jpg', 

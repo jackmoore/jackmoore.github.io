@@ -1,12 +1,12 @@
 ---
-title: ColorBox with Flickr Feed
+title: Colorbox with Flickr Feed
 layout: post
-meta: Here we'll use jQuery and Flickr to build a thumbnail gallery that will display full-size photos in ColorBox.
+meta: Here we'll use jQuery and Flickr to build a thumbnail gallery that will display full-size photos in Colorbox.
 date: 2011-10-10
-tags: [ColorBox, jQuery]
+tags: [Colorbox, jQuery]
 ---
 
-### Step 1: Include jQuery and ColorBox
+### Step 1: Include jQuery and Colorbox
 
 Feel free to jump straight to <a href='/demo/flickr.html'>the demo</a> to view-source. We will be building off of this basic HTML5 document:
 
@@ -38,11 +38,11 @@ The first thing we will want to do is use jQuery to fetch the JSON object from F
 
 	$.getJSON(feedURL + '?' + feedQuery, buildLinks);
 
-I recommend taking a moment to view the <a href='http://api.flickr.com/services/feeds/photos_public.gne?id=68459092@N06&amp;format=json&amp;jsoncallback=?' target='_blank'>raw JSON data</a>.  The `items` property contains an array of objects that contain all of the data needed to create the links and thumbnails.  The URL to the photo is found in the `media` object.  This URL is formatted to give the 'small' size of the photo.  We will have to alter this URL to give us a larger size to display in ColorBox and again to give us a smaller size to use for a thumbnail.  Fortunately we just have to exchange the [size suffix](http://www.flickr.com/services/api/misc.urls.html) with the suffix for the size we want.
+I recommend taking a moment to view the <a href='http://api.flickr.com/services/feeds/photos_public.gne?id=68459092@N06&amp;format=json&amp;jsoncallback=?' target='_blank'>raw JSON data</a>.  The `items` property contains an array of objects that contain all of the data needed to create the links and thumbnails.  The URL to the photo is found in the `media` object.  This URL is formatted to give the 'small' size of the photo.  We will have to alter this URL to give us a larger size to display in Colorbox and again to give us a smaller size to use for a thumbnail.  Fortunately we just have to exchange the [size suffix](http://www.flickr.com/services/api/misc.urls.html) with the suffix for the size we want.
 
 ### Step 3: Build the Links
 
-Let's create the anchor elements, assign ColorBox to them, and add them to our document:
+Let's create the anchor elements, assign Colorbox to them, and add them to our document:
 
 	function buildLinks (json) {
 		var 

@@ -30,7 +30,7 @@ This is a great little hack that avoids the drawbacks associated with using Alph
 	}
 
 
-ColorBox uses this technique for alpha channel support in IE8 and IE7.  Credit for this technique goes to [Dan Tello](http://www.sitepoint.com/forums/javascript-15/jquery-fadein-fadeout-transparent-png-ie7-chrome-590295.html), and to [Lukom](https://github.com/Lukom) for bringing it to my attention.
+Colorbox uses this technique for alpha channel support in IE8 and IE7.  Credit for this technique goes to [Dan Tello](http://www.sitepoint.com/forums/javascript-15/jquery-fadein-fadeout-transparent-png-ie7-chrome-590295.html), and to [Lukom](https://github.com/Lukom) for bringing it to my attention.
 
 ### AlphaImageLoader filter fix
 
@@ -55,7 +55,7 @@ This is a less robust solution than the gradient filter, however it works well a
 			+ this.src + ",sizingMethod='crop')");
 	}
 
-This is how ColorBox enables PNG alpha-transparency support in IE6.  Using CSS expressions are not supported in IE8 and their use is discouraged in general, but IE6 users have limited options here.
+This is how Colorbox enables PNG alpha-transparency support in IE6.  Using CSS expressions are not supported in IE8 and their use is discouraged in general, but IE6 users have limited options here.
 
 ## ClearType Issues
 

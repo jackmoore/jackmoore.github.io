@@ -1,5 +1,5 @@
 ---
-title: ColorBox - a jQuery lightbox
+title: Colorbox - a jQuery lightbox
 layout: post
 meta: A lightweight customizable lightbox plugin for jQuery
 permalink: /colorbox/
@@ -35,11 +35,11 @@ permalink: /colorbox/
 
 ## Instructions & Help
 
-The <a href='/colorbox/faq/'>FAQ</a> has instructions on asking for help, solutions to common problems, and how-to examples. First-time jQuery users can check out the ColorBox <a href='/colorbox/guide/'>Beginner's Guide</a>. Intermediate users can probably glean everything needed by view-source'ing the demo pages.
+The <a href='/colorbox/faq/'>FAQ</a> has instructions on asking for help, solutions to common problems, and how-to examples. First-time jQuery users can check out the Colorbox <a href='/colorbox/guide/'>Beginner's Guide</a>. Intermediate users can probably glean everything needed by view-source'ing the demo pages.
 
 ## Usage
 
-ColorBox accepts settings from an object of key/value pairs, and can be assigned to any HTML element.
+Colorbox accepts settings from an object of key/value pairs, and can be assigned to any HTML element.
 
 ````javascript
 // Format:
@@ -60,7 +60,7 @@ $.colorbox({href:"thankyou.html"});
 // Called directly with HTML
 $.colorbox({html:"<h1>Welcome</h1>"});
 
-// ColorBox can accept a function in place of a static value:
+// Colorbox can accept a function in place of a static value:
 $("a.gallery").colorbox({rel: 'gal', title: function(){
   var url = $(this).attr('href');
   return '<a href="' + url + '" target="_blank">Open In New Window</a>';
@@ -93,22 +93,22 @@ $("a.gallery").colorbox({rel: 'gal', title: function(){
   <tr id='setting-title'>
     <td>title</td>
     <td>false</td>
-    <td>This can be used as an anchor title alternative for ColorBox.</td>
+    <td>This can be used as an anchor title alternative for Colorbox.</td>
   </tr>
   <tr id='setting-rel'>
     <td>rel</td>
     <td>false</td>
-    <td>This can be used as an anchor rel alternative for ColorBox.  This allows the user to group any combination of elements together for a gallery, or to override an existing rel so elements are not grouped together.  <code>$("a.gallery").colorbox({rel:"group1"});</code> Note: The value can also be set to 'nofollow' to disable grouping.</td>
+    <td>This can be used as an anchor rel alternative for Colorbox.  This allows the user to group any combination of elements together for a gallery, or to override an existing rel so elements are not grouped together.  <code>$("a.gallery").colorbox({rel:"group1"});</code> Note: The value can also be set to 'nofollow' to disable grouping.</td>
   </tr> 
   <tr id='setting-scalephotos'>
     <td>scalePhotos</td>
     <td>true</td>
-    <td>If true, and if maxWidth, maxHeight, innerWidth, innerHeight, width, or height have been defined, ColorBox will scale photos to fit within the those values.</td>
+    <td>If true, and if maxWidth, maxHeight, innerWidth, innerHeight, width, or height have been defined, Colorbox will scale photos to fit within the those values.</td>
   </tr>
   <tr id='setting-scrolling'>
     <td>scrolling</td>
     <td>true</td>
-    <td>If false, ColorBox will hide scrollbars for overflowing content.  This could be used on conjunction with the resize method (see below) for a smoother transition if you are appending content to an already open instance of ColorBox.</td>
+    <td>If false, Colorbox will hide scrollbars for overflowing content.  This could be used on conjunction with the resize method (see below) for a smoother transition if you are appending content to an already open instance of Colorbox.</td>
   </tr>
   <tr id='setting-opacity'>
     <td>opacity</td>
@@ -118,12 +118,12 @@ $("a.gallery").colorbox({rel: 'gal', title: function(){
   <tr id='setting-open'>
     <td>open</td>
     <td>false</td>
-    <td>If true, ColorBox will immediately open.</td>
+    <td>If true, Colorbox will immediately open.</td>
   </tr>
   <tr id='setting-returnfocus'>
     <td>returnFocus</td>
     <td>true</td>
-    <td>If true, focus will be returned when ColorBox exits to the element it was launched from.</td>
+    <td>If true, focus will be returned when Colorbox exits to the element it was launched from.</td>
   </tr>
   <tr id='setting-fastiframe'>
     <td>fastIframe</td>
@@ -138,7 +138,7 @@ $("a.gallery").colorbox({rel: 'gal', title: function(){
   <tr id='setting-overlayclose'>
     <td>overlayClose</td>
     <td>true</td>
-    <td>If false, disables closing ColorBox by clicking on the background overlay.</td>
+    <td>If false, disables closing Colorbox by clicking on the background overlay.</td>
   </tr>
   <tr id='setting-esckey'>
     <td>escKey</td>
@@ -158,7 +158,7 @@ $("a.gallery").colorbox({rel: 'gal', title: function(){
   <tr id='setting-data'>
     <td>data</td>
     <td>false</td>
-    <td>For submitting GET or POST values through an ajax request.  The data property will act exactly like jQuery's <a href='http://api.jquery.com/load/'>.load()</a> data argument, as ColorBox uses .load() for ajax handling.</td>
+    <td>For submitting GET or POST values through an ajax request.  The data property will act exactly like jQuery's <a href='http://api.jquery.com/load/'>.load()</a> data argument, as Colorbox uses .load() for ajax handling.</td>
   </tr>
   <tr id='setting-className'>
     <td>className</td>
@@ -174,7 +174,7 @@ $("a.gallery").colorbox({rel: 'gal', title: function(){
   <tr id='setting-current'>
     <td>current</td>
     <td>"image {current} of {total}"</td>
-    <td>Text or HTML for the group counter while viewing a group.  {current} and {total} are detected and replaced with actual numbers while ColorBox runs.</td>
+    <td>Text or HTML for the group counter while viewing a group.  {current} and {total} are detected and replaced with actual numbers while Colorbox runs.</td>
   </tr>
   <tr id='setting-previous'>
     <td>previous</td>
@@ -189,7 +189,7 @@ $("a.gallery").colorbox({rel: 'gal', title: function(){
   <tr id='setting-close'>
     <td>close</td>
     <td>"close"</td>
-    <td>Text or HTML for the close button.  The 'esc' key will also close ColorBox.</td>
+    <td>Text or HTML for the close button.  The 'esc' key will also close Colorbox.</td>
   </tr>
   <tr id='setting-xhrError'>
     <td>xhrError</td>
@@ -233,12 +233,12 @@ $("#inline").colorbox({inline:true, href:$form});
   <tr id='setting-photo'>
     <td>photo</td>
     <td>false</td>
-    <td>If true, this setting forces ColorBox to display a link as a photo.  Use this when automatic photo detection fails (such as using a url like 'photo.php' instead of 'photo.jpg')</td>
+    <td>If true, this setting forces Colorbox to display a link as a photo.  Use this when automatic photo detection fails (such as using a url like 'photo.php' instead of 'photo.jpg')</td>
   </tr>
   <tr id='setting-ajax'>
     <td>ajax</td>
     <td></td>
-    <td>This property isn't actually used as ColorBox assumes all hrefs should be treated as either ajax or photos, unless one of the other content types were specified.</td>
+    <td>This property isn't actually used as Colorbox assumes all hrefs should be treated as either ajax or photos, unless one of the other content types were specified.</td>
   </tr>
   <tr id='setting-dimensions'>
     <th>Dimensions</th>
@@ -323,27 +323,27 @@ $("#inline").colorbox({inline:true, href:$form});
   <tr id='setting-fixed'>
     <td>fixed</td>
     <td>false</td>
-    <td>If true, ColorBox will be displayed in a fixed position within the visitor's viewport.  This is unlike the default absolute positioning relative to the document.</td>
+    <td>If true, Colorbox will be displayed in a fixed position within the visitor's viewport.  This is unlike the default absolute positioning relative to the document.</td>
   </tr>
   <tr id='setting-top'>
     <td>top</td>
     <td>false</td>
-    <td>Accepts a pixel or percent value (50, "50px", "10%").  Controls ColorBox's vertical positioning instead of using the default position of being centered in the viewport.</td>
+    <td>Accepts a pixel or percent value (50, "50px", "10%").  Controls Colorbox's vertical positioning instead of using the default position of being centered in the viewport.</td>
   </tr>
   <tr id='setting-bottom'>
     <td>bottom</td>
     <td>false</td>
-    <td>Accepts a pixel or percent value (50, "50px", "10%").  Controls ColorBox's vertical positioning instead of using the default position of being centered in the viewport.</td>
+    <td>Accepts a pixel or percent value (50, "50px", "10%").  Controls Colorbox's vertical positioning instead of using the default position of being centered in the viewport.</td>
   </tr>
   <tr id='setting-left'>
     <td>left</td>
     <td>false</td>
-    <td>Accepts a pixel or percent value (50, "50px", "10%").  Controls ColorBox's horizontal positioning instead of using the default position of being centered in the viewport.</td>
+    <td>Accepts a pixel or percent value (50, "50px", "10%").  Controls Colorbox's horizontal positioning instead of using the default position of being centered in the viewport.</td>
   </tr>
   <tr id='setting-right'>
     <td>right</td>
     <td>false</td>
-    <td>Accepts a pixel or percent value (50, "50px", "10%").  Controls ColorBox's horizontal positioning instead of using the default position of being centered in the viewport.</td>
+    <td>Accepts a pixel or percent value (50, "50px", "10%").  Controls Colorbox's horizontal positioning instead of using the default position of being centered in the viewport.</td>
   </tr>
   <tr id='setting-retina'>
     <th>Retina Images</th>
@@ -353,12 +353,12 @@ $("#inline").colorbox({inline:true, href:$form});
   <tr id='setting-retinaImage'>
     <td>retinaImage</td>
     <td>false</td>
-    <td>If true, ColorBox will scale down the current photo to match the screen's pixel ratio</td>
+    <td>If true, Colorbox will scale down the current photo to match the screen's pixel ratio</td>
   </tr>
   <tr id='setting-retinaUrl'>
     <td>retinaUrl</td>
     <td>false</td>
-    <td>If true and the device has a high resolution display, ColorBox will replace the current photo's file extention with the retinaSuffix+extension</td>
+    <td>If true and the device has a high resolution display, Colorbox will replace the current photo's file extention with the retinaSuffix+extension</td>
   </tr>
   <tr id='setting-retinaSuffix'>
     <td>retinaSuffix</td>
@@ -373,7 +373,7 @@ $("#inline").colorbox({inline:true, href:$form});
   <tr id='setting-onopen'>
     <td>onOpen</td>
     <td>false</td>
-    <td>Callback that fires right before ColorBox begins to open.</td>
+    <td>Callback that fires right before Colorbox begins to open.</td>
   </tr>
   <tr id='setting-onload'>
     <td>onLoad</td>
@@ -393,7 +393,7 @@ $("#inline").colorbox({inline:true, href:$form});
   <tr id='setting-onclosed'>
     <td>onClosed</td>
     <td>false</td>
-    <td>Callback that fires once ColorBox is closed.</td>
+    <td>Callback that fires once Colorbox is closed.</td>
   </tr>
 </table>
 
@@ -402,7 +402,7 @@ $("#inline").colorbox({inline:true, href:$form});
 <table>
   <tr>
     <td>$.colorbox()</td>
-    <td>This method allows you to call ColorBox without having to assign it to an element.  <code>'$.colorbox({href:"login.php"});</code></td>
+    <td>This method allows you to call Colorbox without having to assign it to an element.  <code>'$.colorbox({href:"login.php"});</code></td>
   </tr>
   <tr>
     <td>$.colorbox.next()<br/> $.colorbox.prev()</td>
@@ -414,24 +414,24 @@ $("#inline").colorbox({inline:true, href:$form});
   </tr>
   <tr>
     <td>$.colorbox.element()</td>
-    <td>This method is used to fetch the current HTML element that ColorBox is associated with.  Returns a jQuery object containing the element. <code>var $element = $.colorbox.element();</code></td>
+    <td>This method is used to fetch the current HTML element that Colorbox is associated with.  Returns a jQuery object containing the element. <code>var $element = $.colorbox.element();</code></td>
   </tr>
   <tr>
     <td>$.colorbox.resize()</td>
-    <td>This allows ColorBox to be resized based on it's own auto-calculations, or to a specific size.
-    This must be called manually after ColorBox's content has loaded.
+    <td>This allows Colorbox to be resized based on it's own auto-calculations, or to a specific size.
+    This must be called manually after Colorbox's content has loaded.
     The optional parameters object can accept <code>width</code> or <code>innerWidth</code> and <code>height</code> or <code>innerHeight</code>.
-    Without specifying a width or height, ColorBox will attempt to recalculate the height of it's current content.</td>
+    Without specifying a width or height, Colorbox will attempt to recalculate the height of it's current content.</td>
   </tr>
   <tr>
     <td>$.colorbox.remove()</td>
-    <td>Removes all traces of ColorBox from the document.  Not the same as $.colorbox.close(), which tucks colorbox away for future use.</td>
+    <td>Removes all traces of Colorbox from the document.  Not the same as $.colorbox.close(), which tucks colorbox away for future use.</td>
   </tr>
 </table>
 
 ## Event Hooks
 
-These event hooks fire at the same time as their corresponding callbacks (ie. cbox_complete & onComplete), but can be used to make a universal change to ColorBox, while callbacks are only applied to selected elements.
+These event hooks fire at the same time as their corresponding callbacks (ie. cbox_complete & onComplete), but can be used to make a universal change to Colorbox, while callbacks are only applied to selected elements.
 
   // Example of using an event listener and public method to build a primitive slideshow:
   $(document).bind('cbox_complete', function(){
@@ -441,7 +441,7 @@ These event hooks fire at the same time as their corresponding callbacks (ie. cb
 <table>
   <tr>
     <td>cbox_open</td>
-    <td>triggers when ColorBox is first opened, but after a few key variable assignments take place.</td>
+    <td>triggers when Colorbox is first opened, but after a few key variable assignments take place.</td>
   </tr>
   <tr>
     <td>cbox_load</td>
