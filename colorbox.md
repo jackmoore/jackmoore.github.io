@@ -345,6 +345,11 @@ $("#inline").colorbox({inline:true, href:$form});
     <td>false</td>
     <td>Accepts a pixel or percent value (50, "50px", "10%").  Controls Colorbox's horizontal positioning instead of using the default position of being centered in the viewport.</td>
   </tr>
+  <tr id='setting-reposition'>
+    <td>reposition</td>
+    <td>true</td>
+    <td>Repositions Colorbox if the window's resize event is fired.</td>
+  </tr>
   <tr id='setting-retina'>
     <th>Retina Images</th>
     <th></th>
