@@ -1,22 +1,26 @@
 // Analytics
 (function() {
-	var t = 'script',
-		g = document.createElement(t),
-		s = document.getElementsByTagName(t)[0];
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments);},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-	window._gaq = [['_setAccount', 'UA-7069470-2'], ['_trackPageview']];
-
-	g.src = '//www.google-analytics.com/ga.js';
-	s.parentNode.insertBefore(g, s);
+	window.ga('create', 'UA-40201913-1', 'jacklmoore.com');
+	window.ga('send', 'pageview');
 
 	// Error logging
 	window.onerror = function(msg, url, line){
-		window._gaq.push(['_trackEvent', 'Errors', url+':'+line+' Error: '+msg+' ']);
+		window.ga('send', 'exception', {
+			'exDescription': url+':'+line+' Error: '+msg+' '
+		});
 	};
 
 	// Download Tracking
 	$(document).on('click', 'a[href$=".zip"]', function(){
-		window._gaq.push(['_trackEvent', 'Downloads', this.href]);
+		window.ga('send', 'event', {
+			'eventCategory': 'Downloads',
+			'eventAction': this.href
+		});
 	});
 })();
 
