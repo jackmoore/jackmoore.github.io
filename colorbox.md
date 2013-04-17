@@ -165,6 +165,11 @@ $("a.gallery").colorbox({rel: 'gal', title: function(){
     <td>false</td>
     <td>Adds a given class to colorbox and the overlay.</td>
   </tr>
+  <tr id='setting-fadeOut'>
+    <td>fadeOut</td>
+    <td>300</td>
+    <td>Sets the fadeOut speed, in milliseconds, when closing Colorbox.</td>
+  </tr>
 
   <tr>
     <th>Internationalization</th>

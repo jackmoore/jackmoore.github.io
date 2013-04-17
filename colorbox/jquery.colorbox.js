@@ -1,5 +1,5 @@
 /*!
-	jQuery Colorbox v1.4.10 - 2013-04-02
+	jQuery Colorbox v1.4.14 - 2013-04-16
 	(c) 2013 Jack Moore - jacklmoore.com/colorbox
 	license: http://www.opensource.org/licenses/mit-license.php
 */
@@ -10,6 +10,7 @@
 	defaults = {
 		transition: "elastic",
 		speed: 300,
+		fadeOut: 300,
 		width: false,
 		initialWidth: "600",
 		innerWidth: false,
@@ -47,7 +48,7 @@
 
 		open: false,
 		returnFocus: true,
-		reposition: false,
+		reposition: true,
 		loop: true,
 		slideshow: false,
 		slideshowAuto: true,
@@ -406,11 +407,11 @@
 			$content = $tag(div, "Content").append(
 				$title = $tag(div, "Title"),
 				$current = $tag(div, "Current"),
-				$prev = $tag('button', "Previous"),
-				$next = $tag('button', "Next"),
+				$prev = $('<button type="button"/>').attr({id:prefix+'Previous'}),
+				$next = $('<button type="button"/>').attr({id:prefix+'Next'}),
 				$slideshow = $tag('button', "Slideshow"),
 				$loadingOverlay,
-				$close = $tag('button', "Close")
+				$close = $('<button type="button"/>').attr({id:prefix+'Close'})
 			);
 			
 			$wrap.append( // The 3x3 Grid that makes up Colorbox
@@ -705,18 +706,27 @@
 		callback = function () {
 			var total = $related.length,
 				iframe,
+				frameBorder = 'frameBorder',
+				allowTransparency = 'allowTransparency',
 				complete;
 			
 			if (!open) {
 				return;
 			}
-
+			
+			function removeFilter() { // Needed for IE7 & IE8 in versions of jQuery prior to 1.7.2
+				if ($.support.opacity === false) {
+					$box[0].style.removeAttribute('filter');
+				}
+			}
+			
 			complete = function () {
 				clearTimeout(loadingTimer);
 				$loadingOverlay.hide();
 				trigger(event_complete, settings.onComplete);
 			};
 
+			
 			$title.html(settings.title).add($loaded).show();
 			
 			if (total > 1) { // handle grouping
@@ -762,12 +772,12 @@
 			if (settings.iframe) {
 				iframe = $tag('iframe')[0];
 				
-				if ('frameBorder' in iframe) {
-					iframe.frameBorder = 0;
+				if (frameBorder in iframe) {
+					iframe[frameBorder] = 0;
 				}
 				
-				if ('allowTransparency' in iframe) {
-					iframe.allowTransparency = "true";
+				if (allowTransparency in iframe) {
+					iframe[allowTransparency] = "true";
 				}
 
 				if (!settings.scrolling) {
@@ -798,7 +808,9 @@
 			}
 			
 			if (settings.transition === 'fade') {
-				$box.fadeTo(speed, 1);
+				$box.fadeTo(speed, 1, removeFilter);
+			} else {
+				removeFilter();
 			}
 		};
 		
@@ -888,6 +900,8 @@
 					return;
 				}
 
+				photo.alt = $(element).attr('alt') || $(element).attr('data-alt') || '';
+
 				if (settings.retinaImage && window.devicePixelRatio > 1) {
 					photo.height = photo.height / window.devicePixelRatio;
 					photo.width = photo.width / window.devicePixelRatio;
@@ -918,6 +932,9 @@
 						publicMethod.next();
 					};
 				}
+
+				photo.style.width = photo.width + 'px';
+				photo.style.height = photo.height + 'px';
 
 				setTimeout(function () { // A pause because Chrome will sometimes report a 0 by 0 size otherwise.
 					prep(photo);
@@ -963,9 +980,9 @@
 			
 			$window.unbind('.' + prefix);
 			
-			$overlay.fadeTo(200, 0);
+			$overlay.fadeTo(settings.fadeOut || 0, 0);
 			
-			$box.stop().fadeTo(300, 0, function () {
+			$box.stop().fadeTo(settings.fadeOut || 0, 0, function () {
 			
 				$box.add($overlay).css({'opacity': 1, cursor: 'auto'}).hide();
 				
@@ -988,7 +1005,6 @@
 		$box.stop();
 		$.colorbox.close();
 		$box.stop().remove();
-		trigger(event_purge);
 		$overlay.remove();
 		closing = false;
 		$box = null;
