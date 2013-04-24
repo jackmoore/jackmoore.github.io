@@ -37,9 +37,6 @@
 				</ul>
 			</aside>
 		</div>
-		<footer>
-			<a href="mailto:hello@jacklmoore.com">hello@jacklmoore.com</a>
-		</footer>
 		<script src="/js/jquery.js"></script>
 		<script src="/js/main.js"></script>
 	</body>
