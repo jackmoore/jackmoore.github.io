@@ -9,10 +9,9 @@ permalink: /autosize/
 
 ## Demo
 
-<textarea id='ta1'>Autosize with no animation.  Try typing something...</textarea>
-<textarea id='ta2'>Autosize with a CSS transition.</textarea>
-<script src='/js/jquery.js'></script>
-<script src='/js/jquery.autosize.js'></script>
+<textarea id='ta2'>Autosize with a CSS transition.
+Try typing something...</textarea>
+<textarea id='ta1'>Autosize with no animation.</textarea>
 
 <h2><a href='https://github.com/jackmoore/autosize/archive/master.zip' style='text-decoration: underline;'>Download</a></h2>
 
@@ -86,3 +85,13 @@ One copied style is `line-height`, and IE8 does not accurately report the line-h
 ### Note: Hidden Textarea Elements
 
 Autosize needs to be able to calculate the width of the textarea element it's been applied to.  JavaScript cannot calculate the width or height of elements that depend on the document flow if they have been removed from the document flow.  If you want to assign autosize to a hidden textarea element, be sure to either specify the pixel width of the element in your CSS, or trigger the autosize event after you reveal the textarea element.
+
+<script src='/js/jquery.js'></script>
+<script src='/js/jquery.autosize.js'></script>
+
+<script>
+	if ($ && $.fn.autosize) {
+		$('#ta1').autosize();
+		$('#ta2').autosize({append: "\n"});
+	}
+</script>

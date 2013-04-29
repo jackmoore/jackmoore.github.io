@@ -7,7 +7,7 @@ class: archive
 
 <ul class='tags'>
 	<li>
-		<a href='#tag-all' class='tag-all is-active'>All</a>
+		<a href='#tag-all' class='tag-all' data-active='true'>All</a>
 	</li>
 	{% for tag in site.tags %}
 	<li>

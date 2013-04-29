@@ -456,12 +456,12 @@ nav a:hover span {
   margin-left: 5px;
   line-height: 1em;
 }
-.tags .is-active {
+.tags [data-active] {
   background: #1e87dd;
   cursor: default;
   color: #fff;
 }
-.tags .is-active span {
+.tags [data-active] span {
   color: #ccc;
 }
 .date {

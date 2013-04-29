@@ -31,13 +31,12 @@
 				<ul class='tags'>
 					{% for tag in site.tags %} 
 					<li>
-						<a href='/notes/#tag-{{ tag[0] | replace:' ','-' | downcase }}'>{{ tag[0] }} <span>x{{ tag[1].size }}</span></a>
+						<a href='/notes/#tag-{{ tag[0] | replace:' ','-' | downcase }}' class='tag-{{ tag[0] | replace:' ','-' | downcase }}'>{{ tag[0] }} <span>x{{ tag[1].size }}</span></a>
 					</li>
 					{% endfor %}
 				</ul>
 			</aside>
 		</div>
-		<script src="/js/jquery.js"></script>
 		<script src="/js/main.js"></script>
 	</body>
 </html>

@@ -9,9 +9,6 @@ permalink: /zoom/
 
 ## Demo
 
-<script src='/js/jquery.js'></script>
-<script src='/js/jquery.zoom.js'></script>
-
 <span class='zoom' id='ex1'>
   <span>Hover</span>
   <img src='https://raw.github.com/jackmoore/zoom/master/daisy.jpg' width='555' height='320' alt='Daisy on the Ohoopee'/>
@@ -19,7 +16,6 @@ permalink: /zoom/
   <span>Grab</span>
   <img src='https://raw.github.com/jackmoore/zoom/master/roxy.jpg' width='290' height='320' alt='Roxy on the Ohoopee'/>
 </span>
-
 
 <h2><a href='https://github.com/jackmoore/zoom/archive/master.zip' style='text-decoration: underline;'>Download</a></h2>
 
@@ -92,3 +88,13 @@ $(document).ready(function(){
     <td>A function to call once the image has loaded.  The execution context of the callback will be set to the image element.</td>
   </tr>
 </table>
+
+<script src='/js/jquery.js'></script>
+<script src='/js/jquery.zoom.js'></script>
+
+<script>
+  if ($ && $.fn.zoom) {
+    $('#ex1').zoom();
+    $('#ex2').zoom({ on:'grab' });
+  }
+</script>
