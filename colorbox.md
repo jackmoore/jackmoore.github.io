@@ -125,6 +125,11 @@ $("a.gallery").colorbox({rel: 'gal', title: function(){
     <td>true</td>
     <td>If true, focus will be returned when Colorbox exits to the element it was launched from.</td>
   </tr>
+  <tr id='setting-trapfocus'>
+    <td>trapFocus</td>
+    <td>true</td>
+    <td>If true, keyboard focus will be limited to Colorbox's navigation and content.</td>
+  </tr>
   <tr id='setting-fastiframe'>
     <td>fastIframe</td>
     <td>true</td>
