@@ -7,7 +7,6 @@
 	<link rel="stylesheet" href="/css/pygments.css">
 	<link rel="canonical" href="{{ site.production_url }}{{ page.url }}">
 	<link rel="alternate" type="application/rss+xml" href="/rss.xml">
-	<link rel="author" href="http://plus.google.com/110755872003257579182/about">
 	<!--[if lt IE 9]><script src="/js/html5.js"></script><![endif]-->
 	<title>{% if page.title %} {{ page.title }} {% else %} Jack Moore {% endif %}</title>
 	</head>
