@@ -555,6 +555,8 @@ nav a:hover span {
 #ex2 img:hover { cursor: url(grab.cur), default; }
 #ex2 img:active { cursor: url(grabbed.cur), default; }
 #ex1 span, #ex2 span { position:absolute; top:3px; right:28px; color:#555; font:bold 13px/1 sans-serif; }
+
+/* Anti-spam measure */
 .email:before {
   content: 'hello';
 }

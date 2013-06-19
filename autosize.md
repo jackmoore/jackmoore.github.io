@@ -30,14 +30,22 @@ $(document).ready(function(){
 });
 ````
 
-Drop Autosize into any existing website and it should <em>Just Work</em>&trade;. <a href='https://raw.github.com/jackmoore/autosize/master/jquery.autosize.js'>The source</a> is short and well commented if you are curious to how it works. Email me if you run into any bugs.
+Drop Autosize into any existing website and it should <em>Just Work</em>&trade;. <a href='https://raw.github.com/jackmoore/autosize/master/jquery.autosize.js'>The source</a> is short and well commented if you are curious to how it works.
 
 ## Manual Triggering
-	
-Autosize has no way of knowing when the value of a textarea has been changed through JavaScript.  If you do this, trigger the autosize event immediately after to update the height.  Example:
+
+Autosize has no way of knowing when the value of a textarea has been changed through JavaScript.  If you do this, trigger the `autosize.resize` event immediately after to update the height.  Example:
 
 ````javascript	
-$('#example').val('New Text!').trigger('autosize');
+$('#example').val('New Text!').trigger('autosize.resize');
+````
+
+## Removing Autosize
+
+Trigger the `autosize.destroy` event to remove autosize from a textarea element:
+
+````javascript	
+$('#example').trigger('autosize.destroy');
 ````
 
 ## Settings
@@ -84,7 +92,7 @@ One copied style is `line-height`, and IE8 does not accurately report the line-h
 
 ### Note: Hidden Textarea Elements
 
-Autosize needs to be able to calculate the width of the textarea element it's been applied to.  JavaScript cannot calculate the width or height of elements that depend on the document flow if they have been removed from the document flow.  If you want to assign autosize to a hidden textarea element, be sure to either specify the pixel width of the element in your CSS, or trigger the autosize event after you reveal the textarea element.
+Autosize needs to be able to calculate the width of the textarea element it's been applied to.  JavaScript cannot calculate the width or height of elements that depend on the document flow if they have been removed from the document flow.  If you want to assign autosize to a hidden textarea element, be sure to either specify the pixel width of the element in your CSS, or trigger the `autosize.resize` event after you reveal the textarea element.
 
 <script src='/js/jquery.js'></script>
 <script src='/js/jquery.autosize.js'></script>

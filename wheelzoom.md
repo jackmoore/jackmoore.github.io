@@ -12,10 +12,10 @@ permalink: /wheelzoom/
 <script src='/js/jquery.js'></script>
 <script src='/js/jquery.wheelzoom.js'></script>
 
-<img id='ex1' src='https://raw.github.com/jackmoore/wheelzoom/master/daisy.jpg' width='555' height='320' alt='Daisy on the Ohoopee'/>
+<img id='wheelzoom' src='/daisy.jpg' width='555' height='320' alt='Daisy on the Ohoopee'/>
 
 <script>
-	$('#ex1').wheelzoom();
+	$('#wheelzoom').wheelzoom();
 </script>
 
 <h2><a href='https://raw.github.com/jackmoore/wheelzoom/master/jquery.wheelzoom.js' style='text-decoration: underline;'>Download</a></h2>

@@ -11,10 +11,10 @@ permalink: /zoom/
 
 <span class='zoom' id='ex1'>
   <span>Hover</span>
-  <img src='https://raw.github.com/jackmoore/zoom/master/daisy.jpg' width='555' height='320' alt='Daisy on the Ohoopee'/>
+  <img src='/img/daisy.jpg' width='555' height='320' alt='Daisy on the Ohoopee'/>
 </span><span class='zoom' id='ex2'>
   <span>Grab</span>
-  <img src='https://raw.github.com/jackmoore/zoom/master/roxy.jpg' width='290' height='320' alt='Roxy on the Ohoopee'/>
+  <img src='/img/roxy.jpg' width='290' height='320' alt='Roxy on the Ohoopee'/>
 </span>
 
 <h2><a href='https://github.com/jackmoore/zoom/archive/master.zip' style='text-decoration: underline;'>Download</a></h2>
@@ -58,6 +58,15 @@ $(document).ready(function(){
 });
 ````
 
+## Removing Zoom
+
+Trigger the `zoom.destroy` event to remove zoom from an element:
+
+````javascript
+$('#example').zoom(); // add zoom
+$('#example').trigger('zoom.destroy'); // remove zoom
+````
+
 ## Settings
 
 <table>
@@ -76,16 +85,30 @@ $(document).ready(function(){
     <td>'mouseover'</td>
     <td>The type of event that triggers zooming.  Choose from <code>mouseover</code>, <code>grab</code>, <code>click</code>, or <code>toggle</code>.</td>
   </tr>
-
   <tr>
     <td>duration</td>
     <td>120</td>
     <td>The fadeIn/fadeOut speed of the large image.</td>
   </tr>
   <tr>
+    <td>target</td>
+    <td>false</td>
+    <td>The element that that loaded image should placed into.</td>
+  </tr>
+  <tr>
     <td>callback</td>
     <td>false</td>
-    <td>A function to call once the image has loaded.  The execution context of the callback will be set to the image element.</td>
+    <td>A function to be called when the image has loaded.  Inside the function, `this` references the image element.</td>
+  </tr>
+  <tr>
+    <td>onZoomIn</td>
+    <td>false</td>
+    <td>A function to be called when the image has zoomed in.  Inside the function, `this` references the image element.</td>
+  </tr>
+  <tr>
+    <td>onZoomOut</td>
+    <td>false</td>
+    <td>A function to be called when the image has zoomed out.  Inside the function, `this` references the image element.</td>
   </tr>
 </table>
 
