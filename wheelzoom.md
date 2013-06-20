@@ -12,7 +12,7 @@ permalink: /wheelzoom/
 <script src='/js/jquery.js'></script>
 <script src='/js/jquery.wheelzoom.js'></script>
 
-<img id='wheelzoom' src='/daisy.jpg' width='555' height='320' alt='Daisy on the Ohoopee'/>
+<img id='wheelzoom' src='/img/daisy.jpg' width='555' height='320' alt='Daisy on the Ohoopee'/>
 
 <script>
 	$('#wheelzoom').wheelzoom();
