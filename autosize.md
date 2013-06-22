@@ -73,26 +73,38 @@ $('#example').trigger('autosize.destroy');
 	</tr>
 </table>
 
-### Note: line-height in IE8:
+## Known Issues &amp; Solutions
+
+### Incorrect size in IE8:
 
 Autosize adds a hidden textarea element to your document that mirrors the original textarea's input.  This mirrored textarea is used to calculate the size that the original textarea should be.  The mirrored textarea copies the original textarea's styles that relate to text formatting.
 
 One copied style is `line-height`, and IE8 does not accurately report the line-height value for textarea elements. This is not an issue when the line-height is specified for the bare textarea selector (ie: `textarea { line-height:20px; }`), because that style is also applied to the mirrored element.  It's only a problem when using a more specific selector (ie: `#content textarea{ line-height:20px; }`).  This style isn't applied to the mirrored textarea that Autosize creates, and it cannot copy the style from the original textarea because IE8 reports the wrong value.  As a workaround, Autosize adds a class to the mirrored element so that it can be targeted for styling.  Example:
 
-````html
-<style>
-	#content textarea, .mirroredText { line-height:20px; }
-</style>
-<script>
-	$(document).ready(function(){
-		$('textarea').autosize({className:'mirroredText'});
-	});
-</script>
+````css
+#content textarea, .autosizejs { line-height:20px; }
 ````
 
-### Note: Hidden Textarea Elements
+### Incorrect size in any IE:
 
-Autosize needs to be able to calculate the width of the textarea element it's been applied to.  JavaScript cannot calculate the width or height of elements that depend on the document flow if they have been removed from the document flow.  If you want to assign autosize to a hidden textarea element, be sure to either specify the pixel width of the element in your CSS, or trigger the `autosize.resize` event after you reveal the textarea element.
+For all browsers, the font-family for form elements are not inherited from their parent elements, unless the style is explicitly set to inherit.  When JavaScript is used to get the computed style for a textarea's font-family, all versions of IE will incorrectly return the inherited font-family if a font-family style was not explicitly set.  This can cause Autosize's calculations to be off.  The solution is to set a font-family for textarea elements in your stylesheet:
+
+```css
+/* set to a specific font-family */
+textarea { font-family: Tahoma, sans-serif; }
+
+/* or explicitly inherit */
+textarea { font-family: inherit; }
+```
+
+### Incorrect size with hidden textarea elements
+
+Autosize needs to be able to calculate the width of the textarea element it's been applied to.  JavaScript cannot calculate the width or height of elements that have been removed from the document flow.  If you want to assign Autosize to a hidden textarea element, be sure to either specify the pixel width of the element in your CSS, or trigger the `autosize.resize` event after you reveal the textarea element.
+
+```javascript
+$('.hidden-textarea').show().trigger('autosize.resize');
+```
+
 
 <script src='/js/jquery.js'></script>
 <script src='/js/jquery.autosize.js'></script>
