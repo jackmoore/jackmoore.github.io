@@ -177,6 +177,11 @@ $("a.gallery").colorbox({rel: 'gal', title: function(){
     <td>300</td>
     <td>Sets the fadeOut speed, in milliseconds, when closing Colorbox.</td>
   </tr>
+  <tr id='setting-closeButton'>
+    <td>closeButton</td>
+    <td>true</td>
+    <td>Set to false to remove the close button.</td>
+  </tr>
 
   <tr>
     <th>Internationalization</th>
