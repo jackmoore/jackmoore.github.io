@@ -88,7 +88,7 @@ I would like the modal to handle the following things:
 * Be positioned in the center of the viewport
 * Stay centered if the viewport is resized
 
-Let's stump out the function and variable names:
+Let's stub out the function and variable names:
 
 ````javascript
 var modal = (function(){
@@ -98,6 +98,8 @@ var modal = (function(){
 	$modal,
 	$content,
 	$close;
+
+	// Append the HTML
 
 	// Center the modal in the viewport
 	method.center = function () {};
@@ -131,7 +133,7 @@ $(document).ready(function(){
 });
 ````
 
-This generates the same HTML structure used earlier in the guide, now created and added to the document by our script.
+This generates the same HTML structure we drafted previously, and adds it to the document.
 
 ### Center Method
 
@@ -149,7 +151,7 @@ method.center = function () {
 };
 ````
 
-Here we balance the distance between each side of the viewport and each side of the modal.  jQuery's .outerWidth() and .outerHeight() are used because borders and padding should also be factored in.  I used Math.max() so that I could be sure that no value returned would be less than 0.  This means that if the modal is larger than the visitor's viewport, it will be positioned in the top left of the viewport rather running beyond that where it could be potentially being inaccessible.  $(window).scrollTop() returns the position of the vertical scrollbar, which is the distance from the top of the document to the top of the viewport.  This needs to be added to account for any scrolling that has happened.
+Here we balance the distance between each side of the viewport and each side of the modal.  jQuery's .outerWidth() and .outerHeight() are used because borders and padding should also be factored in.  I used Math.max() so that I could be sure that no value returned would be less than 0.  This means that if the modal is larger than the visitor's viewport, it will be positioned in the top left of the viewport rather than potentially spanning beyond the top or left edge of the document, where it would be inaccessible.  $(window).scrollTop() returns the position of the vertical scrollbar, which is the distance from the top of the document to the top of the viewport.  This needs to be added to account for any scrolling that has happened.
 
 ### Open Method
 
@@ -171,7 +173,7 @@ method.open = function (settings) {
 };
 ````
 
-The open method accepts an object of our settings.  It can contain three properties: content, width, height.  Content can be text, HTML, or an element/jQuery object.  We append the data from settings.content to #content, and give #modal a width and height if either was specified in the settings object.  Method.center() is called to center the modal in the viewport and is bound to the window's resize event.  This will cause the modal to re-center itself whenever the viewport changes size.  I made use of jQuery's <a href='http://docs.jquery.com/Namespaced_Events'>event namespacing</a> so that later, when we unbind the event, we can make sure not to disturb any other resize events that other scripts may have bound to the window.  The last thing we do is reveal #modal and #overlay.
+The open method accepts an object of our settings.  It can contain three properties: content, width, height.  Content can be text, HTML, or an element/jQuery object.  We append the data from settings.content to #content, and give #modal a width and height if either was specified in the settings object.  Method.center() is called to center the modal in the viewport and is bound to the window's resize event.  This will cause the modal to re-center itself whenever the viewport changes size.  I made use of jQuery's <a href='http://docs.jquery.com/Namespaced_Events'>event name-spacing</a> so that later, when we unbind the event, we can make sure not to disturb any other resize events that other scripts may have bound to the window.  The last thing we do is reveal #modal and #overlay.
 
 ### Close Method
 
