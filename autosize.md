@@ -107,6 +107,17 @@ Autosize needs to be able to calculate the width of the textarea element it's be
 $('.hidden-textarea').show().trigger('autosize.resize');
 ```
 
+### About CSS transitions
+
+You may want to use a CSS transition on the height of a textarea, but not want to show the transition when autosize is first applied.  For example, if you had a textarea that was already pre-filled with text and you wanted to show a non-transitioned autosize on page load.  The easiest solution would to add the class associated with the transition *after* autosize has been assigned:
+
+```
+var $ta = $('textarea');
+
+$ta.autosize();
+document.body.offsetWidth; // trigger a reflow before the class is changed
+$ta.addClass('textarea-transition');
+```
 
 <script src='/js/jquery.js'></script>
 <script src='/js/jquery.autosize.js'></script>
