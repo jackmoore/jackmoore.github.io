@@ -1,5 +1,5 @@
 /*!
-	Zoom v1.7.5 - 2013-06-23
+	Zoom v1.7.10 - 2013-10-16
 	Enlarge images on click or mouseover.
 	(c) 2013 Jack Moore - http://www.jacklmoore.com/zoom
 	license: http://www.opensource.org/licenses/mit-license.php
@@ -10,15 +10,18 @@
 		callback: false,
 		target: false,
 		duration: 120,
-		on: 'mouseover', // other options: 'grab', 'click', 'toggle'
+		on: 'mouseover', // other options: grab, click, toggle
+		touch: true, // enables a touch fallback
 		onZoomIn: false,
 		onZoomOut: false
 	};
 
 	// Core Zoom Logic, independent of event listeners.
 	$.zoom = function(target, source, img) {
-		var outerWidth,
-			outerHeight,
+		var targetHeight,
+			targetWidth,
+			sourceHeight,
+			sourceWidth,
 			xRatio,
 			yRatio,
 			offset,
@@ -48,18 +51,28 @@
 
 		return {
 			init: function() {
-				outerWidth = $(target).outerWidth();
-				outerHeight = $(target).outerHeight();
-				xRatio = (img.width - outerWidth) / $(source).outerWidth();
-				yRatio = (img.height - outerHeight) / $(source).outerHeight();
+				targetWidth = $(target).outerWidth();
+				targetHeight = $(target).outerHeight();
+
+				if (source === target) {
+					sourceWidth = targetWidth;
+					sourceHeight = targetHeight;
+				} else {
+					sourceWidth = $(source).outerWidth();
+					sourceHeight = $(source).outerHeight();
+				}
+
+				xRatio = (img.width - targetWidth) / sourceWidth;
+				yRatio = (img.height - targetHeight) / sourceHeight;
+
 				offset = $(source).offset();
 			},
 			move: function (e) {
 				var left = (e.pageX - offset.left),
 					top = (e.pageY - offset.top);
 
-				top = Math.max(Math.min(top, outerHeight), 0);
-				left = Math.max(Math.min(left, outerWidth), 0);
+				top = Math.max(Math.min(top, sourceHeight), 0);
+				left = Math.max(Math.min(left, sourceWidth), 0);
 
 				img.style.left = (left * -xRatio) + 'px';
 				img.style.top = (top * -yRatio) + 'px';
@@ -78,11 +91,16 @@
 			img = document.createElement('img'),
 			$img = $(img),
 			mousemove = 'mousemove.zoom',
-			clicked = false;
+			clicked = false,
+			touched = false,
+			$urlElement;
 
 			// If a url wasn't specified, look for an image element.
 			if (!settings.url) {
-				settings.url = $(source).find('img').attr('src');
+				$urlElement = $(source).find('img');
+				if ($urlElement[0]) {
+					settings.url = $urlElement.data('src') || $urlElement.attr('src');
+				}
 				if (!settings.url) {
 					return;
 				}
@@ -103,27 +121,31 @@
 
 				function stop() {
 					$img.stop()
-					.fadeTo(settings.duration, 0, $.isFunction(settings.onZoomIn) ? settings.onZoomIn.call(img) : false);
+					.fadeTo(settings.duration, 0, $.isFunction(settings.onZoomOut) ? settings.onZoomOut.call(img) : false);
 				}
 
+				// Mouse events
 				if (settings.on === 'grab') {
-					$(source).on('mousedown.zoom',
-						function (e) {
-							$(document).one('mouseup.zoom',
-								function () {
-									stop();
+					$(source)
+						.on('mousedown.zoom',
+							function (e) {
+								if (e.which === 1) {
+									$(document).one('mouseup.zoom',
+										function () {
+											stop();
 
-									$(document).off(mousemove, zoom.move);
+											$(document).off(mousemove, zoom.move);
+										}
+									);
+
+									start(e);
+
+									$(document).on(mousemove, zoom.move);
+
+									e.preventDefault();
 								}
-							);
-
-							start(e);
-
-							$(document).on(mousemove, zoom.move);
-
-							e.preventDefault();
-						}
-					);
+							}
+						);
 				} else if (settings.on === 'click') {
 					$(source).on('click.zoom',
 						function (e) {
@@ -156,7 +178,7 @@
 							clicked = !clicked;
 						}
 					);
-				} else {
+				} else if (settings.on === 'mouseover') {
 					zoom.init(); // Preemptively call init because IE7 will fire the mousemove handler before the hover handler.
 
 					$(source)
@@ -165,6 +187,25 @@
 						.on(mousemove, zoom.move);
 				}
 
+				// Touch fallback
+				if (settings.touch) {
+					$(source)
+						.on('touchstart.zoom', function (e) { 
+							e.preventDefault();
+							if (touched) {
+								touched = false;
+								stop();
+							} else {
+								touched = true;
+								start( e.originalEvent.touches[0] || e.originalEvent.changedTouches[0] );
+							}
+						})
+						.on('touchmove.zoom', function (e) { 
+							e.preventDefault();
+							zoom.move( e.originalEvent.touches[0] || e.originalEvent.changedTouches[0] );
+						});
+				}
+				
 				if ($.isFunction(settings.callback)) {
 					settings.callback.call(img);
 				}

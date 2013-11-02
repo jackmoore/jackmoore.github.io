@@ -59,22 +59,6 @@
 
 					img.style.backgroundSize = bgWidth + 'px ' + bgHeight + 'px';
 					img.style.backgroundPosition = (bgPosX+offsetPaddingX) + 'px ' + (bgPosY+offsetPaddingY) + 'px';
-				
-					// if ($.isFunction(settings.callback)) {
-					// 	settings.callback.call(img, {
-					// 		width: bgWidth,
-					// 		height: bgHeight,
-					// 		top: bgPosX+offsetPaddingX,
-					// 		left: bgPosY+offsetPaddingY
-					// 	});
-					// }
-
-					$(img).trigger('wheelzoom.position', {
-						width: bgWidth,
-						height: bgHeight,
-						top: bgPosX+offsetPaddingX,
-						left: bgPosY+offsetPaddingY
-					});
 				}
 
 
