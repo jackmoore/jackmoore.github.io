@@ -1,7 +1,7 @@
 ---
 title: jQuery Zoom
 layout: post
-meta: A plugin to enlarge images on click or mouseover.
+meta: A plugin to enlarge images on touch, click, or mouseover.
 permalink: /zoom/
 ---
 
@@ -95,7 +95,12 @@ $('#example').trigger('zoom.destroy'); // remove zoom
   <tr>
     <td>target</td>
     <td>false</td>
-    <td>The element that that loaded image should placed into.</td>
+    <td>A selector or DOM element that should be used as the parent container for the zoomed image.</td>
+  </tr>
+  <tr>
+    <td>touch</td>
+    <td>true</td>
+    <td>Enables interaction via touch events.</td>
   </tr>
   <tr>
     <td>callback</td>
