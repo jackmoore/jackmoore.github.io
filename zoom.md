@@ -103,6 +103,11 @@ $('#example').trigger('zoom.destroy'); // remove zoom
     <td>Enables interaction via touch events.</td>
   </tr>
   <tr>
+    <td>magnify</td>
+    <td>1</td>
+    <td>Sets the scaling of the zoomed image.</td>
+  </tr>
+  <tr>
     <td>callback</td>
     <td>false</td>
     <td>A function to be called when the image has loaded.  Inside the function, `this` references the image element.</td>
