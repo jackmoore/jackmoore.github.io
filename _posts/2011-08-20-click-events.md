@@ -21,7 +21,7 @@ If the intention was to only cancel an unmodified left-click, then other mouse b
 ## A Discriminating Click Event
 
 	$('a#example').mousedown(function(e){
-		if (e.which == 1 && !(e.shiftKey || e.altKey || e.metaKey | e.ctrlKey)) {
+		if (e.which == 1 && !(e.shiftKey || e.altKey || e.metaKey || e.ctrlKey)) {
 			$(this).unbind('click.lc').bind('click.lc', function(event){
 				console.log('click!');
 				event.preventDefault();
@@ -39,7 +39,7 @@ The reason to detect the mousedown separately from the click event itself is tha
 A *Good Enough* approach would be to simply ignore IE's lack of button identification:
 
 	$('a#example').click(function(e){
-		if (!(e.which > 1 || e.shiftKey || e.altKey || e.metaKey | e.ctrlKey)) {
+		if (!(e.which > 1 || e.shiftKey || e.altKey || e.metaKey || e.ctrlKey)) {
 			console.log('click!');
 			e.preventDefault();
 		}
