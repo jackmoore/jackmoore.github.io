@@ -14,6 +14,8 @@ If you are completely new to jQuery plugins, try reading the Colorbox <a href='/
 
 ## Common Problems
 
+* [YouTube link is not working](#faq-youtube)
+* [The iframe is blank (X-Frame-Options error in console)](#faq-sameorigin)
 * [Flash appears over Colorbox](#faq-flash)
 * [Colorbox is positioned incorrectly or behaving strangely](#faq-doctype)
 * [Colorbox is broken or looks incomplete while displaying documents.](#faq-iframe)
@@ -23,7 +25,6 @@ If you are completely new to jQuery plugins, try reading the Colorbox <a href='/
 * [Closing Colorbox breaks accordians/tabs/animations](#faq-focus)
 * [JavaScript/jQuery is not working inside of Colorbox](#faq-timing)
 * [Colorbox is sized too small the first time ajax/inline content is opened](#faq-img)
-* [IE6/IE7 freezes with jQuery 1.6.0](#faq-jquerybug)
 * [Colorbox is not working with Microsoft SharePoint](#faq-sharepoint)
 * [Inline forms not submitting / POSTing in ASP.NET](#faq-asp)
 
@@ -39,6 +40,36 @@ If you are completely new to jQuery plugins, try reading the Colorbox <a href='/
 * [Change Colorbox's default settings](#faq-defaults)
 * [Make the title a link](#faq-titlelink)
 * [Use Colorbox with a Flickr feed or JSON data](/notes/colorbox-with-json-or-flickr)
+
+<h3 id='faq-youtube'>YouTube link is not working.</h3>
+
+When you are showing a YouTube video in an iframe, you want to link to the embed version of the url.  Normally, your url would look something like this:
+
+`http://www.youtube.com/watch?v=VOJyrQa_WR4`
+
+To convert this to the embed version, we would replace `watch?v=` with `embed/`:
+
+`http://www.youtube.com/embed/VOJyrQa_WR4`
+
+If you wanted to use the normal url as the href value of your anchor elements, but use the embed version in Colorbox's iframe, you could do something like this:
+
+```
+<a class='youtube' href='http://www.youtube.com/watch?v=VOJyrQa_WR4'>Business Cats</a>
+<script>
+	$('.youtube').colorbox({iframe: true, width: 640, height: 390, href:function(){
+		var videoId = new RegExp('[\\?&]v=([^&#]*)').exec(this.href);
+		if (videoId && videoId[1]) {
+			return 'http://youtube.com/embed/'+videoId[1]+'?rel=0&wmode=transparent';
+		}
+	}});
+</script>
+```
+
+I like to add the following parameters: `rel=0`, which tells YouTube not to show related videos when video ends, and `wmode=transparent`, which allows HTML elements to be displayed on top of the video if necessary. For more options, have a look at [YouTube's Player Parameters](https://developers.google.com/youtube/player_parameters).
+
+<h3 id='faq-sameorigin'>The iframe is blank</h3>
+
+Many sites, such as Google, simply cannot be displayed in an iframe.  These use a server setting (X-Frame-Options set to SAMEORIGIN) to prohibit their pages from being displayed in an iframe on a domain other than their own.
 
 <h3 id='faq-flash'>Flash appears over Colorbox:</h3>
 
@@ -102,10 +133,6 @@ This is often due to trying to access an element before it has been loaded into 
 <h3 id='faq-img'>Colorbox is sized too small the first time ajax/inline content is opened</h3>
 
 This is likely due to IMG elements in the loaded markup having not fully finished downloading before Colorbox measures the content to determine the width and height it should use.  The second time Colorbox is opened, the images have been cached and will take up the correct width and height within your document.  This can easily be fixed by adding the width and height dimensions to the IMG element (a recommended practice), or by setting a style that specifies the width and height of the image in your CSS.
-
-<h3 id='faq-jquerybug'>IE6/IE7 freezes with jQuery 1.6.0</h3>
-
-jQuery 1.6.0 had a <a href='http://bugs.jquery.com/ticket/9072'>regressive bug</a> that affects Colorbox.  Either use jQuery 1.6.1 or higher.
 
 <h3 id='faq-sharepoint'>Colorbox is not working with Microsoft SharePoint</h3>
 
