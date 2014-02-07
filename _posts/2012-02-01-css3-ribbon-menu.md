@@ -2,7 +2,6 @@
 title: CSS Ribbon Menu
 layout: post
 meta: This uses CSS3 transitions and CSS2 pseudo-elements to create an animated navigation ribbon with minimal markup.
-date: 2012-02-01
 tags: [CSS, HTML5]
 ---
 

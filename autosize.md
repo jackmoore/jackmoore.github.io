@@ -77,6 +77,38 @@ $('#example').trigger('autosize.destroy');
 
 ## Known Issues &amp; Solutions
 
+
+### Incorrect size with hidden textarea elements
+
+Autosize needs to be able to calculate the width of the textarea element when it is assigned.  JavaScript cannot accurately calculate the width of an element that has been removed from the document flow.  If you want to assign Autosize to a hidden textarea element, be sure to either specify the pixel width of the element in your CSS, or trigger the `autosize.resize` event after you reveal the textarea element.
+
+<strong>Possible ways to resolve:</strong>
+
+* Specify an exact width for the textarea element in your stylesheet.
+
+* Trigger the `autosize.resize` event after the element has been revealed.
+
+```javascript
+$('textarea.example').autosize().show().trigger('autosize.resize');
+```
+
+* Wait until after the textarea element has been revealed before assigning Autosize.
+
+```javascript
+$('textarea.example').fadeIn(function(){
+	$(this).autosize();
+});
+```
+
+* Wait until the textarea has been focused by the user before assigning Autosize.
+
+```javascript
+$('textarea.example').on('focus', function(){
+	$(this).autosize();
+});
+```
+
+
 ### Incorrect size in IE8:
 
 Autosize adds a hidden textarea element to your document that mirrors the original textarea's input.  This mirrored textarea is used to calculate the size that the original textarea should be.  The mirrored textarea copies the original textarea's styles that relate to text formatting.
@@ -97,14 +129,6 @@ textarea { font-family: Tahoma, sans-serif; }
 
 /* or explicitly inherit */
 textarea { font-family: inherit; }
-```
-
-### Incorrect size with hidden textarea elements
-
-Autosize needs to be able to calculate the width of the textarea element it's been applied to.  JavaScript cannot calculate the width or height of elements that have been removed from the document flow.  If you want to assign Autosize to a hidden textarea element, be sure to either specify the pixel width of the element in your CSS, or trigger the `autosize.resize` event after you reveal the textarea element.
-
-```javascript
-$('.hidden-textarea').show().trigger('autosize.resize');
 ```
 
 ### About CSS transitions

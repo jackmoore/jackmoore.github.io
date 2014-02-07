@@ -2,7 +2,6 @@
 title: Working with JavaScript click events
 layout: post
 meta: Fine tuning click events.
-date: 2011-08-20
 tags: [jQuery, JavaScript]
 ---
 

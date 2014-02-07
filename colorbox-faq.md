@@ -34,7 +34,7 @@ If you are completely new to jQuery plugins, try reading the Colorbox <a href='/
 * [Pass Colorbox parameters based on a URL](#faq-querystring)
 * [Prevent Colorbox from closing / Change the behavior of $.colorbox.close()](#faq-close)
 * [Disable grouping by rel attribute](#faq-nofollow)
-* [Control Colorbox from within an iframe](#faq-parent)
+* [Close from iframe / Control from iframe](#faq-parent)
 * [Create a separate link for opening a gallery](#faq-click)
 * [Track Colorbox usage with Google Analytics](#faq-analytics)
 * [Change Colorbox's default settings](#faq-defaults)
@@ -207,15 +207,19 @@ Set Colorbox's `rel` property to `'nofollow'`.
 
 	$('a[rel="examples"]').colorbox({rel:'nofollow'});
 
-<h3 id='faq-parent'>Control Colorbox from within an iframe</h3>
+<h3 id='faq-parent'>Close from iframe / Control from iframe</h3>
 
-An iframed document's `window` object will have a `parent` property that is used to get the parent's window object.  The parent window's scripts (jQuery/Colorbox) can be accessed through that parent property:
+An iframe can access it's parent document's window object via `window.parent`.  This gives you access to variables that exist within the parent document's global scope, such as jQuery.
 
-	<!-- calling colorbox's close method from within an iframe: -->
-	<a href='#' onclick='parent.$.colorbox.close(); return false;'>close this iframe</a>
+	<!-- calling close method from within an iframe: -->
+	<a href='#' onclick='window.parent.jQuery.colorbox.close(); return false;'>
+		close this iframe
+	</a>
 
-	<!-- open colorbox in the parent of an iframed document -->
-	<a onclick='parent.$.colorbox({href:"login.php"}); return false;'>open in parent window</a>
+	<!-- open Colorbox in the parent from an iframed -->
+	<a href='#' onclick='window.parent.jQuery.colorbox({href:"login.php"}); return false;'>
+		open in parent window
+	</a>
 
 <h3 id='faq-click'>Create a separate link for opening a gallery</h3>
 

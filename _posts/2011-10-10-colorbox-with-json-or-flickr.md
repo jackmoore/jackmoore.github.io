@@ -2,7 +2,6 @@
 title: Colorbox with Flickr Feed
 layout: post
 meta: Here we'll use jQuery and Flickr to build a thumbnail gallery that will display full-size photos in Colorbox.
-date: 2011-10-10
 tags: [Colorbox, jQuery]
 ---
 
