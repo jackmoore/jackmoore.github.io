@@ -66,7 +66,7 @@ $('#example').trigger('autosize.destroy');
 	<tr>
 		<td>append</td>
 		<td>''</td>
-		<td>For appending whitespace to the end of the height calculation (an extra newline improves the apperance when animating).  Example <code>$('.textarea').autosize({append: "\n"});</code></td>
+		<td>For appending whitespace to the end of the height calculation (an extra newline improves the appearance when animating).  Example <code>$('.textarea').autosize({append: "\n"});</code></td>
 	</tr>
 	<tr>
 		<td>callback</td>
@@ -77,8 +77,7 @@ $('#example').trigger('autosize.destroy');
 
 ## Known Issues &amp; Solutions
 
-
-### Incorrect size with hidden textarea elements
+<h3 id='faq-hidden-textarea'>Incorrect size with hidden textarea elements</h3>
 
 Autosize needs to be able to calculate the width of the textarea element when it is assigned.  JavaScript cannot accurately calculate the width of an element that has been removed from the document flow.  If you want to assign Autosize to a hidden textarea element, be sure to either specify the pixel width of the element in your CSS, or trigger the `autosize.resize` event after you reveal the textarea element.
 
@@ -109,6 +108,21 @@ $('textarea.example').on('focus', function(){
 ```
 
 
+<h3 id='faq-chrome-zoom'>Incorrect size when zoomed in Chrome</h3>
+
+Autosize may not be big enough to fit all text in Chrome if it is zoomed in.  This should only happen when  the line-height for textarea elements is set to a numeric value (ie. `line-height: 1.4`) rather than a length or percent value (ie. `line-height: 1.4em` or `line-height: 140%`).  There is apparently an issue with the getComputedStyle value that Chrome calculates for numeric line-height values for textarea elements when zoomed. There isn't anything the plugin can do to correct this behavior, however the bug can be avoided in a couple of ways.
+
+<strong>Possible ways to resolve:</strong>
+
+* In your CSS, specify a non-number value for textarea line-height, such as `%`, `normal`, `em`, or `px`.
+
+* If all textarea elements on your site share the same line-height value, then you can use a numeric line-height value if you include the `!important` modifier.  This will cause Autosize not to account for possible line-height variation when calculating the textarea size, which is impacted by the getComputedStyle bug.  For example:
+
+```
+textarea {line-height: 1.4 !important;}
+```
+
+
 ### Incorrect size in IE8:
 
 Autosize adds a hidden textarea element to your document that mirrors the original textarea's input.  This mirrored textarea is used to calculate the size that the original textarea should be.  The mirrored textarea copies the original textarea's styles that relate to text formatting.
@@ -133,7 +147,7 @@ textarea { font-family: inherit; }
 
 ### About CSS transitions
 
-You may want to use a CSS transition on the height of a textarea, but not want to show the transition when autosize is first applied.  For example, if you had a textarea that was already pre-filled with text and you wanted to show a non-transitioned autosize on page load.  The easiest solution would to add the class associated with the transition *after* autosize has been assigned:
+You may want to use a CSS transition on the height of a textarea, but not want to show the transition when Autosize is first applied.  For example, if you had a textarea that was already pre-filled with text and you wanted to show a non-transitioned Autosize on page load.  The easiest solution would to add the class associated with the transition *after* Autosize has been assigned:
 
 ```
 var $ta = $('textarea');
