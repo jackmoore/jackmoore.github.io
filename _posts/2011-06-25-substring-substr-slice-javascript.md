@@ -29,10 +29,8 @@ In JavaScript, substrings are primarily extracted through one of following Strin
 
 All three of these methods take in a start index and an optional stop index (or length) parameter, but they differ in some important ways:
 
-* substr can give inconsistent results.
-If the starting index is negative, substr will either use 0 as the starting index (IE<9), or extract from the end of the string (IE>=9 and other browsers).
-* substring swaps it's parameters if the starting index is greater than the stopping index (start &gt; stop).
-* substring replaces a negative starting index with 0.
+* substr can give inconsistent results.  Modern browers allow using a negative start index to indicate the number of characters from the end of the string, but IE8 and lower treat a negative start index as 0.
+* substring's parameters are reversable, as it will always use it's smallest parameter value as the start index and largest value as the stop index.  substring will treat a negative start index as 0.
 * slice extracts from the end of the string if the starting index is negative.
 
 ### Negative start index
@@ -42,8 +40,8 @@ If the starting index is negative, substr will either use 0 as the starting inde
 // "Good news, everyone!"
 
 "Good news, everyone!".substr(-4);
-// "one!" in IE>=9 and other bowsers
-// "Good news, everyone!" in IE<9
+// "one!" modern browsers, including IE9
+// "Good news, everyone!" IE8 and lower
 
 "Good news, everyone!".slice(-4); 
 // "one!"
