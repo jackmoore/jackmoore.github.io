@@ -15,7 +15,8 @@ The most common solutions for rounding to a decimal place is to either use Numbe
 
 ```
 Number((1.005).toFixed(1)); // 1 instead of 1.01
-
+```
+```
 Math.round(1.005*100)/100; // 1 instead of 1.01
 ```
 
