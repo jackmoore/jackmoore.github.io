@@ -25,15 +25,13 @@ Bower Package: `jquery-colorbox`
 <iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=colorbox&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="97" height="20"></iframe>
 <iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=colorbox&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></p>
 
-## Features
-
 * Supports photos, grouping, slideshow, ajax, inline, and iframed content.
 * Lightweight: 10KB of JavaScript (less than 5KBs gzipped).
 * Appearance is controlled through CSS so it can be restyled.
 * Can be extended with callbacks & event-hooks without altering the source files.
 * Completely unobtrusive, options are set in the JS and require no changes to existing HTML.
 * Preloads upcoming images in a photo group.
-* Well vetted and currently in use in over <a href='http://trends.builtwith.com/javascript/jQuery-Colorbox'>600,000 websites</a>.
+* Currently used on more than <a href='http://trends.builtwith.com/javascript/jQuery-Colorbox'>1.9 million websites</a>.
 
 ## Instructions & Help
 
