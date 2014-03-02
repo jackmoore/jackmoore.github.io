@@ -39,5 +39,3 @@ round(1.005, 2); // 1.01
 ```
 
 A much more robust function can be found in MDN's [Math.round()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) documentation page.
-
-Currently, the top result on Google for "rounding decimals in JavaScript" is a [question on Stack Overflow](http://stackoverflow.com/questions/1726630/javascript-formatting-number-with-exactly-two-decimals).  At the time of this writing, the two approaches I outlined that suffer a rounding error are given as the top two answers with respective scores of 205 and 236, while the more-correct exponential notation answer by MarkG has only 30 votes.
