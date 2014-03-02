@@ -14,7 +14,7 @@ JavaScript's Math object provides a method for rounding to whole numbers.  If we
 The most common solutions for rounding to a decimal place is to either use Number.prototype.toFixed(), or multiply the float by some power of 10 in order to leverage Math.round().  Both of these work, except sometimes a decimal of 5 is rounded down instead of up.
 
 ```
-Number((1.005).toFixed(1)); // 1 instead of 1.01
+Number((1.005).toFixed(2)); // 1 instead of 1.01
 ```
 ```
 Math.round(1.005*100)/100; // 1 instead of 1.01
