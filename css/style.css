@@ -54,7 +54,7 @@ body {
 body,
 input,
 textarea {
-  font: 14px/1.4 sans-serif;
+  font: 14px/1.5 sans-serif;
   color: #222;
 }
 ::selection {
@@ -140,19 +140,18 @@ hr {
 }
 code {
   font: 13px/1 Consolas, monospace;
-  background: #fffce5;
-  padding: 0 3px;
-}
-pre {
-  padding: 6px 10px;
-  border-left: 4px solid #deecf3;
+  line-height: 1.4;
+  display: inline-block;
   background: #f3fbff;
-  overflow: auto;
+  position: relative;
+  border-radius: 4px;
+  padding: 0 5px;
 }
 pre code {
-  color: #036;
-  padding: 0;
-  background: none;
+  padding: 10px;
+  overflow: auto;
+  display: block;
+  line-height: inherit;
 }
 
 .hide-text {
@@ -389,6 +388,9 @@ nav a:link {
   float: left;
   height: 44px;
   overflow: hidden;
+}
+nav a:hover {
+  background: #f5f4f2;
 }
 nav span {
   background-color: #fff;
