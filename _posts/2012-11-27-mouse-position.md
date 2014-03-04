@@ -1,6 +1,6 @@
 ---
 title: Cross-browser mouse positioning
-meta: Understanding differences between the mouse position event properties, and how to normalize them between browsers.
+meta: Understanding and normalizing differences between the mouse position event properties between browsers.
 tags: [JavaScript]
 layout: post
 ---

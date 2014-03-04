@@ -56,9 +56,9 @@ The overlay has a fixed position that is relative to the visitor's viewport.  Th
 
 The important thing here is that #modal will be absolutely positioned, the rest of the rules just provide a nice default appearance.
 
-The RGBa background will give a black fill (0,0,0) at 20% opacity (0.2), which will overwrite the previous background property. IE8 and IE7 do not support RGBa, so they will continue to use the previous background property which uses a semi-transparent PNG background image.
+The RGBa background will give a black fill (0,0,0) at 20% opacity (0.2), which will overwrite the previous background property. IE8 does not support RGBa, so it will continue to use the previous background property which uses a semi-transparent PNG background image.
 
-I gave `#modal` a larger border-radius than `#content`.  This made a border that is natural looking and consistent in thickness.  IE8 and IE7 do not support border-radius and will instead display the normal square corners.
+I gave `#modal` a larger border-radius than `#content`.  This made a border that is natural looking and consistent in thickness.  IE8 does not support border-radius and will instead display the normal square corners.
 
 ````css
 #close {

@@ -1,7 +1,7 @@
 ---
 title: CSS Ribbon Menu
 layout: post
-meta: This uses CSS3 transitions and CSS2 pseudo-elements to create an animated navigation ribbon with minimal markup.
+meta: Use CSS3 transitions and CSS2 pseudo-elements to create an animated navigation ribbon with minimal markup.
 tags: [CSS, HTML5]
 ---
 
@@ -9,7 +9,7 @@ tags: [CSS, HTML5]
 
 ## Browser Support
 
-IE8 and IE9 do not support CSS3 transitions, so the hover state will not be animated for those browsers.  Otherwise it looks and functions the same, which I think is a very acceptable fallback.  IE7 lacks support the `:before` and `:after` pseudo-elements, so the ribbon will not have the forked ends or display folds while hovering.  The pseudo-elements could be replaced with actual markup IE7 support is needed.
+IE8 and IE9 do not support CSS3 transitions, so the hover state will not be animated for those browsers.  Otherwise it looks and functions the same, which I think is a very acceptable fallback.
 
 ## The HTML
 
