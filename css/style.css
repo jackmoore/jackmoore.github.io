@@ -154,22 +154,6 @@ pre code {
   line-height: inherit;
 }
 
-.hide-text {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
-.alert {
-  padding: 10px;
-  color: #b94a48;
-  background-color: #f2dede;
-  border: 1px solid #eed3d7;
-}
-.weak {
-  opacity: 0.5;
-}
 .description {
   font-size: 18px;
   margin-bottom: 10px;
@@ -418,12 +402,6 @@ nav span:after {
   right: 0;
   border-left: 8px solid #9b8651;
   border-bottom: 8px solid #fff;
-}
-nav span.rss {
-  background-image: url("/img/icons.png");
-  background-position: 10px -89px;
-  background-repeat: no-repeat;
-  padding-left: 25px;
 }
 nav a:hover span {
   background-color: #ffd204;
