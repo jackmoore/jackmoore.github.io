@@ -55,11 +55,12 @@
 					// If no match is found, use the first link as the initial active tab.
 					$active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
 					$active.addClass('active');
-					$content = $($active.attr('href'));
+
+					$content = $($active[0].hash);
 
 					// Hide the remaining content
 					$links.not($active).each(function () {
-						$($(this).attr('href')).hide();
+						$(this.hash).hide();
 					});
 
 					// Bind the click event handler
@@ -70,7 +71,7 @@
 
 						// Update the variables with the new link and content
 						$active = $(this);
-						$content = $($(this).attr('href'));
+						$content = $(this.hash);
 
 						// Make the tab active.
 						$active.addClass('active');
