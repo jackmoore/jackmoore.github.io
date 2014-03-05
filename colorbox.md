@@ -422,7 +422,7 @@ $("#inline").colorbox({inline:true, href:$form});
 <table>
   <tr>
     <td>$.colorbox()</td>
-    <td>This method allows you to call Colorbox without having to assign it to an element.  <code>'$.colorbox({href:"login.php"});</code></td>
+    <td>This method allows you to call Colorbox without having to assign it to an element.  <code>$.colorbox({href:"login.php"});</code></td>
   </tr>
   <tr>
     <td>$.colorbox.next()<br/> $.colorbox.prev()</td>
@@ -453,10 +453,12 @@ $("#inline").colorbox({inline:true, href:$form});
 
 These event hooks fire at the same time as their corresponding callbacks (ie. cbox_complete & onComplete), but can be used to make a universal change to Colorbox, while callbacks are only applied to selected elements.
 
-  // Example of using an event listener and public method to build a primitive slideshow:
-  $(document).bind('cbox_complete', function(){
-    setTimeout($.colorbox.next, 1500);
-  });
+```javascript
+// Example of using an event listener and public method to build a primitive slideshow:
+$(document).bind('cbox_complete', function(){
+  setTimeout($.colorbox.next, 1500);
+});
+```
 
 <table>
   <tr>

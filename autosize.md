@@ -149,11 +149,11 @@ textarea { font-family: inherit; }
 
 You may want to use a CSS transition on the height of a textarea, but not want to show the transition when Autosize is first applied.  For example, if you had a textarea that was already pre-filled with text and you wanted to show a non-transitioned Autosize on page load.  The easiest solution would to add the class associated with the transition *after* Autosize has been assigned:
 
-```
+```javascript
 var $ta = $('textarea');
 
 $ta.autosize();
-document.body.offsetWidth; // trigger a reflow before the class is changed
+document.body.offsetWidth; // force a reflow before the class gets applied
 $ta.addClass('textarea-transition');
 ```
 
