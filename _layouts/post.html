@@ -1,14 +1,17 @@
 {% include header %}
+
 <h1>{{ page.title }}</h1>
 
-{% if page.date %}
-<hr>
-<p class='date'><span class='icon-calendar icon--inline'></span>{{ page.date | date: "%B %e, %Y" }}</p>
-{% endif %}
 {% if page.meta %}
 <p class='description'>{{ page.meta }}</p>
 {% endif %}
+
 <hr>
+
+{% if page.date %}
+<p class='date'><span class='icon-calendar icon--inline'></span>{{ page.date | date: "%B %e, %Y" }}</p>
+{% endif %}
+
 {{ content }}
 <hr>
 <h2>Hey,</h2>
