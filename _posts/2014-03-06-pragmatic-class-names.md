@@ -7,11 +7,13 @@ tags: [CSS]
 
 ## Reflecting on CSS Zen Garden
 
-[CSS Zen Garden](http://www.csszengarden.com/) bookmarked the end of presentational HTML era. It was a website launched early 2003 that challenged designers to create a new visual appearance for a single unchanging HTML document using only CSS.  The site showcased user submitted layouts, demonstrating just how powerful CSS-driven presentation could be.
+[CSS Zen Garden](http://www.csszengarden.com/) bookmarked the end of presentational HTML era. It was a website launched early 2003 that challenged designers to use only CSS to create a new visual appearance for a single unchanging HTML document.  The site showcased user submitted layouts, demonstrating just how powerful CSS-driven presentation could be.
 
 The inability to edit the HTML to provide additional styling hooks led to stylesheets that were heavily dependent on the markup structure. This worked out fine for Zen Garden, but generates very brittle CSS when dealing with evolving projects.  Many designers came away thinking that this was a best practice for authoring CSS.
 
-Using CSS instead of presentational HTML introduced a separation of concerns between the two.  This separation was often presented as layers of concerns, with the content (HTML) being the bottom layer to which presentation (CSS) and behavior (JS) get applied.  This layering of concerns reinforces the idea that good CSS conforms to markup, rather than the markup co-evolving to provide additional styling hooks. Designers were instructed to avoid <em>[classitis](http://books.google.com/books?id=wUGTSdey6TwC&pg=PA184&lpg=PA184&dq=jeffrey+zeldman+classitis&source=bl&ots=bclYNIL3UW&sig=PBk96nV2mgiR4Ky4JxYdqvxCUzQ&hl=en&sa=X&ei=W-8XU4baB8HpoASazYCoDw&ved=0CDkQ6AEwAg#v=onepage&q=jeffrey%20zeldman%20classitis&f=false)</em>, which would promote the use of ancestor selectors.
+Using CSS instead of presentational HTML introduced a separation of concerns between markup and presentation.  This separation was often presented as layers of concerns, with the content (HTML) being the bottom layer to which presentation (CSS) and behavior (JS) layers get applied.  This layering of concerns reinforces the idea that good CSS conforms to markup, rather than the markup co-evolving to provide additional styling hooks. 
+
+Designers were instructed to avoid <em>[classitis](http://books.google.com/books?id=wUGTSdey6TwC&pg=PA184&lpg=PA184&dq=jeffrey+zeldman+classitis&source=bl&ots=bclYNIL3UW&sig=PBk96nV2mgiR4Ky4JxYdqvxCUzQ&hl=en&sa=X&ei=W-8XU4baB8HpoASazYCoDw&ved=0CDkQ6AEwAg#v=onepage&q=jeffrey%20zeldman%20classitis&f=false)</em>, and styling to the markup by using ancestor selectors was one way to achieve that.
 
 
 ## Semantic classes
@@ -22,7 +24,7 @@ Google supports [a few formats microformats](http://microformats.org/wiki/google
 
 ## Being pragmatic
 
-The idea that class names need not ever change is not very representative of how markup and CSS co-evolve in real world projects. Semantic naming is a great convention to follow, but saying that all classes should be semantic creates an unnecessary hurdle.  Some utility classes will inherently be presentational, and not naming these classes after their actual purpose places purity over pragmatism.  I feel like this is a lingering over-reaction to the era of presentational HTML.
+The idea that class names need not ever change is not very representative of how markup and CSS co-evolve in real world projects. Semantic naming is a great convention to follow, but saying that all classes should be semantic creates an unnecessary hurdle.  Some utility classes will inherently be presentational, and not naming these classes after their actual purpose places purity over pragmatism.  I feel like this is a lingering over-reaction to the days of presentational HTML.
 
 <blockquote>
 	<p>The semantics debate has really gone too far. It is useful as a general principal, but often I see standards aware developers trying to stuff in semantics that never existed in the design. If the design didn't make a distinction between two things visually, why add additional complexity? Classes work much better when we use them to represent visual semantics, rather than keeping them tied to content.</p>
