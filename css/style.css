@@ -47,14 +47,14 @@ html {
   background: #f5f4f2 url("/img/stripe.png") 0 22px repeat-x;
 }
 body {
-  max-width: 1250px;
+  max-width: 1100px;
   margin: auto;
   position: relative;
 }
 body,
 input,
 textarea {
-  font: 14px/1.5 sans-serif;
+  font: 15px/1.5 sans-serif;
   color: #333;
 }
 ::selection {
@@ -82,8 +82,8 @@ select,
 p,
 nav,
 table,
-footer,
-pre {
+pre,
+blockquote {
   margin-bottom: 14px;
 }
 a {
@@ -184,6 +184,13 @@ pre code {
   margin-right: -25px;
   border-radius: none;
 }
+
+blockquote {
+  border-left: 3px solid #ccc;
+  background: #F8F8F8;
+  padding: 15px;
+}
+
 a.demo {
   display: inline-block;
   width: 24px;
@@ -511,6 +518,9 @@ nav a:hover span {
 .home article, 
 .home aside {
   height: 495px;
+}
+.home body {
+  max-width: 1250px;
 }
 .home .recent-posts {
   display: none;
