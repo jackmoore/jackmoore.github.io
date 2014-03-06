@@ -53,7 +53,7 @@ To convert this to the embed version, we would replace `watch?v=` with `embed/`:
 
 If you wanted to use the normal url as the href value of your anchor elements, but use the embed version in Colorbox's iframe, you could do something like this:
 
-```
+```html
 <a class='youtube' href='http://www.youtube.com/watch?v=VOJyrQa_WR4'>Business Cats</a>
 <script>
 	$('.youtube').colorbox({iframe: true, width: 640, height: 390, href:function(){

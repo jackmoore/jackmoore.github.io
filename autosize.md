@@ -118,7 +118,7 @@ Autosize may not be big enough to fit all text in Chrome if it is zoomed in.  Th
 
 * If all textarea elements on your site share the same line-height value, then you can use a numeric line-height value if you include the `!important` modifier.  This will cause Autosize not to account for possible line-height variation when calculating the textarea size, which is impacted by the getComputedStyle bug.  For example:
 
-```
+```css
 textarea {line-height: 1.4 !important;}
 ```
 

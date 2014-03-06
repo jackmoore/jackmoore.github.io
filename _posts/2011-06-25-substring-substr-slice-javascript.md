@@ -10,7 +10,7 @@ In JavaScript, substrings are primarily extracted through one of following Strin
 [substring](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/substring), 
 [substr](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/substr).
 
-```
+```javascript
 // slice 
 // syntax: string.slice(start [, stop])
 "Good news, everyone!".slice(5,9); 
@@ -35,7 +35,7 @@ All three of these methods take in a start index and an optional stop index (or 
 
 ### Negative start index
 
-```
+```javascript
 "Good news, everyone!".substring(-4);
 // "Good news, everyone!"
 
