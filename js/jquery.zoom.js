@@ -1,7 +1,7 @@
 /*!
-	Zoom v1.7.10 - 2013-10-16
+	Zoom v1.7.12 - 2014-02-12
 	Enlarge images on click or mouseover.
-	(c) 2013 Jack Moore - http://www.jacklmoore.com/zoom
+	(c) 2014 Jack Moore - http://www.jacklmoore.com/zoom
 	license: http://www.opensource.org/licenses/mit-license.php
 */
 (function ($) {
@@ -13,11 +13,12 @@
 		on: 'mouseover', // other options: grab, click, toggle
 		touch: true, // enables a touch fallback
 		onZoomIn: false,
-		onZoomOut: false
+		onZoomOut: false,
+		magnify: 1
 	};
 
 	// Core Zoom Logic, independent of event listeners.
-	$.zoom = function(target, source, img) {
+	$.zoom = function(target, source, img, magnify) {
 		var targetHeight,
 			targetWidth,
 			sourceHeight,
@@ -42,10 +43,11 @@
 				top: 0,
 				left: 0,
 				opacity: 0,
-				width: img.width,
-				height: img.height,
+				width: img.width * magnify,
+				height: img.height * magnify,
 				border: 'none',
-				maxWidth: 'none'
+				maxWidth: 'none',
+				maxHeight: 'none'
 			})
 			.appendTo(target);
 
@@ -107,7 +109,7 @@
 			}
 
 			img.onload = function () {
-				var zoom = $.zoom(target, source, img);
+				var zoom = $.zoom(target, source, img, settings.magnify);
 
 				function start(e) {
 					zoom.init();
