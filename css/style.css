@@ -512,7 +512,7 @@ nav a:hover span {
 }
 
 .home article {
-  background: url("/img/howdy.jpg") left top no-repeat;
+  background: #191c35 url("/img/howdy.jpg") left top no-repeat;
   color: #fff;
 }
 .home article, 
