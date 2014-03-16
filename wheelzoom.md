@@ -12,7 +12,7 @@ permalink: /wheelzoom/
 <script src='/js/jquery.js'></script>
 <script src='/js/jquery.wheelzoom.js'></script>
 
-<img id='wheelzoom' src='/img/daisy.jpg' width='555' height='320' alt='Daisy on the Ohoopee'/>
+<img id='wheelzoom' src='/img/daisy.jpg' width='555' height='320' alt='Daisy on the Ohoopee'>
 
 <script>
 	$('#wheelzoom').wheelzoom();
@@ -20,7 +20,7 @@ permalink: /wheelzoom/
 
 <h2><a href='https://raw.github.com/jackmoore/wheelzoom/master/jquery.wheelzoom.js' style='text-decoration: underline;'>Download</a></h2>
 
-<p>Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a>.<br/>
+<p>Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a>.<br>
   Compatible with: Chrome, Firefox 17+, Safari, Opera, Internet Explorer 9+.</p>
 <p>
 <iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=wheelzoom&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="97" height="20"></iframe>

@@ -12,7 +12,7 @@ Feel free to jump straight to <a href='/demo/flickr.html'>the demo</a> to view-s
 	<!doctype html>
 	<html>
 		<head>
-			<link rel="stylesheet" href="colorbox.css" />
+			<link rel="stylesheet" href="colorbox.css">
 			<script src="jquery.min.js"></script>
 			<script src="jquery.colorbox-min.js"></script>
 			<script>
@@ -51,13 +51,13 @@ Let's create the anchor elements, assign Colorbox to them, and add them to our d
 		$anchor;
 
 		while ( photo = json.items.pop() ){
-			$anchor = $('<a/>').attr({
+			$anchor = $('<a>').attr({
 				// get the medium-large size photo
 				href: photo.media.m.replace('_m', '_z'),
 				title: photo.title
 			});
 
-			$thumb = $('<img/>').attr({
+			$thumb = $('<img>').attr({
 				// get the small-square size thumbnail photo
 				src: photo.media.m.replace('_m', '_s'),
 				alt: photo.title

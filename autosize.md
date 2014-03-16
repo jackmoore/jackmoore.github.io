@@ -15,8 +15,8 @@ Try typing something...</textarea>
 
 <h2><a href='https://github.com/jackmoore/autosize/archive/master.zip' style='text-decoration: underline;'>Download</a></h2>
 
-Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a>.  Source on <a href='http://github.com/jackmoore/autosize'>Github</a> (<a href='http://github.com/jackmoore/autosize#changelog'>changelog</a>).<br/>
-Compatible with: jQuery 1.7+ in Chrome, Firefox 4+, Safari 5+, Internet Explorer 6+, Opera 11+.<br/>
+Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a>.  Source on <a href='http://github.com/jackmoore/autosize'>Github</a> (<a href='http://github.com/jackmoore/autosize#changelog'>changelog</a>).<br>
+Compatible with: jQuery 1.7+ in Chrome, Firefox 4+, Safari 5+, Internet Explorer 6+, Opera 11+.<br>
 Bower Package: `jquery-autosize`
 
 <p>
@@ -54,25 +54,21 @@ $('#example').trigger('autosize.destroy');
 
 <table>
 	<tr>
-		<th>Property</th>
-		<th>Default</th>
-		<th>Description</th>
-	</tr>
+		<th>Property
+		<th>Default
+		<th>Description
 	<tr>
-		<td>className</td>
-		<td>'autosizejs'</td>
-		<td>The className property is used to specify a class for the mirrored element, in case it's necessary to explicitly set a style on the mirrored element (see the note about line-height below).</td>
-	</tr>
+		<td>className
+		<td>'autosizejs'
+		<td>The className property is used to specify a class for the mirrored element, in case it's necessary to explicitly set a style on the mirrored element (see the note about line-height below).
 	<tr>
-		<td>append</td>
-		<td>''</td>
-		<td>For appending whitespace to the end of the height calculation (an extra newline improves the appearance when animating).  Example <code>$('.textarea').autosize({append: "\n"});</code></td>
-	</tr>
+		<td>append
+		<td>''
+		<td>For appending whitespace to the end of the height calculation (an extra newline improves the appearance when animating).  Example <code>$('.textarea').autosize({append: "\n"});</code>
 	<tr>
-		<td>callback</td>
-		<td>false</td>
-		<td>A function to call when the textarea is resized.</td>
-	</tr>
+		<td>callback
+		<td>false
+		<td>A function to call when the textarea is resized.
 </table>
 
 ## Known Issues &amp; Solutions

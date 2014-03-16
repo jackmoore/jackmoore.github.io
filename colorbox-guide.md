@@ -14,7 +14,7 @@ Here is an example HTML5 document with the required files:
 	<!doctype html>
 	<html>
 		<head>
-			<link rel="stylesheet" href="colorbox.css" />
+			<link rel="stylesheet" href="colorbox.css">
 			<script src="jquery.min.js"></script>
 			<script src="jquery.colorbox-min.js"></script>
 		</head>
@@ -38,7 +38,7 @@ A browser parses your HTML document from top to bottom.  When a browser encounte
 	<!doctype html>
 	<html>
 		<head>
-			<link rel="stylesheet" href="colorbox.css" />
+			<link rel="stylesheet" href="colorbox.css">
 			<script src="jquery.min.js"></script>
 			<script src="jquery.colorbox-min.js"></script>
 		</head>
@@ -63,7 +63,7 @@ Here is the `.ready()` method and Colorbox settings object applied to our exampl
 	<!doctype html>
 	<html>
 		<head>
-			<link rel="stylesheet" href="colorbox.css" />
+			<link rel="stylesheet" href="colorbox.css">
 			<script src="jquery.min.js"></script>
 			<script src="jquery.colorbox-min.js"></script>
 			<script>

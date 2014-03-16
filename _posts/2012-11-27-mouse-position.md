@@ -8,27 +8,27 @@ layout: post
 ## Mouse Event Properties
 
 ### clientX, clientY
-*Standard: W3C Recommendation*<br/>
+*Standard: W3C Recommendation*<br>
 Mouse position relative to the browser's [visible viewport](http://www.quirksmode.org/mobile/viewports2.html).
 
 ### screenX, screenY
-*Standard: W3C Recommendation*<br/>
+*Standard: W3C Recommendation*<br>
 Mouse position relative to the user's physical screen.
 
 ### offsetX, offsetY
-*Standard: W3C Working Draft*<br/>
+*Standard: W3C Working Draft*<br>
 Mouse position relative to the target element. This is implemented very inconsistently between browsers.
 
 ### pageX, pageY
-*Standard: W3C Working Draft*<br/>
+*Standard: W3C Working Draft*<br>
 Mouse position relative to the html document (ie. [layout viewport](http://www.quirksmode.org/mobile/viewports2.html)).
 
 ### x, y
-*Standard: W3C Working Draft*<br/>
+*Standard: W3C Working Draft*<br>
 Equivalent to clientX, clientY, but is unsupported by some browsers.  Use clientX, clientY instead.
 
 ### layerX, layerY
-*No Standard*<br/>
+*No Standard*<br>
 Mouse position relative to the closest positioned ancestor element.  If none of the ancestor elements have positioning, the mouse position is relative to the document (like pageX, pageY). LayerX, layerY have an [uncertain future](https://bugs.webkit.org/show_bug.cgi?id=21868#c21).
 
 QuirksMode has a great [compatibility table](http://www.quirksmode.org/dom/w3c_cssom.html#mousepos) that details inconsistencies in the non-standard properties. Know that only clientX, clientY, screenX, and screenY are part of the [W3C Spec](http://www.w3.org/TR/DOM-Level-3-Events/).

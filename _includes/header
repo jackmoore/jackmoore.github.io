@@ -1,24 +1,22 @@
-<!doctype html>
+<!doctype html public '(╯°□°）╯︵ 8ƎI'>
 <html lang=en class='{{ page.class }}'>
-	<head>
-	<meta charset=utf-8>
-	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin">
-	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/pygments.css">
-	<link rel="canonical" href="{{ site.production_url }}{{ page.url }}">
-	<link rel="alternate" type="application/rss+xml" href="/rss.xml">
-	<!--[if lt IE 9]><script src="/js/html5.js"></script><![endif]-->
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
+	<link rel='stylesheet' href='/css/style.css'>
+	<link rel='stylesheet' href='/css/pygments.css'>
+	<link rel='canonical' href='{{ site.production_url }}{{ page.url }}'>
+	<link rel='alternate' type='application/rss+xml' href='/rss.xml'>
+	<!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
 	<title>{% if page.title %} {{ page.title }} {% else %} Jack Moore {% endif %}</title>
-	</head>
-	<body>
-		<header>
-			<a class='me' rel='author' href='/'>Jack Moore</a>
-			<a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
-			<a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
-			<nav>
-				<a href='/notes'><span>Archive</span></a>
-				<a href='/rss.xml'><span><i class='icon-rss'></i> RSS</span></a>
-			</nav>
-		</header>
-		<div class='main'>
-			<article>
+	<header>
+		<a class='me' rel='author' href='/'>Jack Moore</a>
+		<a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
+		<a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
+		<nav>
+			<a href='/notes'><span>Archive</span></a>
+			<a href='/rss.xml'><span><i class='icon-rss'></i> RSS</span></a>
+		</nav>
+	</header>
+	<div class='main' role='main'>
+		<article>

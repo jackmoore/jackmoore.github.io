@@ -5,7 +5,7 @@
 		<style>
 			a {margin-left:10px;}
 		</style>
-		<link rel="stylesheet" href="/colorbox/example1/colorbox.css" />
+		<link rel="stylesheet" href="/colorbox/example1/colorbox.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="/colorbox/jquery.colorbox.js"></script>
 		<script>
@@ -25,13 +25,13 @@
 				$anchor;
 
 				while ( photo = json.items.pop() ){
-					$anchor = $('<a/>').attr({
+					$anchor = $('<a>').attr({
 						// get the medium-large size photo
 						href: photo.media.m.replace('_m', '_z'),
 						title: photo.title
 					});
 
-					$thumb = $('<img/>').attr({
+					$thumb = $('<img>').attr({
 						// get the small-square size thumbnail photo
 						src: photo.media.m.replace('_m', '_s'),
 						alt: photo.title

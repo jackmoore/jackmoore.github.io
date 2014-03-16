@@ -17,13 +17,13 @@ permalink: /colorbox/
 
 <h2><a href='https://github.com/jackmoore/colorbox/archive/master.zip' style='text-decoration: underline;'>Download</a></h2>
 
-Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a>.  Source on <a href='http://github.com/jackmoore/colorbox'>Github</a> (<a href='http://github.com/jackmoore/colorbox#changelog'>changelog</a>).<br/>
-Compatible with: jQuery 1.3.2+ in Firefox, Safari, Chrome, Opera, Internet Explorer 7+<br/>
+Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a>.  Source on <a href='http://github.com/jackmoore/colorbox'>Github</a> (<a href='http://github.com/jackmoore/colorbox#changelog'>changelog</a>).<br>
+Compatible with: jQuery 1.3.2+ in Firefox, Safari, Chrome, Opera, Internet Explorer 7+<br>
 Bower Package: `jquery-colorbox`
 
 <p>
 <iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=colorbox&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="97" height="20"></iframe>
-<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=colorbox&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></p>
+<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=colorbox&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
 
 * Supports photos, grouping, slideshow, ajax, inline, and iframed content.
 * Lightweight: 10KB of JavaScript (less than 5KBs gzipped).
@@ -71,166 +71,166 @@ $("a.gallery").colorbox({rel: 'gal', title: function(){
 
 <table>
   <tr>
-    <th>Property</th>
-    <th>Default</th>
-    <th>Description</th>
-  </tr>
+    <th>Property
+    <th>Default
+    <th>Description
+
   <tr id='setting-transition'>
-    <td>transition</td>
-    <td>"elastic"</td>
-    <td>The transition type. Can be set to "elastic", "fade", or "none".</td>
-  </tr>
+    <td>transition
+    <td>"elastic"
+    <td>The transition type. Can be set to "elastic", "fade", or "none".
+
   <tr id='setting-speed'>
-    <td>speed</td>
-    <td>350</td>
-    <td>Sets the speed of the fade and elastic transitions, in milliseconds.</td>
-  </tr>
+    <td>speed
+    <td>350
+    <td>Sets the speed of the fade and elastic transitions, in milliseconds.
+
   <tr id='setting-href'>
-    <td>href</td>
-    <td>false</td>
-    <td>This can be used as an alternative anchor URL or to associate a URL for non-anchor elements such as images or form buttons. <code>$("h1").colorbox({href:"welcome.html"});</code></td>
-  </tr>
+    <td>href
+    <td>false
+    <td>This can be used as an alternative anchor URL or to associate a URL for non-anchor elements such as images or form buttons. <code>$("h1").colorbox({href:"welcome.html"});</code>
+
   <tr id='setting-title'>
-    <td>title</td>
-    <td>false</td>
-    <td>This can be used as an anchor title alternative for Colorbox.</td>
-  </tr>
+    <td>title
+    <td>false
+    <td>This can be used as an anchor title alternative for Colorbox.
+
   <tr id='setting-rel'>
-    <td>rel</td>
-    <td>false</td>
-    <td>This can be used as an anchor rel alternative for Colorbox.  This allows the user to group any combination of elements together for a gallery, or to override an existing rel so elements are not grouped together.  <code>$("a.gallery").colorbox({rel:"group1"});</code> Note: The value can also be set to 'nofollow' to disable grouping.</td>
-  </tr> 
+    <td>rel
+    <td>false
+    <td>This can be used as an anchor rel alternative for Colorbox.  This allows the user to group any combination of elements together for a gallery, or to override an existing rel so elements are not grouped together.  <code>$("a.gallery").colorbox({rel:"group1"});</code> Note: The value can also be set to 'nofollow' to disable grouping.
+ 
   <tr id='setting-scalephotos'>
-    <td>scalePhotos</td>
-    <td>true</td>
-    <td>If true, and if maxWidth, maxHeight, innerWidth, innerHeight, width, or height have been defined, Colorbox will scale photos to fit within the those values.</td>
-  </tr>
+    <td>scalePhotos
+    <td>true
+    <td>If true, and if maxWidth, maxHeight, innerWidth, innerHeight, width, or height have been defined, Colorbox will scale photos to fit within the those values.
+
   <tr id='setting-scrolling'>
-    <td>scrolling</td>
-    <td>true</td>
-    <td>If false, Colorbox will hide scrollbars for overflowing content.  This could be used on conjunction with the resize method (see below) for a smoother transition if you are appending content to an already open instance of Colorbox.</td>
-  </tr>
+    <td>scrolling
+    <td>true
+    <td>If false, Colorbox will hide scrollbars for overflowing content.  This could be used on conjunction with the resize method (see below) for a smoother transition if you are appending content to an already open instance of Colorbox.
+
   <tr id='setting-opacity'>
-    <td>opacity</td>
-    <td>0.85</td>
-    <td>The overlay opacity level. Range: 0 to 1.</td>
-  </tr>
+    <td>opacity
+    <td>0.85
+    <td>The overlay opacity level. Range: 0 to 1.
+
   <tr id='setting-open'>
-    <td>open</td>
-    <td>false</td>
-    <td>If true, Colorbox will immediately open.</td>
-  </tr>
+    <td>open
+    <td>false
+    <td>If true, Colorbox will immediately open.
+
   <tr id='setting-returnfocus'>
-    <td>returnFocus</td>
-    <td>true</td>
-    <td>If true, focus will be returned when Colorbox exits to the element it was launched from.</td>
-  </tr>
+    <td>returnFocus
+    <td>true
+    <td>If true, focus will be returned when Colorbox exits to the element it was launched from.
+
   <tr id='setting-trapfocus'>
-    <td>trapFocus</td>
-    <td>true</td>
-    <td>If true, keyboard focus will be limited to Colorbox's navigation and content.</td>
-  </tr>
+    <td>trapFocus
+    <td>true
+    <td>If true, keyboard focus will be limited to Colorbox's navigation and content.
+
   <tr id='setting-fastiframe'>
-    <td>fastIframe</td>
-    <td>true</td>
-    <td>If false, the loading graphic removal and onComplete event will be delayed until iframe's content has completely loaded.</td>
-  </tr>
+    <td>fastIframe
+    <td>true
+    <td>If false, the loading graphic removal and onComplete event will be delayed until iframe's content has completely loaded.
+
   <tr id='setting-preloading'>
-    <td>preloading</td>
-    <td>true</td>
-    <td>Allows for preloading of 'Next' and 'Previous' content in a group, after the current content has finished loading.  Set to false to disable.</td>
-  </tr>
+    <td>preloading
+    <td>true
+    <td>Allows for preloading of 'Next' and 'Previous' content in a group, after the current content has finished loading.  Set to false to disable.
+
   <tr id='setting-overlayclose'>
-    <td>overlayClose</td>
-    <td>true</td>
-    <td>If false, disables closing Colorbox by clicking on the background overlay.</td>
-  </tr>
+    <td>overlayClose
+    <td>true
+    <td>If false, disables closing Colorbox by clicking on the background overlay.
+
   <tr id='setting-esckey'>
-    <td>escKey</td>
-    <td>true</td>
-    <td>If false, will disable closing colorbox on 'esc' key press.</td>
-  </tr>
+    <td>escKey
+    <td>true
+    <td>If false, will disable closing colorbox on 'esc' key press.
+
   <tr id='setting-arrowkey'>
-    <td>arrowKey</td>
-    <td>true</td>
-    <td>If false, will disable the left and right arrow keys from navigating between the items in a group.</td>
-  </tr>
+    <td>arrowKey
+    <td>true
+    <td>If false, will disable the left and right arrow keys from navigating between the items in a group.
+
   <tr id='setting-loop'>
-    <td>loop</td>
-    <td>true</td>
-    <td>If false, will disable the ability to loop back to the beginning of the group when on the last element.</td>
-  </tr>
+    <td>loop
+    <td>true
+    <td>If false, will disable the ability to loop back to the beginning of the group when on the last element.
+
   <tr id='setting-data'>
-    <td>data</td>
-    <td>false</td>
-    <td>For submitting GET or POST values through an ajax request.  The data property will act exactly like jQuery's <a href='http://api.jquery.com/load/'>.load()</a> data argument, as Colorbox uses .load() for ajax handling.</td>
-  </tr>
+    <td>data
+    <td>false
+    <td>For submitting GET or POST values through an ajax request.  The data property will act exactly like jQuery's <a href='http://api.jquery.com/load/'>.load()</a> data argument, as Colorbox uses .load() for ajax handling.
+
   <tr id='setting-className'>
-    <td>className</td>
-    <td>false</td>
-    <td>Adds a given class to colorbox and the overlay.</td>
-  </tr>
+    <td>className
+    <td>false
+    <td>Adds a given class to colorbox and the overlay.
+
   <tr id='setting-fadeOut'>
-    <td>fadeOut</td>
-    <td>300</td>
-    <td>Sets the fadeOut speed, in milliseconds, when closing Colorbox.</td>
-  </tr>
+    <td>fadeOut
+    <td>300
+    <td>Sets the fadeOut speed, in milliseconds, when closing Colorbox.
+
   <tr id='setting-closeButton'>
-    <td>closeButton</td>
-    <td>true</td>
-    <td>Set to false to remove the close button.</td>
-  </tr>
+    <td>closeButton
+    <td>true
+    <td>Set to false to remove the close button.
+
 
   <tr>
-    <th>Internationalization</th>
-    <th></th>
-    <th></th>
-  </tr>
+    <th>Internationalization
+    <th>
+    <th>
+
   <tr id='setting-current'>
-    <td>current</td>
-    <td>"image {current} of {total}"</td>
-    <td>Text or HTML for the group counter while viewing a group.  {current} and {total} are detected and replaced with actual numbers while Colorbox runs.</td>
-  </tr>
+    <td>current
+    <td>"image {current} of {total}"
+    <td>Text or HTML for the group counter while viewing a group.  {current} and {total} are detected and replaced with actual numbers while Colorbox runs.
+
   <tr id='setting-previous'>
-    <td>previous</td>
-    <td>"previous"</td>
-    <td>Text or HTML for the previous button while viewing a group.</td>
-  </tr>
+    <td>previous
+    <td>"previous"
+    <td>Text or HTML for the previous button while viewing a group.
+
   <tr id='setting-next'>
-    <td>next</td>
-    <td>"next"</td>
-    <td>Text or HTML for the next button while viewing a group.</td>
-  </tr>
+    <td>next
+    <td>"next"
+    <td>Text or HTML for the next button while viewing a group.
+
   <tr id='setting-close'>
-    <td>close</td>
-    <td>"close"</td>
-    <td>Text or HTML for the close button.  The 'esc' key will also close Colorbox.</td>
-  </tr>
+    <td>close
+    <td>"close"
+    <td>Text or HTML for the close button.  The 'esc' key will also close Colorbox.
+
   <tr id='setting-xhrError'>
-    <td>xhrError</td>
-    <td>"This content failed to load."</td>
-    <td>Error message given when ajax content for a given URL cannot be loaded.</td>
-  </tr>
+    <td>xhrError
+    <td>"This content failed to load."
+    <td>Error message given when ajax content for a given URL cannot be loaded.
+
   <tr id='setting-imgError'>
-    <td>imgError</td>
-    <td>"This image failed to load."</td>
-    <td>Error message given when a link to an image fails to load.</td>
-  </tr>
+    <td>imgError
+    <td>"This image failed to load."
+    <td>Error message given when a link to an image fails to load.
+
 
   <tr>
-    <th>Content Type</th>
-    <th></th>
-    <th></th>
-  </tr>
+    <th>Content Type
+    <th>
+    <th>
+
   <tr id='setting-iframe'>
-    <td>iframe</td>
-    <td>false</td>
-    <td>If true, specifies that content should be displayed in an iFrame.</td>
-  </tr>
+    <td>iframe
+    <td>false
+    <td>If true, specifies that content should be displayed in an iFrame.
+
   <tr id='setting-inline'>
-    <td>inline</td>
-    <td>false</td>
-    <td><p>If true, content from the current document can be displayed by passing the href property a jQuery selector, or jQuery object.</p>
+    <td>inline
+    <td>false
+    <td><p>If true, content from the current document can be displayed by passing the href property a jQuery selector, or jQuery object.
 <pre><code>// Using a selector:
 $("#inline").colorbox({inline:true, href:"#myForm"});
 
@@ -238,215 +238,214 @@ $("#inline").colorbox({inline:true, href:"#myForm"});
 var $form = $("#myForm");
 $("#inline").colorbox({inline:true, href:$form});
 </code></pre>
-    </td>
-  </tr>
+    
+
   <tr id='setting-html'>
-    <td>html</td>
-    <td>false</td>
-    <td>For displaying a string of HTML or text: <code>$.colorbox({html:"&lt;p&gt;Hello&lt;/p&gt;"});</code></td>
-  </tr>
+    <td>html
+    <td>false
+    <td>For displaying a string of HTML or text: <code>$.colorbox({html:"&lt;p&gt;Hello&lt;/p&gt;"});</code>
+
   <tr id='setting-photo'>
-    <td>photo</td>
-    <td>false</td>
-    <td>If true, this setting forces Colorbox to display a link as a photo.  Use this when automatic photo detection fails (such as using a url like 'photo.php' instead of 'photo.jpg')</td>
-  </tr>
+    <td>photo
+    <td>false
+    <td>If true, this setting forces Colorbox to display a link as a photo.  Use this when automatic photo detection fails (such as using a url like 'photo.php' instead of 'photo.jpg')
+
   <tr id='setting-ajax'>
-    <td>ajax</td>
-    <td></td>
-    <td>This property isn't actually used as Colorbox assumes all hrefs should be treated as either ajax or photos, unless one of the other content types were specified.</td>
-  </tr>
+    <td>ajax
+    <td>
+    <td>This property isn't actually used as Colorbox assumes all hrefs should be treated as either ajax or photos, unless one of the other content types were specified.
+
   <tr id='setting-dimensions'>
-    <th>Dimensions</th>
-    <th></th>
-    <th></th>
-  </tr>
+    <th>Dimensions
+    <th>
+    <th>
+
   <tr id='setting-width'>
-    <td>width</td>
-    <td>false</td>
-    <td>Set a fixed total width. This includes borders and buttons. Example: "100%", "500px", or 500</td>
-  </tr>
+    <td>width
+    <td>false
+    <td>Set a fixed total width. This includes borders and buttons. Example: "100%", "500px", or 500
+
   <tr id='setting-height'>
-    <td>height</td>
-    <td>false</td>
-    <td>Set a fixed total height. This includes borders and buttons. Example: "100%", "500px", or 500</td>
-  </tr>
+    <td>height
+    <td>false
+    <td>Set a fixed total height. This includes borders and buttons. Example: "100%", "500px", or 500
+
   <tr id='setting-innerwidth'>
-    <td>innerWidth</td>
-    <td>false</td>
-    <td>This is an alternative to 'width' used to set a fixed inner width. This excludes borders and buttons. Example: "50%", "500px", or 500</td>
-  </tr>
+    <td>innerWidth
+    <td>false
+    <td>This is an alternative to 'width' used to set a fixed inner width. This excludes borders and buttons. Example: "50%", "500px", or 500
+
   <tr id='setting-innerheight'>
-    <td>innerHeight</td>
-    <td>false</td>
-    <td>This is an alternative to 'height' used to set a fixed inner height. This excludes borders and buttons. Example: "50%", "500px", or 500</td>
-  </tr>
+    <td>innerHeight
+    <td>false
+    <td>This is an alternative to 'height' used to set a fixed inner height. This excludes borders and buttons. Example: "50%", "500px", or 500
+
   <tr id='setting-initialwidth'>
-    <td>initialWidth</td>
-    <td>300</td>
-    <td>Set the initial width, prior to any content being loaded.</td>
-  </tr>
+    <td>initialWidth
+    <td>300
+    <td>Set the initial width, prior to any content being loaded.
+
   <tr id='setting-initialheight'>
-    <td>initialHeight</td>
-    <td>100</td>
-    <td>Set the initial height, prior to any content being loaded.</td>
-  </tr>
+    <td>initialHeight
+    <td>100
+    <td>Set the initial height, prior to any content being loaded.
+
   <tr id='setting-maxwidth'>
-    <td>maxWidth</td>
-    <td>false</td>
-    <td>Set a maximum width for loaded content. Example: "100%", 500, "500px"</td>
-  </tr>
+    <td>maxWidth
+    <td>false
+    <td>Set a maximum width for loaded content. Example: "100%", 500, "500px"
+
   <tr id='setting-maxheight'>
-    <td>maxHeight</td>
-    <td>false</td>
-    <td>Set a maximum height for loaded content. Example: "100%", 500, "500px"</td>
-  </tr>
+    <td>maxHeight
+    <td>false
+    <td>Set a maximum height for loaded content. Example: "100%", 500, "500px"
+
   <tr>
-    <th>Slideshow</th>
-    <th></th>
-    <th></th>
-  </tr>
+    <th>Slideshow
+    <th>
+    <th>
+
   <tr id='setting-slideshow'>
-    <td>slideshow</td>
-    <td>false</td>
-    <td>If true, adds an automatic slideshow to a content group / gallery.</td>
-  </tr>
+    <td>slideshow
+    <td>false
+    <td>If true, adds an automatic slideshow to a content group / gallery.
+
   <tr id='setting-slideshowspeed'>
-    <td>slideshowSpeed</td>
-    <td>2500</td>
-    <td>Sets the speed of the slideshow, in milliseconds.</td>
-  </tr>
+    <td>slideshowSpeed
+    <td>2500
+    <td>Sets the speed of the slideshow, in milliseconds.
+
   <tr id='setting-slideshowauto'>
-    <td>slideshowAuto</td>
-    <td>true</td>
-    <td>If true, the slideshow will automatically start to play.</td>
-  </tr>
+    <td>slideshowAuto
+    <td>true
+    <td>If true, the slideshow will automatically start to play.
+
   <tr id='setting-slideshowstart'>
-    <td>slideshowStart</td>
-    <td>"start slideshow"</td>
-    <td>Text for the slideshow start button.</td>
-  </tr>
+    <td>slideshowStart
+    <td>"start slideshow"
+    <td>Text for the slideshow start button.
+
   <tr id='setting-slideshowstop'>
-    <td>slideshowStop</td>
-    <td>"stop slideshow"</td>
-    <td>Text for the slideshow stop button</td>
-  </tr>
+    <td>slideshowStop
+    <td>"stop slideshow"
+    <td>Text for the slideshow stop button
+
   <tr>
-    <th>Positioning</th>
-    <th></th>
-    <th></th>
-  </tr>
+    <th>Positioning
+    <th>
+    <th>
+
   <tr id='setting-fixed'>
-    <td>fixed</td>
-    <td>false</td>
-    <td>If true, Colorbox will be displayed in a fixed position within the visitor's viewport.  This is unlike the default absolute positioning relative to the document.</td>
-  </tr>
+    <td>fixed
+    <td>false
+    <td>If true, Colorbox will be displayed in a fixed position within the visitor's viewport.  This is unlike the default absolute positioning relative to the document.
+
   <tr id='setting-top'>
-    <td>top</td>
-    <td>false</td>
-    <td>Accepts a pixel or percent value (50, "50px", "10%").  Controls Colorbox's vertical positioning instead of using the default position of being centered in the viewport.</td>
-  </tr>
+    <td>top
+    <td>false
+    <td>Accepts a pixel or percent value (50, "50px", "10%").  Controls Colorbox's vertical positioning instead of using the default position of being centered in the viewport.
+
   <tr id='setting-bottom'>
-    <td>bottom</td>
-    <td>false</td>
-    <td>Accepts a pixel or percent value (50, "50px", "10%").  Controls Colorbox's vertical positioning instead of using the default position of being centered in the viewport.</td>
-  </tr>
+    <td>bottom
+    <td>false
+    <td>Accepts a pixel or percent value (50, "50px", "10%").  Controls Colorbox's vertical positioning instead of using the default position of being centered in the viewport.
+
   <tr id='setting-left'>
-    <td>left</td>
-    <td>false</td>
-    <td>Accepts a pixel or percent value (50, "50px", "10%").  Controls Colorbox's horizontal positioning instead of using the default position of being centered in the viewport.</td>
-  </tr>
+    <td>left
+    <td>false
+    <td>Accepts a pixel or percent value (50, "50px", "10%").  Controls Colorbox's horizontal positioning instead of using the default position of being centered in the viewport.
+
   <tr id='setting-right'>
-    <td>right</td>
-    <td>false</td>
-    <td>Accepts a pixel or percent value (50, "50px", "10%").  Controls Colorbox's horizontal positioning instead of using the default position of being centered in the viewport.</td>
-  </tr>
+    <td>right
+    <td>false
+    <td>Accepts a pixel or percent value (50, "50px", "10%").  Controls Colorbox's horizontal positioning instead of using the default position of being centered in the viewport.
+
   <tr id='setting-reposition'>
-    <td>reposition</td>
-    <td>true</td>
-    <td>Repositions Colorbox if the window's resize event is fired.</td>
-  </tr>
+    <td>reposition
+    <td>true
+    <td>Repositions Colorbox if the window's resize event is fired.
+
   <tr id='setting-retina'>
-    <th>Retina Images</th>
-    <th></th>
-    <th></th>
-  </tr>
+    <th>Retina Images
+    <th>
+    <th>
+
   <tr id='setting-retinaImage'>
-    <td>retinaImage</td>
-    <td>false</td>
-    <td>If true, Colorbox will scale down the current photo to match the screen's pixel ratio</td>
-  </tr>
+    <td>retinaImage
+    <td>false
+    <td>If true, Colorbox will scale down the current photo to match the screen's pixel ratio
+
   <tr id='setting-retinaUrl'>
-    <td>retinaUrl</td>
-    <td>false</td>
-    <td>If true and the device has a high resolution display, Colorbox will replace the current photo's file extention with the retinaSuffix+extension</td>
-  </tr>
+    <td>retinaUrl
+    <td>false
+    <td>If true and the device has a high resolution display, Colorbox will replace the current photo's file extention with the retinaSuffix+extension
+
   <tr id='setting-retinaSuffix'>
-    <td>retinaSuffix</td>
-    <td>"@2x.$1"</td>
-    <td>If retinaUrl is true and the device has a high resolution display, the href value will have it's extention extended with this suffix.  For example, the default value would change `my-photo.jpg` to `my-photo@2x.jpg`</td>
-  </tr>
+    <td>retinaSuffix
+    <td>"@2x.$1"
+    <td>If retinaUrl is true and the device has a high resolution display, the href value will have it's extention extended with this suffix.  For example, the default value would change `my-photo.jpg` to `my-photo@2x.jpg`
+
   <tr>
-    <th>Callbacks</th>
-    <th></th>
-    <th></th>
-  </tr>
+    <th>Callbacks
+    <th>
+    <th>
+
   <tr id='setting-onopen'>
-    <td>onOpen</td>
-    <td>false</td>
-    <td>Callback that fires right before Colorbox begins to open.</td>
-  </tr>
+    <td>onOpen
+    <td>false
+    <td>Callback that fires right before Colorbox begins to open.
+
   <tr id='setting-onload'>
-    <td>onLoad</td>
-    <td>false</td>
-    <td>Callback that fires right before attempting to load the target content.</td>
-  </tr>
+    <td>onLoad
+    <td>false
+    <td>Callback that fires right before attempting to load the target content.
+
   <tr id='setting-oncomplete'>
-    <td>onComplete</td>
-    <td>false</td>
-    <td>Callback that fires right after loaded content is displayed.</td>
-  </tr>
+    <td>onComplete
+    <td>false
+    <td>Callback that fires right after loaded content is displayed.
+
   <tr id='setting-oncleanup'>
-    <td>onCleanup</td>
-    <td>false</td>
-    <td>Callback that fires at the start of the close process.</td>
-  </tr>
+    <td>onCleanup
+    <td>false
+    <td>Callback that fires at the start of the close process.
+
   <tr id='setting-onclosed'>
-    <td>onClosed</td>
-    <td>false</td>
-    <td>Callback that fires once Colorbox is closed.</td>
-  </tr>
+    <td>onClosed
+    <td>false
+    <td>Callback that fires once Colorbox is closed.
+
 </table>
 
 ## Public Methods
 
 <table>
   <tr>
-    <td>$.colorbox()</td>
-    <td>This method allows you to call Colorbox without having to assign it to an element.  <code>$.colorbox({href:"login.php"});</code></td>
-  </tr>
+    <td>$.colorbox()
+    <td>This method allows you to call Colorbox without having to assign it to an element.  <code>$.colorbox({href:"login.php"});</code>
+
   <tr>
-    <td>$.colorbox.next()<br/> $.colorbox.prev()</td>
-    <td>These methods moves to the next and previous items in a group and are the same as pressing the 'next' or 'previous' buttons.</td>
-  </tr>
+    <td>$.colorbox.next()<br> $.colorbox.prev()
+    <td>These methods moves to the next and previous items in a group and are the same as pressing the 'next' or 'previous' buttons.
+
   <tr>
-    <td>$.colorbox.close()</td>
-    <td>This method initiates the close sequence, which does not immediately complete.  The lightbox will be completely closed only when the <code>cbox_closed</code> event / <code>onClosed</code> callback is fired.</td>
-  </tr>
+    <td>$.colorbox.close()
+    <td>This method initiates the close sequence, which does not immediately complete.  The lightbox will be completely closed only when the <code>cbox_closed</code> event / <code>onClosed</code> callback is fired.
+
   <tr>
-    <td>$.colorbox.element()</td>
-    <td>This method is used to fetch the current HTML element that Colorbox is associated with.  Returns a jQuery object containing the element. <code>var $element = $.colorbox.element();</code></td>
-  </tr>
+    <td>$.colorbox.element()
+    <td>This method is used to fetch the current HTML element that Colorbox is associated with.  Returns a jQuery object containing the element. <code>var $element = $.colorbox.element();</code>
+
   <tr>
-    <td>$.colorbox.resize()</td>
+    <td>$.colorbox.resize()
     <td>This allows Colorbox to be resized based on it's own auto-calculations, or to a specific size.
     This must be called manually after Colorbox's content has loaded.
     The optional parameters object can accept <code>width</code> or <code>innerWidth</code> and <code>height</code> or <code>innerHeight</code>.
-    Without specifying a width or height, Colorbox will attempt to recalculate the height of it's current content.</td>
-  </tr>
+    Without specifying a width or height, Colorbox will attempt to recalculate the height of it's current content.
+
   <tr>
-    <td>$.colorbox.remove()</td>
-    <td>Removes all traces of Colorbox from the document.  Not the same as $.colorbox.close(), which tucks colorbox away for future use.</td>
-  </tr>
+    <td>$.colorbox.remove()
+    <td>Removes all traces of Colorbox from the document.  Not the same as $.colorbox.close(), which tucks colorbox away for future use.
 </table>
 
 ## Event Hooks
@@ -462,23 +461,22 @@ $(document).bind('cbox_complete', function(){
 
 <table>
   <tr>
-    <td>cbox_open</td>
-    <td>triggers when Colorbox is first opened, but after a few key variable assignments take place.</td>
-  </tr>
+    <td>cbox_open
+    <td>triggers when Colorbox is first opened, but after a few key variable assignments take place.
+
   <tr>
-    <td>cbox_load</td>
-    <td>triggers at the start of the phase where content type is determined and loaded.</td>
-  </tr>
+    <td>cbox_load
+    <td>triggers at the start of the phase where content type is determined and loaded.
+
   <tr>
-    <td>cbox_complete</td>
-    <td>triggers when the transition has completed and the newly loaded content has been revealed.</td>
-  </tr>
+    <td>cbox_complete
+    <td>triggers when the transition has completed and the newly loaded content has been revealed.
+
   <tr>
-    <td>cbox_cleanup</td>
-    <td>triggers as the close method begins.</td>
-  </tr>
+    <td>cbox_cleanup
+    <td>triggers as the close method begins.
+
   <tr>
-    <td>cbox_closed</td>
-    <td>triggers as the close method ends.</td>
-  </tr>
+    <td>cbox_closed
+    <td>triggers as the close method ends.
 </table>

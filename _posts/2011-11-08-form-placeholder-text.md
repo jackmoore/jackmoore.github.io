@@ -10,10 +10,10 @@ tags: [HTML5, JavaScript, jQuery]
 Placeholder text is a short example or hint text that is shown in a form field when the field is unfocused and has no input from the user.
 
 <form action='#' method='get' style='padding:15px 15px 0; margin-bottom:14px; background:#F4EFE9 url(/img/tiles/wood.png);'>
-  <input type='text' name='demo-name' placeholder='Name' style='width:40%; background:#fff;'/><br/>
-  <input type='text' name='demo-email' placeholder='Email Address' style='width:40%; background:#fff;'/><br/>
-  <textarea name='demo-comment' placeholder='Message' style='width:95%; background:#fff;'></textarea><br/>
-  <input type='submit' value='Submit' onclick='return false;'/>
+  <input type='text' name='demo-name' placeholder='Name' style='width:40%; background:#fff;'><br>
+  <input type='text' name='demo-email' placeholder='Email Address' style='width:40%; background:#fff;'><br>
+  <textarea name='demo-comment' placeholder='Message' style='width:95%; background:#fff;'></textarea><br>
+  <input type='submit' value='Submit' onclick='return false;'>
 </form>
 
 
@@ -22,7 +22,7 @@ This could be considered a poor example, as label elements should be used for ma
 While the adding & removing of placeholder text on field focus has long been accomplished through JavaScript, there is now a [placeholder attribute](http://www.w3.org/TR/html5/common-input-element-attributes.html#attr-input-placeholder) in the HTML5 working draft.  Most modern browsers support the placeholder attribute and will automatically add/replace the placeholder text.  They will also automatically exclude the placeholder from being sent when the form is submitted.  However, versions of Internet Explorer prior to IE10 do not support the attribute.
 
 ````html
-<input type='text' name='email' placeholder='Email Address'/>
+<input type='text' name='email' placeholder='Email Address'>
 ````
 
 ### Supporting Older Browsers

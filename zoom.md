@@ -11,16 +11,16 @@ permalink: /zoom/
 
 <span class='zoom' id='ex1'>
   <span>Hover</span>
-  <img src='/img/daisy.jpg' width='555' height='320' alt='Daisy on the Ohoopee'/>
+  <img src='/img/daisy.jpg' width='555' height='320' alt='Daisy on the Ohoopee'>
 </span><span class='zoom' id='ex2'>
   <span>Grab</span>
-  <img src='/img/roxy.jpg' width='290' height='320' alt='Roxy on the Ohoopee'/>
+  <img src='/img/roxy.jpg' width='290' height='320' alt='Roxy on the Ohoopee'>
 </span>
 
 <h2><a href='https://github.com/jackmoore/zoom/archive/master.zip' style='text-decoration: underline;'>Download</a></h2>
 
-Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a>.  Source on <a href='http://github.com/jackmoore/zoom'>Github</a> (<a href='http://github.com/jackmoore/zoom#changelog'>changelog</a>).<br/>
-Compatible with: jQuery 1.7+ in Chrome, Firefox, Safari, Opera, Internet Explorer 7+.<br/>
+Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a>.  Source on <a href='http://github.com/jackmoore/zoom'>Github</a> (<a href='http://github.com/jackmoore/zoom#changelog'>changelog</a>).<br>
+Compatible with: jQuery 1.7+ in Chrome, Firefox, Safari, Opera, Internet Explorer 7+.<br>
 Bower Package: `jquery-zoom`
 
 <p>
@@ -73,55 +73,45 @@ $('#example').trigger('zoom.destroy'); // remove zoom
 
 <table>
   <tr>
-    <th>Property</th>
-    <th>Default</th>
-    <th>Description</th>
-  </tr>
+    <th>Property
+    <th>Default
+    <th>Description
   <tr>
-    <td>url</td>
-    <td>false</td>
-    <td>The url of the large photo to be displayed.  If no url is provided, zoom uses the src of the first child IMG element inside the element it is assigned to.</td>
-  </tr>
+    <td>url
+    <td>false
+    <td>The url of the large photo to be displayed.  If no url is provided, zoom uses the src of the first child IMG element inside the element it is assigned to.
   <tr>
-    <td>on</td>
-    <td>'mouseover'</td>
-    <td>The type of event that triggers zooming.  Choose from <code>mouseover</code>, <code>grab</code>, <code>click</code>, or <code>toggle</code>.</td>
-  </tr>
+    <td>on
+    <td>'mouseover'
+    <td>The type of event that triggers zooming.  Choose from <code>mouseover</code>, <code>grab</code>, <code>click</code>, or <code>toggle</code>.
   <tr>
-    <td>duration</td>
-    <td>120</td>
-    <td>The fadeIn/fadeOut speed of the large image.</td>
-  </tr>
+    <td>duration
+    <td>120
+    <td>The fadeIn/fadeOut speed of the large image.
   <tr>
-    <td>target</td>
-    <td>false</td>
-    <td>A selector or DOM element that should be used as the parent container for the zoomed image.</td>
-  </tr>
+    <td>target
+    <td>false
+    <td>A selector or DOM element that should be used as the parent container for the zoomed image.
   <tr>
-    <td>touch</td>
-    <td>true</td>
-    <td>Enables interaction via touch events.</td>
-  </tr>
+    <td>touch
+    <td>true
+    <td>Enables interaction via touch events.
   <tr>
-    <td>magnify</td>
-    <td>1</td>
-    <td>Sets the scaling of the zoomed image.</td>
-  </tr>
+    <td>magnify
+    <td>1
+    <td>Sets the scaling of the zoomed image.
   <tr>
-    <td>callback</td>
-    <td>false</td>
-    <td>A function to be called when the image has loaded.  Inside the function, `this` references the image element.</td>
-  </tr>
+    <td>callback
+    <td>false
+    <td>A function to be called when the image has loaded.  Inside the function, `this` references the image element.
   <tr>
-    <td>onZoomIn</td>
-    <td>false</td>
-    <td>A function to be called when the image has zoomed in.  Inside the function, `this` references the image element.</td>
-  </tr>
+    <td>onZoomIn
+    <td>false
+    <td>A function to be called when the image has zoomed in.  Inside the function, `this` references the image element.
   <tr>
-    <td>onZoomOut</td>
-    <td>false</td>
-    <td>A function to be called when the image has zoomed out.  Inside the function, `this` references the image element.</td>
-  </tr>
+    <td>onZoomOut
+    <td>false
+    <td>A function to be called when the image has zoomed out.  Inside the function, `this` references the image element.
 </table>
 
 <script src='/js/jquery.js'></script>
