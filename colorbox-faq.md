@@ -125,10 +125,12 @@ Try setting `returnFocus` to `false`.  Colorbox returns focus to the element it 
 
 This is often due to trying to access an element before it has been loaded into the document and can be resolved by moving the JavaScript into Colorbox's onComplete callback.
 
-	// Example the jQuery Forms plugin: http://jquery.malsup.com/form/
-	$('#login_window').colorbox({onComplete:function(){
-		$('form#login').ajaxForm();
-	}});
+```javascript
+// Example the jQuery Forms plugin: http://jquery.malsup.com/form/
+$('#login_window').colorbox({onComplete:function(){
+	$('form#login').ajaxForm();
+}});
+```
 
 <h3 id='faq-img'>Colorbox is sized too small the first time ajax/inline content is opened</h3>
 
@@ -144,42 +146,53 @@ Also see the <a href='#faq-doctype'>doctype entry</a> in this FAQ
 
 This happens because the entire form isn't being loaded into Colorbox, just the form fields.  Since the form fields have been moved outside of their parent form element, the form is broken.  The proper solution would be to include the parent form element together with the form field elements so that the form stays intact.  However, this is impractical with ASP.NET forms as the entire content of the body element is wrapped with the form element.  To work around this, move Colorbox's markup so that it and content displayed in it will reside within the form element.  Example:
 
-	$(document).ready(function () {
-		$("#colorbox, #cboxOverlay").appendTo('form:first');
-		$("#link_to_form").colorbox({ width: "50%", inline: true, href: "#form_fields_container" });
+```javascript
+$(document).ready(function () {
+	$("#colorbox, #cboxOverlay").appendTo('form:first');
+	$("#link_to_form").colorbox({
+		width: "50%",
+		inline: true,
+		href: "#form_fields_container"
 	});
+});
+```
 
 <h3 id='faq-cookie'>Open Colorbox on first visit</h3>
 
 You'll need to define a cookie that indicates that the user has already visited to site, then use that to determine whether or not to display Colorbox.
 
-	// Display a welcome message on first visit, and set a cookie that expires in 30 days:
-	if (document.cookie.indexOf('visited=true') === -1) {
-		var expires = new Date();
-		expires.setDate(expires.getDate()+30);
-		document.cookie = "visited=true; expires="+expires.toUTCString();
-		$.colorbox({html:"Welcome!"});
-	}
+```javascript
+// Display a welcome message on first visit, and set a cookie that expires in 30 days:
+if (document.cookie.indexOf('visited=true') === -1) {
+	var expires = new Date();
+	expires.setDate(expires.getDate()+30);
+	document.cookie = "visited=true; expires="+expires.toUTCString();
+	$.colorbox({html:"Welcome!"});
+}
+```
 
 <h3 id='faq-querystring'>Pass Colorbox parameters based on a URL</h3>
 
 With a little JavaScript, you can parse the parameters from your URL's querystring and pass them to Colorbox.
 
-	// example url: http://example.com/gallery.html?open=true&amp;height=500
-	function getParameters(){
-		var
-		settingsObject = {},
-		hash,
-		hashes =  location.search.substring(1).split(/&amp;/),
-		i;
-		
-		for (i = 0; i &lt; hashes.length; i++) {
-			hash = hashes[i].split('=');
-			settingsObject[hash[0]] = hash[1];
-		}
-		return settingsObject;
+```javascript
+// example url: http://example.com/gallery.html?open=true&amp;height=500
+function getParameters(){
+	var
+	settingsObject = {},
+	hash,
+	hashes =  location.search.substring(1).split(/&amp;/),
+	i;
+	
+	for (i = 0; i &lt; hashes.length; i++) {
+		hash = hashes[i].split('=');
+		settingsObject[hash[0]] = hash[1];
 	}
-	$('a.example').colorbox($.extend({width:'100%', height:'100%', speed:0}, getParameters()));
+	return settingsObject;
+}
+var settings = $.extend({width:'100%', height:'100%', speed:0}, getParameters());
+$('a.example').colorbox(settings);
+```
 
 Here we selected some elements in our document, assigned colorbox to them, then used jQuery's <a href='http://api.jquery.com/jQuery.extend/'><code>$.extend()</code></a> method to combine our querystring parameters with the initial settings we set for our elements.  This is just an example however, and you probably should not let visitors control all of Colorbox's parameters (through modifying the querystring).
 
@@ -188,85 +201,99 @@ Here we selected some elements in our document, assigned colorbox to them, then 
 Colorbox's close method can be cached and redefined as to control what happens when Colorbox is closed.  This affects controls that are bind to it (such as the escKey, overlayClose, and the close button) and calling the close method directly.
 For example, let's open Colorbox to display a form element and redefine the close method to warn the visitor that they will discard their input if they try to close Colorbox before they submit their data.
 
-	var originalClose = $.colorbox.close;
-	$.colorbox.close = function(){
-		var response;
-		if($('#cboxLoadedContent').find('form').length > 0){
-			response = confirm('Do you want to close this window?');
-			if(!response){
-				return; // Do nothing.
-			}
+```javascript
+var originalClose = $.colorbox.close;
+$.colorbox.close = function(){
+	var response;
+	if($('#cboxLoadedContent').find('form').length > 0){
+		response = confirm('Do you want to close this window?');
+		if(!response){
+			return; // Do nothing.
 		}
-		originalClose();
-	};
-	$('a#example').colorbox();
+	}
+	originalClose();
+};
+$('a#example').colorbox();
+```
 
 <h3 id='faq-nofollow'>Disable grouping by rel attribute</h3>
 
 Set Colorbox's `rel` property to `'nofollow'`.
 
-	$('a[rel="examples"]').colorbox({rel:'nofollow'});
+```javascript
+$('a[rel="examples"]').colorbox({rel:'nofollow'});
+```
 
 <h3 id='faq-parent'>Close from iframe / Control from iframe</h3>
 
 An iframe can access it's parent document's window object via `window.parent`.  This gives you access to variables that exist within the parent document's global scope, such as jQuery.
 
-	<!-- calling close method from within an iframe: -->
-	<a href='#' onclick='window.parent.jQuery.colorbox.close(); return false;'>
-		close this iframe
-	</a>
+```html
+<!-- calling close method from within an iframe: -->
+<a href='#' onclick='window.parent.jQuery.colorbox.close(); return false;'>
+	close this iframe
+</a>
 
-	<!-- open Colorbox in the parent from an iframed -->
-	<a href='#' onclick='window.parent.jQuery.colorbox({href:"login.php"}); return false;'>
-		open in parent window
-	</a>
+<!-- open Colorbox in the parent from an iframed -->
+<a href='#' onclick='window.parent.jQuery.colorbox({href:"login.php"}); return false;'>
+	open in parent window
+</a>
+```
 
 <h3 id='faq-click'>Create a separate link for opening a gallery</h3>
 
 Lets say you've assigned Colorbox to a set of links in your document, but you also want to have an "Open Gallery" link that opens the first item in your set.  When "Open Gallery" is clicked, you want to prevent the default action, then trigger a click event on that first set item.
 
-	var $gallery = $("a[rel=gallery]").colorbox();
-	$("a#openGallery").click(function(e){
-		e.preventDefault();
-		$gallery.eq(0).click();
-	});
+```javascript
+var $gallery = $("a[rel=gallery]").colorbox();
+$("a#openGallery").click(function(e){
+	e.preventDefault();
+	$gallery.eq(0).click();
+});
+```
 
 <h3 id='faq-analytics'>Track Colorbox usage with Google Analytics</h3>
 
 This can be done by calling the tracker and passing it the URL you want to log once Colorbox has displayed the content.  Either use Colorbox's 'onComplete' callback or bind to the 'cbox_complete' event.  The tracking method depends on whether you are using Google's <a href='http://code.google.com/apis/analytics/docs/tracking/gaTrackingOverview.html'>traditional tracker</a> or the newer <a href='http://code.google.com/apis/analytics/docs/tracking/asyncUsageGuide.html'>asynchronous tracker</a>.  Examples:
 
-	// async tracker
-	$(document).bind("cbox_complete", function(){
-		var href = $.colorbox.element().attr("href");
-		if (href) {
-			_gaq.push(["_trackPageview", href]);
-		}
-	});
+```javascript
+// async tracker
+$(document).bind("cbox_complete", function(){
+	var href = $.colorbox.element().attr("href");
+	if (href) {
+		_gaq.push(["_trackPageview", href]);
+	}
+});
 
-	// traditional tracker
-	$(document).bind("cbox_complete", function(){
-		var href = $.colorbox.element().attr("href");
-		if (href) {
-			pageTracker._trackPageview(href);
-		}
-	});
+// traditional tracker
+$(document).bind("cbox_complete", function(){
+	var href = $.colorbox.element().attr("href");
+	if (href) {
+		pageTracker._trackPageview(href);
+	}
+});
+```
 
 <h3 id='faq-defaults'>Change Colorbox's default settings</h3>
 
 The default settings can be changed by accessing the settings object and assigning it new values.  The new values must be set before Colorbox is assigned to any elements in your markup, otherwise they will not be applied.
 
-	// change defaults individually:
-	$.colorbox.settings.opacity = 0.5;
-	$.colorbox.settings.speed = 0;
-	$.colorbox.settings.close = 'Exit';
+```javascript
+// change defaults individually:
+$.colorbox.settings.opacity = 0.5;
+$.colorbox.settings.speed = 0;
+$.colorbox.settings.close = 'Exit';
 
-	// or use jQuery's $.extend() to change many defaults at once:
-	$.extend($.colorbox.settings, {opacity:0.5, speed:0, close:'Exit'});
+// or use jQuery's $.extend() to change many defaults at once:
+$.extend($.colorbox.settings, {opacity:0.5, speed:0, close:'Exit'});
+```
 
 <h3 id='faq-titlelink'>Make the title a link</h3>
 
 Colorbox can be passed a function to be evaluated in place of a static value for any of it's properties.  Through that any sort of string formatting or markup building can be done and displayed as the title:
 
-	$('a.gallery').colorbox({title:function () {
-		return "To view full size, " + "click here!".link(this.href);
-	}});
+```javascript
+$('a.gallery').colorbox({title:function () {
+	return "To view full size, " + "click here!".link(this.href);
+}});
+```
