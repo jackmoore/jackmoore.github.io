@@ -9,9 +9,8 @@ permalink: /autosize/
 
 ## Demo
 
-<textarea id='ta2'>Autosize with a CSS transition.
-Try typing something...</textarea>
-<textarea id='ta1'>Autosize with no animation.</textarea>
+<textarea id='ta2' placeholder='Autosize with a CSS transition. Try typing something...'></textarea>
+<textarea id='ta1' placeholder='Autosize with no animation.'></textarea>
 
 <h2><a href='https://github.com/jackmoore/autosize/archive/master.zip' style='text-decoration: underline;'>Download</a></h2>
 
