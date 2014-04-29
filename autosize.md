@@ -62,13 +62,13 @@ $('#example').trigger('autosize.destroy');
 		<td>'autosizejs'
 		<td>The className property is used to specify a class for the mirrored element, in case it's necessary to explicitly set a style on the mirrored element (see the note about line-height below).
 	<tr>
-		<td>append
-		<td>''
-		<td>For appending whitespace to the end of the height calculation (an extra newline improves the appearance when animating).  Example <code>$('.textarea').autosize({append: "\n"});</code>
-	<tr>
 		<td>callback
 		<td>false
 		<td>A function to call when the textarea is resized.
+	<tr>
+		<td>append
+		<td>"\n"
+		<td>By default, an extra newline is appended at the end of the text used in the height calculation.  This smooths out the height adjustment when animating.  This also avoids an issue with IE10+ briefly causing text to shift immediately before the height is increased.
 </table>
 
 ## Known Issues &amp; Solutions
