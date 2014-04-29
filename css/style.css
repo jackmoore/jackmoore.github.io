@@ -543,12 +543,12 @@ nav a:hover span {
 
 #ta1, #ta2 {
   width: 42%;
-  padding: 10px;
+  padding: 10px 10px 0 10px;
   background: #fff;
   overflow: hidden;
+  vertical-align: top; 
 }
 #ta2 {
-  vertical-align: top; 
   transition: height 0.2s;
   -webkit-transition: height 0.2s; 
   -moz-transition: height 0.2s; 
