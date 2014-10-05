@@ -41,6 +41,12 @@ Autosize has no way of knowing when the value of a textarea has been changed thr
 $('#example').val('New Text!').trigger('autosize.resize');
 ````
 
+The `autosize.resize` event only accounts for changes in value.  If you changed any of the typographic styles (font-size, line-height, etc), or the max-width, you can call `autosize.resizeIncludeStyle` and the textarea will resize with those styles accounted for:
+
+````javascript
+$('#example').css({font-size: '20px'}).trigger('autosize.resizeIncludeStyle');
+````
+
 ## Removing Autosize
 
 Trigger the `autosize.destroy` event to remove autosize from a textarea element:
@@ -67,7 +73,7 @@ $('#example').trigger('autosize.destroy');
 	<tr>
 		<td>append
 		<td>"\n"
-		<td>By default, an extra newline is appended at the end of the text used in the height calculation.  This smooths out the height adjustment when animating.  This also avoids an issue with IE10+ briefly causing text to shift immediately before the height is increased.
+		<td>By default, an extra newline is appended at the end of the text used in the height calculation.  This smooths out the height adjustment when animating.  This also avoids an issue with IE10+ briefly causing text to shift immediately before the height is increased.  You can set this property to `false` or other falsey value to remove the appended text.
 </table>
 
 ## Known Issues &amp; Solutions
