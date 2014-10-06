@@ -82,6 +82,10 @@ $('#example').trigger('autosize.destroy');
 		<td>placeholder
 		<td>true
 		<td>If the textarea is empty and has a placeholder value, autosize will use the length of the placeholder text to determine the height.  Set to false to ignore the placeholder value.
+	<tr>
+		<td>resizeDelay
+		<td>10
+		<td>Textareas with autosize assigned will have their height re-calculated when the window is resized. This property is the debounce delay in miliseconds to prevent the resize from triggering too frequently.  This can be set to false if the textarea has a static width that will not change during a window resize.
 </table>
 
 ## Known Issues &amp; Solutions
