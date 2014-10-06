@@ -65,7 +65,11 @@ $('#example').trigger('autosize.destroy');
 	<tr>
 		<td>className
 		<td>'autosizejs'
-		<td>The className property is used to specify a class for the mirrored element, in case it's necessary to explicitly set a style on the mirrored element (see the note about line-height below).
+		<td>The class name for the mirrored element, in case it's necessary to explicitly set a style on the mirrored element (see the note about line-height below).
+	<tr>
+		<td>id
+		<td>'autosizejs'
+		<td>The id of the hidden mirrored element, in case you prefer to access it by id.
 	<tr>
 		<td>callback
 		<td>false
@@ -74,6 +78,10 @@ $('#example').trigger('autosize.destroy');
 		<td>append
 		<td>"\n"
 		<td>By default, an extra newline is appended at the end of the text used in the height calculation.  This smooths out the height adjustment when animating.  This also avoids an issue with IE10+ briefly causing text to shift immediately before the height is increased.  You can set this property to `false` or other falsey value to remove the appended text.
+	<tr>
+		<td>placeholder
+		<td>true
+		<td>If the textarea is empty and has a placeholder value, autosize will use the length of the placeholder text to determine the height.  Set to false to ignore the placeholder value.
 </table>
 
 ## Known Issues &amp; Solutions
