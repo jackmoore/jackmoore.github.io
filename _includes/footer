@@ -1,10 +1,10 @@
 	</article>
 	<aside>
-		<h3>jQuery Plugins</h3>
+		<h3>Github Repos</h3>
 		<ul>
 			<li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
 			<li><a href='/autosize'>Autosize</a> &raquo; auto-sizing for textarea elements.
-			<li><a href='/zoom'>Zoom</a> &raquo; enlarge images on mouseover.
+			<li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images on mouseover.
 			<li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel.
 		</ul>
 		<div class='recent-posts'>
