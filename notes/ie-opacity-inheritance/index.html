@@ -1,0 +1,151 @@
+
+<!doctype html public '(╯°□°）╯︵ 8ƎI'>
+<html lang=en class=''>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
+    <link rel='stylesheet' href='/css/style.css'>
+    <link rel='stylesheet' href='/css/github.css'>
+    <!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
+    <title>Fixing IE's Opacity Inheritance</title>
+    <header>
+        <a class='me' rel='author' href='/'>Jack Moore</a>
+        <a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
+        <a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
+        <nav>
+            <a href='/notes'><span>Archive</span></a>
+        </nav>
+    </header>
+    <div class='main' role='main'>
+        <article>
+            
+            <h1>Fixing IE's Opacity Inheritance</h1>
+            <p class='description'>Child elements ignore the parent's opacity in Internet Explorer.</p>
+            <hr>
+            <p class='date'><span class='icon-calendar icon--inline'></span>January 17th, 2012</p>
+            <h3 id="in-internet-explorer-7-8-9-non-static-child-elements-do-not-inherit-the-opacity-of-the-parent-">In Internet Explorer 7, 8, 9, non-static child elements do not inherit the opacity of the parent.</h3>
+<div style='opacity:0.5; filter: alpha(opacity=50); padding:15px; height:90px; border:1px solid #999; margin-bottom:15px;'>
+    All of this text should have a 50% opacity...
+    <div style='position:relative;'>But this line displays at full opacity in IE8 and IE7.</div>
+    <div style='position:absolute;'>And this line displays at full opacity in IE9, IE8 and IE7.</div>
+</div>
+
+<pre><code>&lt;<span class="hljs-operator">div</span> style=<span class="hljs-string">'opacity: 0.5; filter: alpha(opacity=50);'</span>&gt;
+    All <span class="hljs-operator">of</span> this <span class="hljs-keyword">text</span> should have <span class="hljs-operator">a</span> <span class="hljs-number">50</span>% opacity...
+    &lt;<span class="hljs-operator">div</span> style=<span class="hljs-string">'position: relative'</span>&gt;But this <span class="hljs-built_in">line</span> displays <span class="hljs-keyword">at</span> full opacity <span class="hljs-operator">in</span> IE7 <span class="hljs-operator">and</span> IE8.&lt;/<span class="hljs-operator">div</span>&gt;
+    &lt;<span class="hljs-operator">div</span> style=<span class="hljs-string">'position: absolute'</span>&gt;And this <span class="hljs-built_in">line</span> displays <span class="hljs-keyword">at</span> full opacity <span class="hljs-operator">in</span> IE7, IE8 <span class="hljs-operator">and</span> IE9.&lt;/<span class="hljs-operator">div</span>&gt;
+&lt;/<span class="hljs-operator">div</span>&gt;
+</code></pre><p>This bug is triggered when the child element has any position other than static, regardless of the parent&#39;s position value (static, fixed, absolute, or relative). IE9 only has a problem when the child element has a fixed or absolute position, and the parent element has a static position. Maddeningly, IE7 and IE8 have other opacity related bugs which may derail alternative approaches.</p>
+<h3 id="workarounds">Workarounds</h3>
+<ul>
+<li>IE9: Give the parent a non-static position.</li>
+<li>IE8: Have the child inherit the filter style.</li>
+<li>IE7: Have the child inherit the filter style and give the parent a non-static position.</li>
+</ul>
+<div style='opacity:0.5; filter: alpha(opacity=50); padding:15px; height:90px; border:1px solid #999; margin-bottom:15px; position:relative'>
+    All of this text has 50% opacity...
+    <div style='position:relative; filter: inherit;'>Including this line.</div>
+    <div style='position:absolute; filter: inherit;'>And this line.</div>
+</div>
+
+<pre><code>&lt;<span class="hljs-operator">div</span> style=<span class="hljs-string">'opacity: 0.5; filter: alpha(opacity=50); position: relative;'</span>&gt;
+    All <span class="hljs-operator">of</span> this <span class="hljs-keyword">text</span> has <span class="hljs-number">50</span>% opacity...
+    &lt;<span class="hljs-operator">div</span> style=<span class="hljs-string">'position: relative; filter: inherit;'</span>&gt;Including this <span class="hljs-built_in">line</span>.&lt;/<span class="hljs-operator">div</span>&gt;
+    &lt;<span class="hljs-operator">div</span> style=<span class="hljs-string">'position: absolute; filter: inherit;'</span>&gt;And this <span class="hljs-built_in">line</span>.&lt;/<span class="hljs-operator">div</span>&gt;
+&lt;/<span class="hljs-operator">div</span>&gt;
+</code></pre><p>Alternatively, a new alpha filter could be set on the child elements.  This could be useful in situations where inheriting the parent&#39;s filters is undesirable.</p>
+<pre><code>&lt;<span class="hljs-operator">div</span> style=<span class="hljs-string">'opacity: 0.5; filter: alpha(opacity=50); position: relative'</span>&gt;
+    All <span class="hljs-operator">of</span> this <span class="hljs-keyword">text</span> has <span class="hljs-number">50</span>% opacity...
+    &lt;<span class="hljs-operator">div</span> style=<span class="hljs-string">'position: relative; filter: alpha(opacity=50);'</span>&gt;Including this <span class="hljs-built_in">line</span>.&lt;/<span class="hljs-operator">div</span>&gt;
+    &lt;<span class="hljs-operator">div</span> style=<span class="hljs-string">'position: absolute; filter: alpha(opacity=50);'</span>&gt;And this <span class="hljs-built_in">line</span>.&lt;/<span class="hljs-operator">div</span>&gt;
+&lt;/<span class="hljs-operator">div</span>&gt;
+</code></pre><p>A caveat to having a filter on the child element is that IE9 will apply both the child&#39;s filter and the parent&#39;s filter and/or opacity.  The examples above effectively have a 25% opacity in IE9 (50% of 50%).  Use conditional CSS to target IE8 and lower when setting the child&#39;s alpha filter.</p>
+
+            <hr>
+            <h2>Hey,</h2>
+            <p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
+            <p>
+            <iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
+            <a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </p>
+        
+        </article>
+        <aside>
+            <h3>Github Repos</h3>
+            <ul>
+                <li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
+                <li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
+                <li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
+                <li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
+            </ul>
+            <div class='recent-posts'>
+                <h3>Blog Posts</h3>
+                <ul>
+                    
+                <li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
+            
+                <li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
+            
+                <li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
+            
+                <li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
+            
+                <li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
+            
+                <li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
+            
+                <li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
+            
+                <li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
+            
+                <li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
+            
+                <li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
+            
+                <li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
+            
+                <li><a href="/notes/click-events/">Working with JavaScript click events</a>
+            
+                <li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
+            
+                <li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
+            
+                </ul>
+            </div>
+            <h3>Tags</h3>
+            <ul class='tags'>
+                
+                <li>
+                    <a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
+                </li>
+            
+            </ul>
+        </aside>
+    </div>
+    <script src="/js/main.js"></script>
+        

@@ -1,0 +1,341 @@
+
+<!doctype html public '(╯°□°）╯︵ 8ƎI'>
+<html lang=en class=''>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
+    <link rel='stylesheet' href='/css/style.css'>
+    <link rel='stylesheet' href='/css/github.css'>
+    <!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
+    <title>Colorbox FAQ</title>
+    <header>
+        <a class='me' rel='author' href='/'>Jack Moore</a>
+        <a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
+        <a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
+        <nav>
+            <a href='/notes'><span>Archive</span></a>
+        </nav>
+    </header>
+    <div class='main' role='main'>
+        <article>
+            
+            <h1>Colorbox FAQ</h1>
+            
+            <hr>
+            
+            <h2 id='faq-help'>Additional Help</h2>
+
+<p>If your problem isn&#39;t covered in this FAQ, your best bet would be to post your question to <a href='http://stackoverflow.com/questions/ask'>Stack Overflow</a>. Be sure to tag your question with <code>colorbox</code> and <code>jQuery</code>. Due to the volume of questions, I cannot offer individual support.</p>
+<h2 id="beginner-s-guide">Beginner&#39;s Guide</h2>
+<p>If you are completely new to jQuery plugins, try reading the Colorbox <a href='/colorbox/guide'>beginner&#39;s guide</a></p>
+<h2 id="common-problems">Common Problems</h2>
+<ul>
+<li><a href="#faq-youtube">YouTube link is not working</a></li>
+<li><a href="#faq-sameorigin">The iframe is blank (X-Frame-Options error in console)</a></li>
+<li><a href="#faq-flash">Flash appears over Colorbox</a></li>
+<li><a href="#faq-doctype">Colorbox is positioned incorrectly or behaving strangely</a></li>
+<li><a href="#faq-iframe">Colorbox is broken or looks incomplete while displaying documents.</a></li>
+<li><a href="#faq-conflict">Colorbox only works the first time it is opened.</a></li>
+<li><a href="#faq-ajax">Trying to load an external page results in &quot;Request unsuccessful&quot;</a></li>
+<li><a href="#faq-jquery">JS Error: <code>$(selector).colorbox is not a function</code> or <code>$.colorbox is not a function</code></a></li>
+<li><a href="#faq-focus">Closing Colorbox breaks accordians/tabs/animations</a></li>
+<li><a href="#faq-timing">JavaScript/jQuery is not working inside of Colorbox</a></li>
+<li><a href="#faq-img">Colorbox is sized too small the first time ajax/inline content is opened</a></li>
+<li><a href="#faq-sharepoint">Colorbox is not working with Microsoft SharePoint</a></li>
+<li><a href="#faq-asp">Inline forms not submitting / POSTing in ASP.NET</a></li>
+</ul>
+<h2 id="how-to">How To</h2>
+<ul>
+<li><a href="#faq-cookie">Open Colorbox on first visit (How to set a cookie)</a></li>
+<li><a href="#faq-querystring">Pass Colorbox parameters based on a URL</a></li>
+<li><a href="#faq-close">Prevent Colorbox from closing / Change the behavior of $.colorbox.close()</a></li>
+<li><a href="#faq-nofollow">Disable grouping by rel attribute</a></li>
+<li><a href="#faq-parent">Close from iframe / Control from iframe</a></li>
+<li><a href="#faq-click">Create a separate link for opening a gallery</a></li>
+<li><a href="#faq-analytics">Track Colorbox usage with Google Analytics</a></li>
+<li><a href="#faq-defaults">Change Colorbox&#39;s default settings</a></li>
+<li><a href="#faq-titlelink">Make the title a link</a></li>
+<li><a href="/notes/colorbox-with-json-or-flickr">Use Colorbox with a Flickr feed or JSON data</a></li>
+</ul>
+<h3 id='faq-youtube'>YouTube link is not working.</h3>
+
+<p>When you are showing a YouTube video in an iframe, you want to link to the embed version of the url.  Normally, your url would look something like this:</p>
+<p><code>http://www.youtube.com/watch?v=VOJyrQa_WR4</code></p>
+<p>To convert this to the embed version, we would replace <code>watch?v=</code> with <code>embed/</code>:</p>
+<p><code>http://www.youtube.com/embed/VOJyrQa_WR4</code></p>
+<p>If you wanted to use the normal url as the href value of your anchor elements, but use the embed version in Colorbox&#39;s iframe, you could do something like this:</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'youtube'</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'http://www.youtube.com/watch?v=VOJyrQa_WR4'</span>&gt;</span>Business Cats<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
+    $(<span class="hljs-string">'.youtube'</span>).colorbox({iframe: <span class="hljs-literal">true</span>, width: <span class="hljs-number">640</span>, height: <span class="hljs-number">390</span>, href:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">var</span> videoId = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">'[\\?&amp;]v=([^&amp;#]*)'</span>).exec(<span class="hljs-keyword">this</span>.href);
+        <span class="hljs-keyword">if</span> (videoId &amp;&amp; videoId[<span class="hljs-number">1</span>]) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">'http://youtube.com/embed/'</span>+videoId[<span class="hljs-number">1</span>]+<span class="hljs-string">'?rel=0&amp;wmode=transparent'</span>;
+        }
+    }});
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>I like to add the following parameters: <code>rel=0</code>, which tells YouTube not to show related videos when video ends, and <code>wmode=transparent</code>, which allows HTML elements to be displayed on top of the video if necessary. For more options, have a look at <a href="https://developers.google.com/youtube/player_parameters">YouTube&#39;s Player Parameters</a>.</p>
+<h3 id='faq-sameorigin'>The iframe is blank</h3>
+
+<p>Many sites, such as Google, simply cannot be displayed in an iframe.  These use a server setting (X-Frame-Options set to SAMEORIGIN) to prohibit their pages from being displayed in an iframe on a domain other than their own.</p>
+<h3 id='faq-flash'>Flash appears over Colorbox:</h3>
+
+<p>By default Flash will overlay any HTML content, including Colorbox.  This can be prevented by setting the &#39;wmode&#39; param and embed attributes to &#39;transparent&#39;.  See <a href='http://kb2.adobe.com/cps/155/tn_15523.html'>this post</a> from Adobe Support for more information.</p>
+<h3 id='faq-doctype'>Colorbox is positioned incorrectly or behaving strangely:</h3>
+
+<p>This is often due to loading colorbox.css after jquery.colorbox.js or stems from a bad doctype.  Both jQuery and colorbox.css need to be loaded prior to jquery.colorbox.js.  Colorbox should be called or assigned to elements inside of jQuery&#39;s ready method, which should be declared after jquery.colorbox.js.</p>
+<p>Colorbox requires a valid doctype and rendering in quirks mode is not supported.  If you are not using the HTML5 doctype, make sure to include the full doctype declaration (with URI) to enable standards mode.</p>
+<p>Unfortunately, this abbreviated doctype renders the document in quirks mode for Internet Explorer:</p>
+<pre><code><span class="hljs-doctype">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;</span>
+</code></pre><p>The doctype with URI renders in standards mode for all browsers:</p>
+<pre><code><span class="hljs-doctype">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;</span>
+</code></pre><p>For more information, see A List Apart&#39;s <a href='http://www.alistapart.com/articles/doctype/'>primer on doctypes</a> and QuirksMode on <a href='http://www.quirksmode.org/css/quirksmode.html'>quirks mode</a>.</p>
+<h3 id='faq-iframe'>Colorbox is broken or looks incomplete while displaying documents:</h3>
+
+<p>Often this is due to not using an iframe when an iframe would be required.  The default method, ajax, is only for elements that can exist within a <code>&lt;body&gt;</code> element.</p>
+<p>If you are loading a complete HTML document with <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, and <code>&lt;body&gt;</code> elements, then using an iframe is required.  While nesting these elements may appear to display correctly in some browsers, it is still invalid HTML and should not be depended on.   Remember to set the width and height values for Colorbox when using an iframe, it has no way of knowing the dimensions of elements that exist within the iframe.</p>
+<p>Colorbox leverages jQuery&#39;s <a href='http://docs.jquery.com/Ajax/load'>.load()</a> method for handling ajax. If you are loading a document from the same domain as your current document, you can use a selector pull out just the portion of the document that is needed.</p>
+<pre><code><span class="hljs-variable">$(</span><span class="hljs-string">'#example'</span>).colorbox({<span class="hljs-symbol">href:</span><span class="hljs-string">'document.html div#content'</span>});
+</code></pre><h3 id='faq-conflict'>Colorbox only works the first time it is opened:</h3>
+
+<p>This is often due to loading a document with script elements with Colorbox&#39;s ajax mode instead of using an iframe.  And iframe would prevent those scripts from interfering with the scripts in the host document.  Often it&#39;s due to the parent document&#39;s version of jQuery being overwritten  by the loaded in document&#39;s version of jQuery.</p>
+<h3 id='faq-ajax'>Trying to load an external page results in &quot;Request unsuccessful&quot;</h3>
+
+<p>This could be due to an invalid URL or trying to load ajax content from a different domain.  Ajax will only work with documents that are on the same domain as your current document due to browser restrictions.  Ajax has to be run from a server to function (e.g., ajax content is not going to work from your desktop unless you are running a web server such as Apache for local development).</p>
+<h3 id='faq-jquery'>JS Error: <code>$(selector).colorbox is not a function</code> or <code>$.colorbox is not a function</code></h3>
+
+<p>Double check your script paths and look for accidentally including multiple versions of jQuery.</p>
+<p>This most often happens when users load multiple versions of jQuery which overwrites the version that was extended with the Colorbox plugin.  Check out source to see if a version of jQuery is being loaded after Colorbox has been loaded.</p>
+<p>If your HTML document only contains one link to the jQuery library, the same error could also be caused by loading HTML snippets (through ajax) or HTML documents that load the jQuery library.  If you are loading HTML snippets with ajax or through Colorbox, be sure that they do not contain a link to the jQuery library. HTML documents should be contained within iframes or opened with Colorbox&#39;s iframe property.</p>
+<h3 id='faq-focus'>Closing Colorbox breaks accordians/tabs/animations</h3>
+
+<p>Try setting <code>returnFocus</code> to <code>false</code>.  Colorbox returns focus to the element it was launched from upon closing.  This is intended to provide better accessibility to users who use their keyboard to navigate through the document&#39;s links, but it can cause problems with some JS effects.  The problem isn&#39;t Colorbox specific and can be reproduced without Colorbox by pressing the TAB key to cycle through the available links.</p>
+<h3 id='faq-timing'>JavaScript/jQuery is not working inside of Colorbox.</h3>
+
+<p>This is often due to trying to access an element before it has been loaded into the document and can be resolved by moving the JavaScript into Colorbox&#39;s onComplete callback.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// Example the jQuery Forms plugin: http://jquery.malsup.com/form/</span>
+$(<span class="hljs-string">'#login_window'</span>).colorbox({onComplete:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+    $(<span class="hljs-string">'form#login'</span>).ajaxForm();
+}});
+</code></pre>
+<h3 id='faq-img'>Colorbox is sized too small the first time ajax/inline content is opened</h3>
+
+<p>This is likely due to IMG elements in the loaded markup having not fully finished downloading before Colorbox measures the content to determine the width and height it should use.  The second time Colorbox is opened, the images have been cached and will take up the correct width and height within your document.  This can easily be fixed by adding the width and height dimensions to the IMG element (a recommended practice), or by setting a style that specifies the width and height of the image in your CSS.</p>
+<h3 id='faq-sharepoint'>Colorbox is not working with Microsoft SharePoint</h3>
+
+<p>The default master page used by SharePoint does not specify a doctype.  Colorbox requires the browser render in strict mode, which is enabled by specifying a valid doctype at the very beginning of your HTML document.  The master page will have to be edited so that it includes a doctype.</p>
+<p>Also see the <a href='#faq-doctype'>doctype entry</a> in this FAQ</p>
+<h3 id='faq-asp'>Inline forms not submitting / POSTing in ASP.NET</h3>
+
+<p>This happens because the entire form isn&#39;t being loaded into Colorbox, just the form fields.  Since the form fields have been moved outside of their parent form element, the form is broken.  The proper solution would be to include the parent form element together with the form field elements so that the form stays intact.  However, this is impractical with ASP.NET forms as the entire content of the body element is wrapped with the form element.  To work around this, move Colorbox&#39;s markup so that it and content displayed in it will reside within the form element.  Example:</p>
+<pre><code class="lang-javascript">$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    $(<span class="hljs-string">"#colorbox, #cboxOverlay"</span>).appendTo(<span class="hljs-string">'form:first'</span>);
+    $(<span class="hljs-string">"#link_to_form"</span>).colorbox({
+        width: <span class="hljs-string">"50%"</span>,
+        inline: <span class="hljs-literal">true</span>,
+        href: <span class="hljs-string">"#form_fields_container"</span>
+    });
+});
+</code></pre>
+<h3 id='faq-cookie'>Open Colorbox on first visit</h3>
+
+<p>You&#39;ll need to define a cookie that indicates that the user has already visited to site, then use that to determine whether or not to display Colorbox.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// Display a welcome message on first visit, and set a cookie that expires in 30 days:</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.cookie.indexOf(<span class="hljs-string">'visited=true'</span>) === -<span class="hljs-number">1</span>) {
+    <span class="hljs-keyword">var</span> expires = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();
+    expires.setDate(expires.getDate()+<span class="hljs-number">30</span>);
+    <span class="hljs-built_in">document</span>.cookie = <span class="hljs-string">"visited=true; expires="</span>+expires.toUTCString();
+    $.colorbox({html:<span class="hljs-string">"Welcome!"</span>});
+}
+</code></pre>
+<h3 id='faq-querystring'>Pass Colorbox parameters based on a URL</h3>
+
+<p>With a little JavaScript, you can parse the parameters from your URL&#39;s querystring and pass them to Colorbox.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// example url: http://example.com/gallery.html?open=true&amp;amp;height=500</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getParameters</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">var</span>
+    settingsObject = {},
+    hash,
+    hashes =  location.search.substring(<span class="hljs-number">1</span>).split(<span class="hljs-regexp">/&amp;amp;/</span>),
+    i;
+
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &amp;lt; hashes.length; i++) {
+        hash = hashes[i].split(<span class="hljs-string">'='</span>);
+        settingsObject[hash[<span class="hljs-number">0</span>]] = hash[<span class="hljs-number">1</span>];
+    }
+    <span class="hljs-keyword">return</span> settingsObject;
+}
+<span class="hljs-keyword">var</span> settings = $.extend({width:<span class="hljs-string">'100%'</span>, height:<span class="hljs-string">'100%'</span>, speed:<span class="hljs-number">0</span>}, getParameters());
+$(<span class="hljs-string">'a.example'</span>).colorbox(settings);
+</code></pre>
+<p>Here we selected some elements in our document, assigned colorbox to them, then used jQuery&#39;s <a href='http://api.jquery.com/jQuery.extend/'><code>$.extend()</code></a> method to combine our querystring parameters with the initial settings we set for our elements.  This is just an example however, and you probably should not let visitors control all of Colorbox&#39;s parameters (through modifying the querystring).</p>
+<h3 id='faq-close'>Prevent Colorbox from closing / Change the behavior of $.colorbox.close</h3>
+
+<p>Colorbox&#39;s close method can be cached and redefined as to control what happens when Colorbox is closed.  This affects controls that are bind to it (such as the escKey, overlayClose, and the close button) and calling the close method directly.
+For example, let&#39;s open Colorbox to display a form element and redefine the close method to warn the visitor that they will discard their input if they try to close Colorbox before they submit their data.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> originalClose = $.colorbox.close;
+$.colorbox.close = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">var</span> response;
+    <span class="hljs-keyword">if</span>($(<span class="hljs-string">'#cboxLoadedContent'</span>).find(<span class="hljs-string">'form'</span>).length &gt; <span class="hljs-number">0</span>){
+        response = confirm(<span class="hljs-string">'Do you want to close this window?'</span>);
+        <span class="hljs-keyword">if</span>(!response){
+            <span class="hljs-keyword">return</span>; <span class="hljs-comment">// Do nothing.</span>
+        }
+    }
+    originalClose();
+};
+$(<span class="hljs-string">'a#example'</span>).colorbox();
+</code></pre>
+<h3 id='faq-nofollow'>Disable grouping by rel attribute</h3>
+
+<p>Set Colorbox&#39;s <code>rel</code> property to <code>&#39;nofollow&#39;</code>.</p>
+<pre><code class="lang-javascript"><span class="hljs-variable">$(</span><span class="hljs-string">'a[rel="examples"]'</span>).colorbox({<span class="hljs-symbol">rel:</span><span class="hljs-string">'nofollow'</span>});
+</code></pre>
+<h3 id='faq-parent'>Close from iframe / Control from iframe</h3>
+
+<p>An iframe can access it&#39;s parent document&#39;s window object via <code>window.parent</code>.  This gives you access to variables that exist within the parent document&#39;s global scope, such as jQuery.</p>
+<pre><code class="lang-html"><span class="xml"><span class="hljs-comment">&lt;!-- calling close method from within an iframe: --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'#'</span> <span class="hljs-attribute">onclick</span>=<span class="hljs-value">'window.parent.jQuery.colorbox.close(); return false;'</span>&gt;</span>
+    close this iframe
+<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- open Colorbox in the parent from an iframed --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'#'</span> <span class="hljs-attribute">onclick</span>=<span class="hljs-value">'window.parent.jQuery.colorbox(</span></span></span><span class="hljs-expression">{<span class="hljs-variable">href</span>:<span class="hljs-string">"login.php"</span>}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">); return false;'</span>&gt;</span>
+    open in parent window
+<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></span>
+</code></pre>
+<h3 id='faq-click'>Create a separate link for opening a gallery</h3>
+
+<p>Lets say you&#39;ve assigned Colorbox to a set of links in your document, but you also want to have an &quot;Open Gallery&quot; link that opens the first item in your set.  When &quot;Open Gallery&quot; is clicked, you want to prevent the default action, then trigger a click event on that first set item.</p>
+<pre><code class="lang-javascript">var <span class="hljs-variable">$gallery</span> = <span class="hljs-variable">$(</span><span class="hljs-string">"a[rel=gallery]"</span>).colorbox();
+<span class="hljs-variable">$(</span><span class="hljs-string">"a#openGallery"</span>).click(function(e){
+    e.preventDefault();
+    <span class="hljs-variable">$gallery</span>.e<span class="hljs-string">q(0)</span>.click();
+});
+</code></pre>
+<h3 id='faq-analytics'>Track Colorbox usage with Google Analytics</h3>
+
+<p>This can be done by calling the tracker and passing it the URL you want to log once Colorbox has displayed the content.  Either use Colorbox&#39;s &#39;onComplete&#39; callback or bind to the &#39;cbox_complete&#39; event.  The tracking method depends on whether you are using Google&#39;s <a href='http://code.google.com/apis/analytics/docs/tracking/gaTrackingOverview.html'>traditional tracker</a> or the newer <a href='http://code.google.com/apis/analytics/docs/tracking/asyncUsageGuide.html'>asynchronous tracker</a>.  Examples:</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// async tracker</span>
+$(<span class="hljs-built_in">document</span>).bind(<span class="hljs-string">"cbox_complete"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">var</span> href = $.colorbox.element().attr(<span class="hljs-string">"href"</span>);
+    <span class="hljs-keyword">if</span> (href) {
+        _gaq.push([<span class="hljs-string">"_trackPageview"</span>, href]);
+    }
+});
+
+<span class="hljs-comment">// traditional tracker</span>
+$(<span class="hljs-built_in">document</span>).bind(<span class="hljs-string">"cbox_complete"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">var</span> href = $.colorbox.element().attr(<span class="hljs-string">"href"</span>);
+    <span class="hljs-keyword">if</span> (href) {
+        pageTracker._trackPageview(href);
+    }
+});
+</code></pre>
+<h3 id='faq-defaults'>Change Colorbox&#39;s default settings</h3>
+
+<p>The default settings can be changed by accessing the settings object and assigning it new values.  The new values must be set before Colorbox is assigned to any elements in your markup, otherwise they will not be applied.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// change defaults individually:</span>
+$.colorbox.settings.opacity = <span class="hljs-number">0.5</span>;
+$.colorbox.settings.speed = <span class="hljs-number">0</span>;
+$.colorbox.settings.close = <span class="hljs-string">'Exit'</span>;
+
+<span class="hljs-comment">// or use jQuery's $.extend() to change many defaults at once:</span>
+$.extend($.colorbox.settings, {opacity:<span class="hljs-number">0.5</span>, speed:<span class="hljs-number">0</span>, close:<span class="hljs-string">'Exit'</span>});
+</code></pre>
+<h3 id='faq-titlelink'>Make the title a link</h3>
+
+<p>Colorbox can be passed a function to be evaluated in place of a static value for any of it&#39;s properties.  Through that any sort of string formatting or markup building can be done and displayed as the title:</p>
+<pre><code class="lang-javascript">$(<span class="hljs-string">'a.gallery'</span>).colorbox({title:<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"To view full size, "</span> + <span class="hljs-string">"click here!"</span>.link(<span class="hljs-keyword">this</span>.href);
+}});
+</code></pre>
+
+            <hr>
+            <h2>Hey,</h2>
+            <p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
+            <p>
+            <iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
+            <a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </p>
+        
+        </article>
+        <aside>
+            <h3>Github Repos</h3>
+            <ul>
+                <li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
+                <li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
+                <li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
+                <li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
+            </ul>
+            <div class='recent-posts'>
+                <h3>Blog Posts</h3>
+                <ul>
+                    
+                <li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
+            
+                <li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
+            
+                <li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
+            
+                <li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
+            
+                <li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
+            
+                <li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
+            
+                <li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
+            
+                <li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
+            
+                <li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
+            
+                <li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
+            
+                <li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
+            
+                <li><a href="/notes/click-events/">Working with JavaScript click events</a>
+            
+                <li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
+            
+                <li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
+            
+                </ul>
+            </div>
+            <h3>Tags</h3>
+            <ul class='tags'>
+                
+                <li>
+                    <a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
+                </li>
+            
+            </ul>
+        </aside>
+    </div>
+    <script src="/js/main.js"></script>
+        

@@ -1,0 +1,186 @@
+
+<!doctype html public '(╯°□°）╯︵ 8ƎI'>
+<html lang=en class=''>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
+    <link rel='stylesheet' href='/css/style.css'>
+    <link rel='stylesheet' href='/css/github.css'>
+    <!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
+    <title>Cross-browser mouse positioning</title>
+    <header>
+        <a class='me' rel='author' href='/'>Jack Moore</a>
+        <a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
+        <a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
+        <nav>
+            <a href='/notes'><span>Archive</span></a>
+        </nav>
+    </header>
+    <div class='main' role='main'>
+        <article>
+            
+            <h1>Cross-browser mouse positioning</h1>
+            <p class='description'>Understanding and normalizing differences between the mouse position event properties between browsers.</p>
+            <hr>
+            <p class='date'><span class='icon-calendar icon--inline'></span>November 27th, 2012</p>
+            <h2 id="mouse-event-properties">Mouse Event Properties</h2>
+<h3 id="clientx-clienty">clientX, clientY</h3>
+<p><em>Standard: W3C Recommendation</em><br>
+Mouse position relative to the browser&#39;s <a href="http://www.quirksmode.org/mobile/viewports2.html">visible viewport</a>.</p>
+<h3 id="screenx-screeny">screenX, screenY</h3>
+<p><em>Standard: W3C Recommendation</em><br>
+Mouse position relative to the user&#39;s physical screen.</p>
+<h3 id="offsetx-offsety">offsetX, offsetY</h3>
+<p><em>Standard: W3C Working Draft</em><br>
+Mouse position relative to the target element. This is implemented very inconsistently between browsers.</p>
+<h3 id="pagex-pagey">pageX, pageY</h3>
+<p><em>Standard: W3C Working Draft</em><br>
+Mouse position relative to the html document (ie. <a href="http://www.quirksmode.org/mobile/viewports2.html">layout viewport</a>).</p>
+<h3 id="x-y">x, y</h3>
+<p><em>Standard: W3C Working Draft</em><br>
+Equivalent to clientX, clientY, but is unsupported by some browsers.  Use clientX, clientY instead.</p>
+<h3 id="layerx-layery">layerX, layerY</h3>
+<p><em>No Standard</em><br>
+Mouse position relative to the closest positioned ancestor element.  If none of the ancestor elements have positioning, the mouse position is relative to the document (like pageX, pageY). LayerX, layerY have an <a href="https://bugs.webkit.org/show_bug.cgi?id=21868#c21">uncertain future</a>.</p>
+<p>QuirksMode has a great <a href="http://www.quirksmode.org/dom/w3c_cssom.html#mousepos">compatibility table</a> that details inconsistencies in the non-standard properties. Know that only clientX, clientY, screenX, and screenY are part of the <a href="http://www.w3.org/TR/DOM-Level-3-Events/">W3C Spec</a>.</p>
+<h2 id="normalization">Normalization</h2>
+<h3 id="calculating-pagex-pagey">Calculating pageX, pageY</h3>
+<p>The only major browser that does not support these properties is IE8. If you are doing event handling with jQuery, it will automatically normalize pageX and pageY for you.  If you are not using jQuery&#39;s normalized events but still have access to the jQuery, you can use jQuery.event.fix to normalize the event object.  Example:</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">document</span>.body.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span> </span>{
+    e = e || <span class="hljs-built_in">window</span>.event;
+    e = jQuery.event.fix(e);
+    <span class="hljs-built_in">console</span>.log([e.pageX, e.pageY]);
+};
+</code></pre>
+<p>Without jQuery, the clientX and clientY properties can be added to the viewports scrollLeft and scrollTop to calculate the pageX and pageY values.</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">document</span>.body.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span> </span>{
+    e = e || <span class="hljs-built_in">window</span>.event;
+
+    <span class="hljs-keyword">var</span> pageX = e.pageX;
+    <span class="hljs-keyword">var</span> pageY = e.pageY;
+    <span class="hljs-keyword">if</span> (pageX === <span class="hljs-literal">undefined</span>) {
+        pageX = e.clientX + <span class="hljs-built_in">document</span>.body.scrollLeft + <span class="hljs-built_in">document</span>.documentElement.scrollLeft;
+        pageY = e.clientY + <span class="hljs-built_in">document</span>.body.scrollTop + <span class="hljs-built_in">document</span>.documentElement.scrollTop;
+    }
+
+    <span class="hljs-built_in">console</span>.log([pageX, pageY]);
+};
+</code></pre>
+<h3 id="calculating-offsetx-offsety">Calculating offsetX, offsetY</h3>
+<p>According to the <a href="http://www.w3.org/TR/cssom-view/#extensions-to-the-mouseevent-interface">W3C Working Draft</a>, offsetX and offsetY should be relative to the padding edge of the target element.  The only browser using this convention is IE.  Webkit uses the border edge, Opera uses the content edge, and FireFox does not support the properties.</p>
+<p>Normalizing to the border edge is easiest to do, thanks to the nifty <a href="https://developer.mozilla.org/en-US/docs/DOM/element.getBoundingClientRect">element.getBoundingClientRect</a>:</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">document</span>.body.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span> </span>{
+    e = e || <span class="hljs-built_in">window</span>.event;
+
+    <span class="hljs-keyword">var</span> target = e.target || e.srcElement,
+        rect = target.getBoundingClientRect(),
+        offsetX = e.clientX - rect.left,
+        offsetY = e.clientY - rect.top;
+
+    <span class="hljs-built_in">console</span>.log([offsetX, offsetY]);
+};
+</code></pre>
+<p>If you wanted to normalize to the W3C draft spec, then the border width needs to be subtracted from the previously calculated offsetX and offsetY:</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">document</span>.body.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span> </span>{
+    e = e || <span class="hljs-built_in">window</span>.event;
+
+    <span class="hljs-keyword">var</span> target = e.target || e.srcElement,
+        style = target.currentStyle || <span class="hljs-built_in">window</span>.getComputedStyle(target, <span class="hljs-literal">null</span>),
+        borderLeftWidth = <span class="hljs-built_in">parseInt</span>(style[<span class="hljs-string">'borderLeftWidth'</span>], <span class="hljs-number">10</span>),
+        borderTopWidth = <span class="hljs-built_in">parseInt</span>(style[<span class="hljs-string">'borderTopWidth'</span>], <span class="hljs-number">10</span>),
+        rect = target.getBoundingClientRect(),
+        offsetX = e.clientX - borderLeftWidth - rect.left,
+        offsetY = e.clientY - borderTopWidth - rect.top;
+
+    <span class="hljs-built_in">console</span>.log([offsetX, offsetY]);
+};
+</code></pre>
+
+            <hr>
+            <h2>Hey,</h2>
+            <p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
+            <p>
+            <iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
+            <a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </p>
+        
+        </article>
+        <aside>
+            <h3>Github Repos</h3>
+            <ul>
+                <li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
+                <li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
+                <li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
+                <li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
+            </ul>
+            <div class='recent-posts'>
+                <h3>Blog Posts</h3>
+                <ul>
+                    
+                <li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
+            
+                <li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
+            
+                <li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
+            
+                <li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
+            
+                <li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
+            
+                <li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
+            
+                <li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
+            
+                <li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
+            
+                <li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
+            
+                <li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
+            
+                <li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
+            
+                <li><a href="/notes/click-events/">Working with JavaScript click events</a>
+            
+                <li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
+            
+                <li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
+            
+                </ul>
+            </div>
+            <h3>Tags</h3>
+            <ul class='tags'>
+                
+                <li>
+                    <a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
+                </li>
+            
+            </ul>
+        </aside>
+    </div>
+    <script src="/js/main.js"></script>
+        

@@ -1,0 +1,180 @@
+
+<!doctype html public '(╯°□°）╯︵ 8ƎI'>
+<html lang=en class=''>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
+    <link rel='stylesheet' href='/css/style.css'>
+    <link rel='stylesheet' href='/css/github.css'>
+    <!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
+    <title>Colorbox Beginner's Guide</title>
+    <header>
+        <a class='me' rel='author' href='/'>Jack Moore</a>
+        <a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
+        <a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
+        <nav>
+            <a href='/notes'><span>Archive</span></a>
+        </nav>
+    </header>
+    <div class='main' role='main'>
+        <article>
+            
+            <h1>Colorbox Beginner's Guide</h1>
+            <p class='description'>A tutorial for first-time jQuery users.</p>
+            <hr>
+            
+            <p>Users familiar with jQuery will be better served viewing source on the <a href='/colorbox/example1/'>demo page</a> and using that as a guide.</p>
+<p>Colorbox is a <a href="http://jquery.com">jQuery</a> plugin, meaning that it extends the jQuery JavaScript library to include extra functionality.  In your HTML document, you must include the jQuery library&#39;s source before you include the source of any jQuery plugin.  Colorbox has the additional requirement that you include its stylesheet in the <code>&lt;head&gt;</code> of your document before you include the source of the plugin.</p>
+<p>Here is an example HTML5 document with the required files:</p>
+<pre><code class="lang-html"><span class="hljs-doctype">&lt;!doctype html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"colorbox.css"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"jquery.min.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"jquery.colorbox-min.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'gallery'</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'image1.jpg'</span>&gt;</span>Photo_1<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'gallery'</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'image2.jpg'</span>&gt;</span>Photo_2<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'gallery'</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'image3.jpg'</span>&gt;</span>Photo_3<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span>
+</code></pre>
+<p>Let&#39;s use Colorbox to display the links that have a class of &#39;gallery&#39;.  We will use jQuery to query the DOM to find the matching links, then apply the colorbox method to them:</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
+    jQuery(<span class="hljs-string">'a.gallery'</span>).colorbox();
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>Here, the <a href="http://api.jquery.com/jQuery/"><code>jQuery()</code></a> function takes in the <code>a.gallery</code> <a href="http://api.jquery.com/category/selectors/">CSS selector</a> and queries the DOM for matching elements.  It returns a collection of elements, which we then apply colorbox to by calling jQuery&#39;s <code>.colorbox()</code> method.</p>
+<p>A browser parses your HTML document from top to bottom.  When a browser encounters a <code>&lt;script&gt;</code> block, it will stop parsing your HTML document and execute the script.  The browser will resume parsing your document once the script has executed. This means if you use a <code>&lt;script&gt;</code> in the <code>&lt;head&gt;</code> of your document to assign Colorbox to links in your document, the script will be executed before the markup of those links have been parsed and added to the DOM.  Those links must be in the DOM before colorbox can be assigned to them.  Inserting the <code>&lt;script&gt;</code> after the markup for the links insures that the links will be in the DOM when we query for them:</p>
+<pre><code class="lang-html"><span class="hljs-doctype">&lt;!doctype html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"colorbox.css"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"jquery.min.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"jquery.colorbox-min.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'gallery'</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'image1.jpg'</span>&gt;</span>Photo_1<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'gallery'</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'image2.jpg'</span>&gt;</span>Photo_2<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'gallery'</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'image3.jpg'</span>&gt;</span>Photo_3<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
+            jQuery(<span class="hljs-string">'a.gallery'</span>).colorbox();
+        </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span>
+</code></pre>
+<p>An alternative to placing this <code>&lt;script&gt;</code> at the bottom of the document would be to use jQuery&#39;s <a href="http://api.jquery.com/ready/"><code>.ready()</code> method</a>.  This method takes in a callback function that will be executed once the DOM has finished loading.</p>
+<p>Lastly, the <code>.colorbox()</code> method accepts an optional settings object that overwrites the default settings that control colorbox&#39;s behavior. The settings object is made up of a comma-separated list of name:value pairs in between an opening and closing curly bracket.  Example:</p>
+<pre><code class="lang-javascript"><span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">opacity</span>:<span class="hljs-value"><span class="hljs-number">0.5</span> , rel:<span class="hljs-string">'group1'</span> </span></span></span>}
+</code></pre>
+<p>Here is the <code>.ready()</code> method and Colorbox settings object applied to our example document:</p>
+<pre><code class="lang-html"><span class="hljs-doctype">&lt;!doctype html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"colorbox.css"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"jquery.min.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"jquery.colorbox-min.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
+            jQuery(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                jQuery(<span class="hljs-string">'a.gallery'</span>).colorbox({ opacity:<span class="hljs-number">0.5</span> , rel:<span class="hljs-string">'group1'</span> });
+            });
+        </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'gallery'</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'image1.jpg'</span>&gt;</span>Photo_1<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'gallery'</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'image2.jpg'</span>&gt;</span>Photo_2<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'gallery'</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'image3.jpg'</span>&gt;</span>Photo_3<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span>
+</code></pre>
+<p>If you have questions, <a href="/colorbox/faq/#faq-help">go here</a>. A <a href="/colorbox/">complete list of the settings</a> available are documented on the Colorbox page.</p>
+
+            <hr>
+            <h2>Hey,</h2>
+            <p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
+            <p>
+            <iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
+            <a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </p>
+        
+        </article>
+        <aside>
+            <h3>Github Repos</h3>
+            <ul>
+                <li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
+                <li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
+                <li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
+                <li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
+            </ul>
+            <div class='recent-posts'>
+                <h3>Blog Posts</h3>
+                <ul>
+                    
+                <li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
+            
+                <li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
+            
+                <li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
+            
+                <li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
+            
+                <li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
+            
+                <li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
+            
+                <li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
+            
+                <li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
+            
+                <li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
+            
+                <li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
+            
+                <li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
+            
+                <li><a href="/notes/click-events/">Working with JavaScript click events</a>
+            
+                <li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
+            
+                <li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
+            
+                </ul>
+            </div>
+            <h3>Tags</h3>
+            <ul class='tags'>
+                
+                <li>
+                    <a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
+                </li>
+            
+            </ul>
+        </aside>
+    </div>
+    <script src="/js/main.js"></script>
+        

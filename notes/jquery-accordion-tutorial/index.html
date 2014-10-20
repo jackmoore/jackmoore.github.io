@@ -1,0 +1,222 @@
+
+<!doctype html public '(╯°□°）╯︵ 8ƎI'>
+<html lang=en class=''>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
+    <link rel='stylesheet' href='/css/style.css'>
+    <link rel='stylesheet' href='/css/github.css'>
+    <!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
+    <title>A Better jQuery Accordion</title>
+    <header>
+        <a class='me' rel='author' href='/'>Jack Moore</a>
+        <a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
+        <a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
+        <nav>
+            <a href='/notes'><span>Archive</span></a>
+        </nav>
+    </header>
+    <div class='main' role='main'>
+        <article>
+            
+            <h1>A Better jQuery Accordion</h1>
+            <p class='description'>This will be an exercise in using the jQuery slide methods effectively. We'll start with a basic accordion, then improve it.</p>
+            <hr>
+            <p class='date'><span class='icon-calendar icon--inline'></span>January 18th, 2012</p>
+            <h3 id="first-version-">First Version:</h3>
+<pre><code class="lang-html"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">style</span>&gt;</span><span class="css">
+    * <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">margin</span>:<span class="hljs-value"><span class="hljs-number">0</span></span></span>; <span class="hljs-rule"><span class="hljs-attribute">padding</span>:<span class="hljs-value"><span class="hljs-number">0</span></span></span>; <span class="hljs-rule">}</span></span> <span class="hljs-comment">/* a simple reset */</span>
+    <span class="hljs-class">.head</span>, <span class="hljs-tag">li</span>, <span class="hljs-tag">h2</span> <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">margin-bottom</span>:<span class="hljs-value"><span class="hljs-number">15px</span></span></span>; <span class="hljs-rule">}</span></span>
+    <span class="hljs-class">.head</span> <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">display</span>:<span class="hljs-value">block</span></span>; <span class="hljs-rule">}</span></span>
+    <span class="hljs-class">.content</span> <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">display</span>:<span class="hljs-value">none</span></span>; <span class="hljs-rule">}</span></span>
+  </span><span class="hljs-tag">&lt;/<span class="hljs-title">style</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
+    $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+      $(<span class="hljs-string">'.head'</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span></span>{
+        e.preventDefault();
+        $(<span class="hljs-keyword">this</span>).closest(<span class="hljs-string">'li'</span>).find(<span class="hljs-string">'.content'</span>).slideToggle();
+      });
+    });
+  </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'#'</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'head'</span>&gt;</span>Heading 1<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'content'</span>&gt;</span>Content 1
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'#'</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'head'</span>&gt;</span>Heading 2<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'content'</span>&gt;</span>Content 2<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'#'</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'head'</span>&gt;</span>Heading 3<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'content'</span>&gt;</span>Content 3<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span>
+</code></pre>
+<h3 id="see-the-demo-demo-accordion-html-">See the <a href="/demo/accordion.html">Demo</a></h3>
+<h3 id="the-script">The Script</h3>
+<p>The unordered list will be the structure for the accordion, with each list item being one of the panels.  I think documenting the code will make it easier to understand than trying to explain the process, so here is the same script broken up with comments:</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// Wait until the DOM is loaded, before trying to query the document</span>
+$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+
+  <span class="hljs-comment">// select the .head elements, and bind an event handler to them</span>
+  $(<span class="hljs-string">'.head'</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span></span>{
+
+    <span class="hljs-comment">// prevent the default action of the click event</span>
+    <span class="hljs-comment">// ie. prevent the browser from redirecting to the link's href</span>
+    e.preventDefault();
+
+    <span class="hljs-comment">// 'this' is the execution context of the event handler</span>
+    <span class="hljs-comment">// it refers to the clicked .head element</span>
+    $(<span class="hljs-keyword">this</span>)
+
+    <span class="hljs-comment">// Walk up the DOM tree to find the closest list item</span>
+    <span class="hljs-comment">// It is the closest shared ancestor of both .head and .content</span>
+    .closest(<span class="hljs-string">'li'</span>)
+
+    <span class="hljs-comment">// Search the list item for .content</span>
+    .find(<span class="hljs-string">'.content'</span>)
+
+    <span class="hljs-comment">// Trigger the sliding animation on .content</span>
+    .slideToggle();
+  });
+});
+</code></pre>
+<h3 id="problem-1-it-s-jumpy">Problem 1: It&#39;s Jumpy</h3>
+<p>The demo demonstrated that the first accordion&#39;s animation wasn&#39;t fluid at all.  jQuery miscalculated the height of the content (&#39;.content&#39;) because jQuery gave it an absolute position before measuring the height.  This caused the dimensions to change.  Giving the content a fixed width and/or height would fix this, but that would be impractical for fluid layouts or content of varying size.  An alternative solution is to give the content&#39;s parent element a non-static position.  This will insure that the content is positioned relative to the parent, which constrains the content to the width and height we expect it to have.</p>
+<pre><code class="lang-css"><span class="hljs-tag">li</span> <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">position</span>:<span class="hljs-value">relative</span></span>; <span class="hljs-rule">}</span></span>
+</code></pre>
+<h3 id="problem-2-it-s-still-jumpy">Problem 2: It&#39;s Still Jumpy</h3>
+<p>There is a bit of a jump at the start of slideDown and end of slideUp from the browser <a href="http://www.w3.org/TR/CSS21/box.html#collapsing-margins">collapsing adjoining vertical margins</a>.  When the slideUp animation completes, jQuery will hide the element being animated.  This means there will no longer be an element in the document flow between the .head element&#39;s margin and the list item&#39;s margin, triggering a collapse.  This can be prevented if the margins are separated by padding, border, or clearance.  Here are a few examples:</p>
+<ul>
+<li><p>Use overflow:auto or overflow:hidden on the list item to achieve clearance. I recommend using hidden overflow as auto overflow can cause additional jumping:</p>
+<pre><code class="lang-css"><span class="hljs-tag">li</span> <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">overflow</span>:<span class="hljs-value">hidden</span></span>; <span class="hljs-rule">}</span></span>
+</code></pre>
+</li>
+<li><p>Or use a transparent border: </p>
+<pre><code class="lang-css"><span class="hljs-tag">li</span> <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">border-bottom</span>:<span class="hljs-value"><span class="hljs-number">1px</span> solid transparent</span></span>; <span class="hljs-rule">}</span></span>
+</code></pre>
+</li>
+<li><p>Or use padding instead of margin:</p>
+<pre><code class="lang-css"><span class="hljs-class">.head</span>, <span class="hljs-tag">li</span>, <span class="hljs-tag">h2</span> <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">padding-bottom</span>:<span class="hljs-value"><span class="hljs-number">15px</span></span></span>; <span class="hljs-rule">}</span></span>
+</code></pre>
+</li>
+</ul>
+<p>There is currently an <a href="http://bugs.jquery.com/ticket/7442">open ticket</a> about this on bugs.jquery.com.</p>
+<h3 id="problem-3-the-animation-queues-up">Problem 3: The Animation Queues Up</h3>
+<p>Clicking on the <code>&lt;h2&gt;</code> two or more times in quick succession causes the animation to queue up.  Normally <a href="http://api.jquery.com/stop/">.stop()</a> is used in this situation, but that causes a major problem with <code>.slideUp()</code>.  When called,<code>.slideUp()</code> will record the current height as the height <code>.slideDown()</code> should return to.  If <code>.stop()</code> is called during the slideDown animation, an incomplete height will be recorded making the unrevealed content inaccessible until the document is reloaded.  One way to work around that is to only call <code>$.slideToggle()</code> if the content is not currently being animated.</p>
+<pre><code class="lang-javascript">$(<span class="hljs-string">'.head'</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span></span>{
+  e.preventDefault();
+  $(<span class="hljs-keyword">this</span>).closest(<span class="hljs-string">'li'</span>).find(<span class="hljs-string">'.content'</span>).not(<span class="hljs-string">':animated'</span>).slideToggle();
+});
+</code></pre>
+<h3 id="caching">Caching</h3>
+<p>The results of <code>$(this).closest(&#39;li&#39;).find(&#39;.content&#39;)</code> could be cached so that the document doesn&#39;t have to be queried on each interaction.  A recommended practice, but probably not worth the extra code in this case since we have to create a closure to hold it.  The click event happens infrequently (or never if the user chooses not to interact with the accordion).  If we were binding to a high frequency event, such as mousemove, caching would be much more important.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// .each() is used to create a closure to store a cache of the query.</span>
+$(<span class="hljs-string">'.head'</span>).each(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+  <span class="hljs-keyword">var</span> $content = $(<span class="hljs-keyword">this</span>).closest(<span class="hljs-string">'li'</span>).find(<span class="hljs-string">'.content'</span>);
+  $(<span class="hljs-keyword">this</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span></span>{
+    e.preventDefault();
+    $content.not(<span class="hljs-string">':animated'</span>).slideToggle();
+  });
+});
+</code></pre>
+<h3 id="see-the-demo-demo-accordion-html-">See the <a href="/demo/accordion.html">Demo</a></h3>
+
+            <hr>
+            <h2>Hey,</h2>
+            <p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
+            <p>
+            <iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
+            <a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </p>
+        
+        </article>
+        <aside>
+            <h3>Github Repos</h3>
+            <ul>
+                <li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
+                <li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
+                <li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
+                <li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
+            </ul>
+            <div class='recent-posts'>
+                <h3>Blog Posts</h3>
+                <ul>
+                    
+                <li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
+            
+                <li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
+            
+                <li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
+            
+                <li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
+            
+                <li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
+            
+                <li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
+            
+                <li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
+            
+                <li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
+            
+                <li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
+            
+                <li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
+            
+                <li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
+            
+                <li><a href="/notes/click-events/">Working with JavaScript click events</a>
+            
+                <li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
+            
+                <li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
+            
+                </ul>
+            </div>
+            <h3>Tags</h3>
+            <ul class='tags'>
+                
+                <li>
+                    <a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
+                </li>
+            
+                <li>
+                    <a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
+                </li>
+            
+            </ul>
+        </aside>
+    </div>
+    <script src="/js/main.js"></script>
+        
