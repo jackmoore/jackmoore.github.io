@@ -48,6 +48,7 @@
 <ul>
 <li><a href="#faq-cookie">Open Colorbox on first visit (How to set a cookie)</a></li>
 <li><a href="#faq-querystring">Pass Colorbox parameters based on a URL</a></li>
+<li><a href="#faq-scrolling">Disable scrolling on the main document while Colorbox is open</a></li>
 <li><a href="#faq-close">Prevent Colorbox from closing / Change the behavior of $.colorbox.close()</a></li>
 <li><a href="#faq-nofollow">Disable grouping by rel attribute</a></li>
 <li><a href="#faq-parent">Close from iframe / Control from iframe</a></li>
@@ -169,6 +170,27 @@ $(<span class="hljs-string">'#login_window'</span>).colorbox({onComplete:<span c
 $(<span class="hljs-string">'a.example'</span>).colorbox(settings);
 </code></pre>
 <p>Here we selected some elements in our document, assigned colorbox to them, then used jQuery&#39;s <a href='http://api.jquery.com/jQuery.extend/'><code>$.extend()</code></a> method to combine our querystring parameters with the initial settings we set for our elements.  This is just an example however, and you probably should not let visitors control all of Colorbox&#39;s parameters (through modifying the querystring).</p>
+<h3 id='faq-scrolling'>Disable scrolling on the main document while Colorbox is open</h3>
+
+<p>You can hide the overflow on your body element to disable the scrolling on the main document.</p>
+<p>To disable scrolling on your main document, you can set the body elements overflow to hidden using Colorbox&#39;s public events or callbacks.</p>
+<p>Here is how to use Colorbox&#39;s public events to disable scrolling anytime Colorbox is opened:</p>
+<pre><code class="lang-javascript">$(<span class="hljs-built_in">document</span>).on(<span class="hljs-string">'cbox_open'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    $(<span class="hljs-string">'body'</span>).css({ overflow: <span class="hljs-string">'hidden'</span> });
+}).on(<span class="hljs-string">'cbox_closed'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    $(<span class="hljs-string">'body'</span>).css({ overflow: <span class="hljs-string">''</span> });
+});​
+</code></pre>
+<p>Here is how to use Colorbox&#39;s callbacks to disable scrolling for a specific selector:</p>
+<pre><code class="lang-javascript">$(<span class="hljs-string">'a.example'</span>).colorbox({
+    onOpen: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+      $(<span class="hljs-string">'body'</span>).css({ overflow: <span class="hljs-string">'hidden'</span> });
+    },
+    onClosed(){
+       $(<span class="hljs-string">'body'</span>).css({ overflow: <span class="hljs-string">''</span> });
+    }
+});
+</code></pre>
 <h3 id='faq-close'>Prevent Colorbox from closing / Change the behavior of $.colorbox.close</h3>
 
 <p>Colorbox&#39;s close method can be cached and redefined as to control what happens when Colorbox is closed.  This affects controls that are bind to it (such as the escKey, overlayClose, and the close button) and calling the close method directly.

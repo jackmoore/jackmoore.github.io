@@ -32,6 +32,7 @@ If you are completely new to jQuery plugins, try reading the Colorbox <a href='/
 
 * [Open Colorbox on first visit (How to set a cookie)](#faq-cookie)
 * [Pass Colorbox parameters based on a URL](#faq-querystring)
+* [Disable scrolling on the main document while Colorbox is open](#faq-scrolling)
 * [Prevent Colorbox from closing / Change the behavior of $.colorbox.close()](#faq-close)
 * [Disable grouping by rel attribute](#faq-nofollow)
 * [Close from iframe / Control from iframe](#faq-parent)
@@ -195,6 +196,34 @@ $('a.example').colorbox(settings);
 ```
 
 Here we selected some elements in our document, assigned colorbox to them, then used jQuery's <a href='http://api.jquery.com/jQuery.extend/'><code>$.extend()</code></a> method to combine our querystring parameters with the initial settings we set for our elements.  This is just an example however, and you probably should not let visitors control all of Colorbox's parameters (through modifying the querystring).
+
+<h3 id='faq-scrolling'>Disable scrolling on the main document while Colorbox is open</h3>
+
+You can hide the overflow on your body element to disable the scrolling on the main document.
+
+To disable scrolling on your main document, you can set the body elements overflow to hidden using Colorbox's public events or callbacks.
+
+Here is how to use Colorbox's public events to disable scrolling anytime Colorbox is opened:
+
+```javascript
+$(document).on('cbox_open', function() {
+    $('body').css({ overflow: 'hidden' });
+}).on('cbox_closed', function() {
+    $('body').css({ overflow: '' });
+});​
+```
+Here is how to use Colorbox's callbacks to disable scrolling for a specific selector:
+
+```javascript
+$('a.example').colorbox({
+	onOpen: function(){
+	  $('body').css({ overflow: 'hidden' });
+	},
+	onClosed(){
+	   $('body').css({ overflow: '' });
+	}
+});
+```
 
 <h3 id='faq-close'>Prevent Colorbox from closing / Change the behavior of $.colorbox.close</h3>
 
