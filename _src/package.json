@@ -4,13 +4,15 @@
   "description": "Static site builder",
   "dependencies": {},
   "devDependencies": {
-    "6to5": "^1.9.10",
+    "babel": "^4.5.1",
     "front-matter": "^0.2.0",
     "highlight.js": "^8.3.0",
-    "marked": "^0.3.2",
+    "markdown-it": "^3.0.7",
     "mkdirp": "^0.5.0",
     "moment": "^2.8.3",
-    "rimraf": "^2.2.8"
+    "node-static": "^0.7.6",
+    "rimraf": "^2.2.8",
+    "watch": "^0.14.0"
   },
   "author": "hello@jacklmoore.com",
   "license": "MIT"
