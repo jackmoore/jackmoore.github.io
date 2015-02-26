@@ -1,29 +1,29 @@
 
 <!doctype html public '(╯°□°）╯︵ 8ƎI'>
 <html lang=en class=''>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
-    <link rel='stylesheet' href='/css/style.css'>
-    <link rel='stylesheet' href='/css/github.css'>
-    <!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
-    <title>HTML5 Placeholder Attribute</title>
-    <header>
-        <a class='me' rel='author' href='/'>Jack Moore</a>
-        <a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
-        <a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
-        <nav>
-            <a href='/notes'><span>Archive</span></a>
-        </nav>
-    </header>
-    <div class='main' role='main'>
-        <article>
-            
-            <h1>HTML5 Placeholder Attribute</h1>
-            <p class='description'>A guide to using the attribute, and support it for older browsers.</p>
-            <hr>
-            <p class='date'><span class='icon-calendar icon--inline'></span>November 8th, 2011</p>
-            <h2 id="placeholder">Placeholder</h2>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
+	<link rel='stylesheet' href='/css/style.css'>
+	<link rel='stylesheet' href='/css/github.css'>
+	<!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
+	<title>HTML5 Placeholder Attribute</title>
+	<header>
+		<a class='me' rel='author' href='/'>Jack Moore</a>
+		<a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
+		<a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
+		<nav>
+			<a href='/notes'><span>Archive</span></a>
+		</nav>
+	</header>
+	<div class='main' role='main'>
+		<article>
+			
+			<h1>HTML5 Placeholder Attribute</h1>
+			<p class='description'>A guide to using the attribute, and support it for older browsers.</p>
+			<hr>
+			<p class='date'><span class='icon-calendar icon--inline'></span>November 8th, 2011</p>
+			<h2>Placeholder</h2>
 <p>Placeholder text is a short example or hint text that is shown in a form field when the field is unfocused and has no input from the user.</p>
 <form action='#' method='get' style='padding:15px 15px 0; margin-bottom:14px; background:#F4EFE9 url(/img/tiles/wood.png);'>
   <input type='text' name='demo-name' placeholder='Name' style='width:40%; background:#fff;'><br>
@@ -31,14 +31,12 @@
   <textarea name='demo-comment' placeholder='Message' style='width:95%; background:#fff;'></textarea><br>
   <input type='submit' value='Submit' onclick='return false;'>
 </form>
-
-
 <p>This could be considered a poor example, as label elements should be used for maximum accessibility.  Not showing labels can make forms look less complex, increasing usability, but hurt accessibility.  The HTML5 spec instructs that <a href="http://dev.w3.org/html5/spec/common-input-element-attributes.html#attr-input-placeholder">the placeholder attribute should not be used as an alternative to a label</a>.</p>
 <p>While the adding &amp; removing of placeholder text on field focus has long been accomplished through JavaScript, there is now a <a href="http://www.w3.org/TR/html5/common-input-element-attributes.html#attr-input-placeholder">placeholder attribute</a> in the HTML5 working draft.  Most modern browsers support the placeholder attribute and will automatically add/replace the placeholder text.  They will also automatically exclude the placeholder from being sent when the form is submitted.  However, versions of Internet Explorer prior to IE10 do not support the attribute.</p>
-<pre><code class="lang-html">&lt;input <span class="hljs-class"><span class="hljs-keyword">type</span></span>=<span class="hljs-string">'text'</span> name=<span class="hljs-string">'email'</span> placeholder=<span class="hljs-string">'Email Address'</span>&gt;
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">'text'</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">'email'</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">'Email Address'</span>&gt;</span>
 </code></pre>
-<h3 id="supporting-older-browsers">Supporting Older Browsers</h3>
-<pre><code class="lang-javascript"><span class="hljs-comment">// A jQuery based placeholder polyfill</span>
+<h3>Supporting Older Browsers</h3>
+<pre><code class="language-javascript"><span class="hljs-comment">// A jQuery based placeholder polyfill</span>
 $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span><span class="hljs-params">()</span> </span>{
     <span class="hljs-keyword">if</span>($(<span class="hljs-keyword">this</span>).val() === <span class="hljs-string">''</span>){
@@ -65,10 +63,10 @@ $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"
   }
 });
 </code></pre>
-<p>To enable styling, this script adds a class of &#39;placeholder&#39; while the placeholder text is being displayed.</p>
-<h3 id="styling-the-placeholder">Styling The Placeholder</h3>
-<p>Since placeholder has yet to be standardized, styles are applied through vendor-specific prefixes.  Even though Opera 11 supports the placeholder attribute, it does not offer any way to style it at this time. It&#39;s a good idea to go ahead and specify at least the color property to normalize the color between browsers.  Otherwise, a default style will be provided which will vary from browser to browser.</p>
-<pre><code class="lang-css"><span class="hljs-pseudo">::-webkit-input-placeholder</span> <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"><span class="hljs-hexcolor">#999</span></span></span>; <span class="hljs-rule">}</span></span>
+<p>To enable styling, this script adds a class of 'placeholder' while the placeholder text is being displayed.</p>
+<h3>Styling The Placeholder</h3>
+<p>Since placeholder has yet to be standardized, styles are applied through vendor-specific prefixes.  Even though Opera 11 supports the placeholder attribute, it does not offer any way to style it at this time. It's a good idea to go ahead and specify at least the color property to normalize the color between browsers.  Otherwise, a default style will be provided which will vary from browser to browser.</p>
+<pre><code class="language-css"><span class="hljs-pseudo">::-webkit-input-placeholder</span> <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"><span class="hljs-hexcolor">#999</span></span></span>; <span class="hljs-rule">}</span></span>
 <span class="hljs-pseudo">::-moz-placeholder</span> <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"><span class="hljs-hexcolor">#999</span></span></span>; <span class="hljs-rule">}</span></span> <span class="hljs-comment">/* FF 19+ */</span>
 <span class="hljs-pseudo">:-moz-placeholder</span> <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"><span class="hljs-hexcolor">#999</span></span></span>; <span class="hljs-rule">}</span></span> <span class="hljs-comment">/* FF 18- */</span>
 <span class="hljs-pseudo">:-ms-input-placeholder</span> <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"><span class="hljs-hexcolor">#999</span></span></span>; <span class="hljs-rule">}</span></span>
@@ -76,117 +74,114 @@ $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"
 </code></pre>
 <p>John Catterfeld compiled a nifty <a href='http://blog.ajcw.com/2011/02/styling-the-html5-placeholder/'>list of CSS properties</a> can be applied to placeholders.</p>
 <script src='/js/jquery.js'></script>
-
 <script>
   function add() {
     if(!$(this).val()){
       $(this).val($(this).attr('placeholder')).addClass('placeholder');
     }
   }
+<p>function remove() {
+if($(this).val() === $(this).attr('placeholder')){
+$(this).val('').removeClass('placeholder');
+}
+}</p>
+<p>// Create a dummy element for feature detection
+if (!('placeholder' in $('<input>')[0])) {</p>
+<pre><code>// Select the elements that have a placeholder attribute
+$('input[placeholder], textarea[placeholder]').blur(add).focus(remove).each(add);
 
-  function remove() {
-    if($(this).val() === $(this).attr('placeholder')){
-      $(this).val('').removeClass('placeholder');
-    }
-  }
-
-  // Create a dummy element for feature detection
-  if (!('placeholder' in $('<input>')[0])) {
-
-    // Select the elements that have a placeholder attribute
-    $('input[placeholder], textarea[placeholder]').blur(add).focus(remove).each(add);
-
-    // Remove the placeholder text before the form is submitted
-    $('form').submit(function(){
-      $(this).find('input[placeholder], textarea[placeholder]').each(remove);
-    });
-  }
+// Remove the placeholder text before the form is submitted
+$('form').submit(function(){
+  $(this).find('input[placeholder], textarea[placeholder]').each(remove);
+});
+</code></pre>
+<p>}</p>
 </script>
-            <hr>
-            <h2>Hey,</h2>
-            <p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
-            <p>
-            <iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
-            <a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </p>
-        
-        </article>
-        <aside>
-            <h3>Github Repos</h3>
-            <ul>
-                <li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
-                <li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
-                <li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
-                <li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
-            </ul>
-            <div class='recent-posts'>
-                <h3>Blog Posts</h3>
-                <ul>
-                    
-                <li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
-            
-                <li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
-            
-                <li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
-            
-                <li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
-            
-                <li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
-            
-                <li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
-            
-                <li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
-            
-                <li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
-            
-                <li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
-            
-                <li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
-            
-                <li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
-            
-                <li><a href="/notes/click-events/">Working with JavaScript click events</a>
-            
-                <li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
-            
-                <li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
-            
-                </ul>
-            </div>
-            <h3>Tags</h3>
-            <ul class='tags'>
-                
-                <li>
-                    <a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
-                </li>
-            
-            </ul>
-        </aside>
-    </div>
-    <script src="/js/main.js"></script>
-        
+			<hr>
+			<h2>Hey,</h2>
+			<p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
+			<p>
+			<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
+			<a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</p>
+		
+		</article>
+		<aside>
+			<h3>Github Repos</h3>
+			<ul>
+				<li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
+				<li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
+				<li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
+				<li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
+			</ul>
+			<div class='recent-posts'>
+				<h3>Blog Posts</h3>
+				<ul>
+					
+				<li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
+			
+				<li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
+			
+				<li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
+			
+				<li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
+			
+				<li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
+			
+				<li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
+			
+				<li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
+			
+				<li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
+			
+				<li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
+			
+				<li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
+			
+				<li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
+			
+				<li><a href="/notes/click-events/">Working with JavaScript click events</a>
+			
+				<li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
+			
+				<li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
+			
+				</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul class='tags'>
+				
+				<li>
+					<a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
+				</li>
+			
+			</ul>
+		</aside>
+	</div>
+	<script src="/js/main.js"></script>
+		

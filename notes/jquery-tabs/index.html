@@ -1,33 +1,32 @@
 
 <!doctype html public '(╯°□°）╯︵ 8ƎI'>
 <html lang=en class=''>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
-    <link rel='stylesheet' href='/css/style.css'>
-    <link rel='stylesheet' href='/css/github.css'>
-    <!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
-    <title>jQuery Tabs Tutorial</title>
-    <header>
-        <a class='me' rel='author' href='/'>Jack Moore</a>
-        <a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
-        <a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
-        <nav>
-            <a href='/notes'><span>Archive</span></a>
-        </nav>
-    </header>
-    <div class='main' role='main'>
-        <article>
-            
-            <h1>jQuery Tabs Tutorial</h1>
-            <p class='description'>Tabs are easy to implement and can be built to work with your existing markup. This guide will walk through the process.</p>
-            <hr>
-            <p class='date'><span class='icon-calendar icon--inline'></span>December 23rd, 2011</p>
-            <iframe class='demo' src='/demo/tabs.html' style='height:180px' frameborder='0'></iframe>
-
-<h3 id="writing-the-markup">Writing the Markup</h3>
-<p>Lets start by writing our markup as if our visitor doesn&#39;t even have JavaScript enabled.  Even if you do not wish to support users without JavaScript, it is still a good pattern to follow to exercise <a href="http://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a>.</p>
-<pre><code class="lang-html">  <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'tabs'</span>&gt;</span>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
+	<link rel='stylesheet' href='/css/style.css'>
+	<link rel='stylesheet' href='/css/github.css'>
+	<!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
+	<title>jQuery Tabs Tutorial</title>
+	<header>
+		<a class='me' rel='author' href='/'>Jack Moore</a>
+		<a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
+		<a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
+		<nav>
+			<a href='/notes'><span>Archive</span></a>
+		</nav>
+	</header>
+	<div class='main' role='main'>
+		<article>
+			
+			<h1>jQuery Tabs Tutorial</h1>
+			<p class='description'>Tabs are easy to implement and can be built to work with your existing markup. This guide will walk through the process.</p>
+			<hr>
+			<p class='date'><span class='icon-calendar icon--inline'></span>December 23rd, 2011</p>
+			<iframe class='demo' src='/demo/tabs.html' style='height:180px' frameborder='0'></iframe>
+<h3>Writing the Markup</h3>
+<p>Lets start by writing our markup as if our visitor doesn't even have JavaScript enabled.  Even if you do not wish to support users without JavaScript, it is still a good pattern to follow to exercise <a href="http://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a>.</p>
+<pre><code class="language-html">  <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'tabs'</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'#tab1'</span>&gt;</span>Tab 1<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'#tab2'</span>&gt;</span>Tab 2<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'#tab3'</span>&gt;</span>Tab 3<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
@@ -42,133 +41,133 @@
     <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>And this is the 3rd tab.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
-<p>I used fragment identifiers (<code>#tab1</code>, <code>#tab2</code>, <code>#tab3</code>) for the href values in the navigation.  Each element containing a tab&#39;s content is given an ID that corresponds to a fragment identifier.  This way the links are semantic and continue to be functional even if the visitor has JavaScript disabled.</p>
+<p>I used fragment identifiers (<code>#tab1</code>, <code>#tab2</code>, <code>#tab3</code>) for the href values in the navigation.  Each element containing a tab's content is given an ID that corresponds to a fragment identifier.  This way the links are semantic and continue to be functional even if the visitor has JavaScript disabled.</p>
 <p>JavaScript provides direct access to the fragment identifier, or hash, for anchor element objects and the window.location object by using their hash property.</p>
-<h3 id="writing-the-jquery">Writing the jQuery</h3>
+<h3>Writing the jQuery</h3>
 <p>Rather than describing the code, I am just going to include it with comments that explain each step.</p>
-<pre><code class="lang-javascript">  <span class="hljs-variable">$(</span><span class="hljs-string">'ul.tabs'</span>).each(function(){
+<pre><code class="language-javascript">  $(<span class="hljs-string">'ul.tabs'</span>).each(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
     <span class="hljs-comment">// For each set of tabs, we want to keep track of</span>
     <span class="hljs-comment">// which tab is active and it's associated content</span>
-    var <span class="hljs-variable">$active</span>, <span class="hljs-variable">$content</span>, <span class="hljs-variable">$links</span> = <span class="hljs-variable">$(</span>this).find(<span class="hljs-string">'a'</span>);
+    <span class="hljs-keyword">var</span> $active, $content, $links = $(<span class="hljs-keyword">this</span>).find(<span class="hljs-string">'a'</span>);
 
     <span class="hljs-comment">// If the location.hash matches one of the links, use that as the active tab.</span>
     <span class="hljs-comment">// If no match is found, use the first link as the initial active tab.</span>
-    <span class="hljs-variable">$active</span> = <span class="hljs-variable">$(</span><span class="hljs-variable">$links</span>.<span class="hljs-keyword">filter</span>(<span class="hljs-string">'[href="'</span>+location.hash+<span class="hljs-string">'"]'</span>)[<span class="hljs-number">0</span>] || <span class="hljs-variable">$links</span>[<span class="hljs-number">0</span>]);
-    <span class="hljs-variable">$active</span>.addClass(<span class="hljs-string">'active'</span>);
+    $active = $($links.filter(<span class="hljs-string">'[href="'</span>+location.hash+<span class="hljs-string">'"]'</span>)[<span class="hljs-number">0</span>] || $links[<span class="hljs-number">0</span>]);
+    $active.addClass(<span class="hljs-string">'active'</span>);
 
-    <span class="hljs-variable">$content</span> = <span class="hljs-variable">$(</span><span class="hljs-variable">$active</span>[<span class="hljs-number">0</span>].hash);
+    $content = $($active[<span class="hljs-number">0</span>].hash);
 
     <span class="hljs-comment">// Hide the remaining content</span>
-    <span class="hljs-variable">$links</span>.not(<span class="hljs-variable">$active</span>).each(function () {
-      <span class="hljs-variable">$(</span>this.hash).<span class="hljs-keyword">hide</span>();
+    $links.not($active).each(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+      $(<span class="hljs-keyword">this</span>.hash).hide();
     });
 
     <span class="hljs-comment">// Bind the click event handler</span>
-    <span class="hljs-variable">$(</span>this).on(<span class="hljs-string">'click'</span>, <span class="hljs-string">'a'</span>, function(e){
+    $(<span class="hljs-keyword">this</span>).on(<span class="hljs-string">'click'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span></span>{
       <span class="hljs-comment">// Make the old tab inactive.</span>
-      <span class="hljs-variable">$active</span>.removeClass(<span class="hljs-string">'active'</span>);
-      <span class="hljs-variable">$content</span>.<span class="hljs-keyword">hide</span>();
+      $active.removeClass(<span class="hljs-string">'active'</span>);
+      $content.hide();
 
       <span class="hljs-comment">// Update the variables with the new link and content</span>
-      <span class="hljs-variable">$active</span> = <span class="hljs-variable">$(</span>this);
-      <span class="hljs-variable">$content</span> = <span class="hljs-variable">$(</span>this.hash);
+      $active = $(<span class="hljs-keyword">this</span>);
+      $content = $(<span class="hljs-keyword">this</span>.hash);
 
       <span class="hljs-comment">// Make the tab active.</span>
-      <span class="hljs-variable">$active</span>.addClass(<span class="hljs-string">'active'</span>);
-      <span class="hljs-variable">$content</span>.show();
+      $active.addClass(<span class="hljs-string">'active'</span>);
+      $content.show();
 
       <span class="hljs-comment">// Prevent the anchor's default click action</span>
       e.preventDefault();
     });
   });
 </code></pre>
-<p><a href="/demo/tabs.html">See the complete document</a>. I used jQuery&#39;s <a href="http://api.jquery.com/on/">.on()</a> method for event binding, so be sure to use jQuery 1.7 or higher.</p>
+<p><a href="/demo/tabs.html">See the complete document</a>. I used jQuery's <a href="http://api.jquery.com/on/">.on()</a> method for event binding, so be sure to use jQuery 1.7 or higher.</p>
 
-            <hr>
-            <h2>Hey,</h2>
-            <p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
-            <p>
-            <iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
-            <a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </p>
-        
-        </article>
-        <aside>
-            <h3>Github Repos</h3>
-            <ul>
-                <li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
-                <li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
-                <li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
-                <li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
-            </ul>
-            <div class='recent-posts'>
-                <h3>Blog Posts</h3>
-                <ul>
-                    
-                <li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
-            
-                <li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
-            
-                <li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
-            
-                <li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
-            
-                <li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
-            
-                <li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
-            
-                <li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
-            
-                <li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
-            
-                <li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
-            
-                <li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
-            
-                <li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
-            
-                <li><a href="/notes/click-events/">Working with JavaScript click events</a>
-            
-                <li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
-            
-                <li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
-            
-                </ul>
-            </div>
-            <h3>Tags</h3>
-            <ul class='tags'>
-                
-                <li>
-                    <a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
-                </li>
-            
-            </ul>
-        </aside>
-    </div>
-    <script src="/js/main.js"></script>
-        
+			<hr>
+			<h2>Hey,</h2>
+			<p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
+			<p>
+			<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
+			<a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</p>
+		
+		</article>
+		<aside>
+			<h3>Github Repos</h3>
+			<ul>
+				<li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
+				<li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
+				<li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
+				<li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
+			</ul>
+			<div class='recent-posts'>
+				<h3>Blog Posts</h3>
+				<ul>
+					
+				<li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
+			
+				<li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
+			
+				<li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
+			
+				<li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
+			
+				<li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
+			
+				<li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
+			
+				<li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
+			
+				<li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
+			
+				<li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
+			
+				<li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
+			
+				<li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
+			
+				<li><a href="/notes/click-events/">Working with JavaScript click events</a>
+			
+				<li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
+			
+				<li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
+			
+				</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul class='tags'>
+				
+				<li>
+					<a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
+				</li>
+			
+			</ul>
+		</aside>
+	</div>
+	<script src="/js/main.js"></script>
+		

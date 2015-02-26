@@ -1,155 +1,159 @@
 
 <!doctype html public '(╯°□°）╯︵ 8ƎI'>
 <html lang=en class=''>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
-    <link rel='stylesheet' href='/css/style.css'>
-    <link rel='stylesheet' href='/css/github.css'>
-    <!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
-    <title>Solving IE7 &amp; IE8 PNG Opacity Problems</title>
-    <header>
-        <a class='me' rel='author' href='/'>Jack Moore</a>
-        <a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
-        <a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
-        <nav>
-            <a href='/notes'><span>Archive</span></a>
-        </nav>
-    </header>
-    <div class='main' role='main'>
-        <article>
-            
-            <h1>Solving IE7 &amp; IE8 PNG Opacity Problems</h1>
-            <p class='description'>How to fix transparent png issues associated with Internet Explorer's alpha filter.</p>
-            <hr>
-            <p class='date'><span class='icon-calendar icon--inline'></span>July 18th, 2011</p>
-            <h2 id="png-alpha-transparencies">PNG Alpha-transparencies</h2>
-<pre><code><span class="hljs-comment">/* Normal CSS background using an PNG with an alpha transparency */</span>
-<span class="hljs-id">#demo</span> <span class="hljs-rules">{
-    <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"><span class="hljs-function">url</span>(ie8-logo.png) <span class="hljs-number">0</span> <span class="hljs-number">0</span> no-repeat</span></span>;
-<span class="hljs-rule">}</span></span>
-</code></pre><p>IE7 and IE8 have native PNG support for alpha-transparencies, but it falls to pieces as soon as opacity comes into the picture.  When setting any value for opacity, even 100% (ie. <code>filter: alpha(opacity = 100)</code>), IE fills in the alpha-transparency of the PNG with a pure black fill.  This is sometimes refered to as a &#39;black halo&#39;.  The alpha filter can be removed at any time to remove the fill and restore the alpha transparency, but supporting both requires using more of IE&#39;s propriatary filters.  All of the follow examples should be placed in a IE-targeted <a href="http://www.quirksmode.org/css/condcom.html">conditional comment</a>.</p>
-<h3 id="screenshot">Screenshot</h3>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
+	<link rel='stylesheet' href='/css/style.css'>
+	<link rel='stylesheet' href='/css/github.css'>
+	<!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
+	<title>Solving IE7 &amp; IE8 PNG Opacity Problems</title>
+	<header>
+		<a class='me' rel='author' href='/'>Jack Moore</a>
+		<a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
+		<a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
+		<nav>
+			<a href='/notes'><span>Archive</span></a>
+		</nav>
+	</header>
+	<div class='main' role='main'>
+		<article>
+			
+			<h1>Solving IE7 &amp; IE8 PNG Opacity Problems</h1>
+			<p class='description'>How to fix transparent png issues associated with Internet Explorer's alpha filter.</p>
+			<hr>
+			<p class='date'><span class='icon-calendar icon--inline'></span>July 18th, 2011</p>
+			<h2>PNG Alpha-transparencies</h2>
+<pre><code>/* Normal CSS background using an PNG with an alpha transparency */
+#demo {
+    background:url(ie8-logo.png) 0 0 no-repeat;
+}
+</code></pre>
+<p>IE7 and IE8 have native PNG support for alpha-transparencies, but it falls to pieces as soon as opacity comes into the picture.  When setting any value for opacity, even 100% (ie. <code>filter: alpha(opacity = 100)</code>), IE fills in the alpha-transparency of the PNG with a pure black fill.  This is sometimes refered to as a 'black halo'.  The alpha filter can be removed at any time to remove the fill and restore the alpha transparency, but supporting both requires using more of IE's propriatary filters.  All of the follow examples should be placed in a IE-targeted <a href="http://www.quirksmode.org/css/condcom.html">conditional comment</a>.</p>
+<h3>Screenshot</h3>
 <p><img src="/img/alpha-demo.png" alt=""></p>
-<h3 id="gradient-filter-fix">Gradient filter fix</h3>
+<h3>Gradient filter fix</h3>
 <p>This is a great little hack that avoids the drawbacks associated with using AlphaImageLoader.  The caveat is that it does not work for IE6, and the PNG may need to be tweaked a bit for it to display correctly.</p>
-<pre><code><span class="hljs-id">#demo</span> <span class="hljs-rules">{
-    <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"><span class="hljs-function">url</span>(ie8-logo.png) <span class="hljs-number">0</span> <span class="hljs-number">0</span> no-repeat</span></span>;
-    <span class="hljs-rule"><span class="hljs-attribute">filter</span>:<span class="hljs-value"> progid:DXImageTransform.Microsoft.<span class="hljs-function">gradient</span>(
-        startColorstr=<span class="hljs-hexcolor">#00FFFFFF</span>, endColorstr=<span class="hljs-hexcolor">#00FFFFFF</span>
-    )</span></span>;
-<span class="hljs-rule">}</span></span>
-</code></pre><p>Colorbox uses this technique for alpha channel support in IE8 and IE7.  Credit for this technique goes to <a href="http://www.sitepoint.com/forums/javascript-15/jquery-fadein-fadeout-transparent-png-ie7-chrome-590295.html">Dan Tello</a>, and to <a href="https://github.com/Lukom">Lukom</a> for bringing it to my attention.</p>
-<h3 id="alphaimageloader-filter-fix">AlphaImageLoader filter fix</h3>
-<pre><code><span class="hljs-id">#demo</span> <span class="hljs-rules">{
-    <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"> transparent</span></span>;
-    <span class="hljs-rule"><span class="hljs-attribute">filter</span>:<span class="hljs-value">
-    progid:DXImageTransform.Microsoft.<span class="hljs-function">AlphaImageLoader</span>(src=ie8-logo.png,sizingMethod=<span class="hljs-string">'crop'</span>)</span></span>;
-<span class="hljs-rule">}</span></span>
-</code></pre><p>This is a less robust solution than the gradient filter, however it works well and is supported for IE6-IE8.  The AlphaImageLoader filter displays an image between the background and the content.</p>
-<p><strong>It is treated like an image element and not a CSS background-image, so it loses CSS properties like background-position and background-repeat.  Also, it&#39;s src is relative to the current HTML document unlike a CSS background-image which path is relative to the CSS document.</strong>  An absolute path or path that is relative to the root can be used to avoid some of the document to document path confusion.  A CSS expression can be used to create a path that is relative to the CSS document as having paths relative to the HTML document can impractical, especially for code that is distributed or reuable.</p>
-<pre><code><span class="hljs-id">#demo</span> <span class="hljs-rules">{
-    <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"><span class="hljs-function">url</span>(ie8-logo.png) <span class="hljs-number">0</span> <span class="hljs-number">0</span> no-repeat</span></span>;
-    <span class="hljs-rule"><span class="hljs-attribute">behavior</span>:<span class="hljs-value">
-    <span class="hljs-function">expression</span>(this.src = this.src ?
-        this.src : this.currentStyle.backgroundImage.<span class="hljs-function">split</span>(<span class="hljs-string">'"'</span>)[<span class="hljs-number">1</span>],
-        this.style.background = <span class="hljs-string">"none"</span>,
+<pre><code>#demo {
+    background:url(ie8-logo.png) 0 0 no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(
+        startColorstr=#00FFFFFF, endColorstr=#00FFFFFF
+    );
+}
+</code></pre>
+<p>Colorbox uses this technique for alpha channel support in IE8 and IE7.  Credit for this technique goes to <a href="http://www.sitepoint.com/forums/javascript-15/jquery-fadein-fadeout-transparent-png-ie7-chrome-590295.html">Dan Tello</a>, and to <a href="https://github.com/Lukom">Lukom</a> for bringing it to my attention.</p>
+<h3>AlphaImageLoader filter fix</h3>
+<pre><code>#demo {
+    background: transparent;
+    filter:
+    progid:DXImageTransform.Microsoft.AlphaImageLoader(src=ie8-logo.png,sizingMethod='crop');
+}
+</code></pre>
+<p>This is a less robust solution than the gradient filter, however it works well and is supported for IE6-IE8.  The AlphaImageLoader filter displays an image between the background and the content.</p>
+<p><strong>It is treated like an image element and not a CSS background-image, so it loses CSS properties like background-position and background-repeat.  Also, it's src is relative to the current HTML document unlike a CSS background-image which path is relative to the CSS document.</strong>  An absolute path or path that is relative to the root can be used to avoid some of the document to document path confusion.  A CSS expression can be used to create a path that is relative to the CSS document as having paths relative to the HTML document can impractical, especially for code that is distributed or reuable.</p>
+<pre><code>#demo {
+    background:url(ie8-logo.png) 0 0 no-repeat;
+    behavior:
+    expression(this.src = this.src ?
+        this.src : this.currentStyle.backgroundImage.split('&quot;')[1],
+        this.style.background = &quot;none&quot;,
     this.style.filter =
-        <span class="hljs-string">"progid:DXImageTransform.Microsoft.AlphaImageLoader(src="</span>
-        + this.src + <span class="hljs-string">",sizingMethod='crop')"</span>)</span></span>;
-<span class="hljs-rule">}</span></span>
-</code></pre><p>This is how Colorbox enables PNG alpha-transparency support in IE6.  Using CSS expressions are not supported in IE8 and their use is discouraged in general, but IE6 users have limited options here.</p>
-<h2 id="cleartype-issues">ClearType Issues</h2>
+        &quot;progid:DXImageTransform.Microsoft.AlphaImageLoader(src=&quot;
+        + this.src + &quot;,sizingMethod='crop')&quot;);
+}
+</code></pre>
+<p>This is how Colorbox enables PNG alpha-transparency support in IE6.  Using CSS expressions are not supported in IE8 and their use is discouraged in general, but IE6 users have limited options here.</p>
+<h2>ClearType Issues</h2>
 <p>IE7 &amp; IE8 lose ClearType whenever there an opacity filter is applied (ie. <code>filter: alpha(opacity=50)</code>).  It even happens when the opacity is set to 100%.  There are a couple of things that can be done to improve the situation. 1. Use a background fill if possible.  2. Remove the filter in situations where it would be at 100%.  For example, if you animated an element from having 0 opacity to having 100% opacity.</p>
 <p><img src="/img/cleartype.png" alt=""></p>
-<h2 id="opacity-inheritance">Opacity Inheritance</h2>
+<h2>Opacity Inheritance</h2>
 <p>IE7, IE8, and IE9 all have some sort of defective <a href="/notes/ie-opacity-inheritance">opacity inheritance</a>.</p>
 
-            <hr>
-            <h2>Hey,</h2>
-            <p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
-            <p>
-            <iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
-            <a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </p>
-        
-        </article>
-        <aside>
-            <h3>Github Repos</h3>
-            <ul>
-                <li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
-                <li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
-                <li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
-                <li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
-            </ul>
-            <div class='recent-posts'>
-                <h3>Blog Posts</h3>
-                <ul>
-                    
-                <li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
-            
-                <li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
-            
-                <li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
-            
-                <li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
-            
-                <li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
-            
-                <li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
-            
-                <li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
-            
-                <li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
-            
-                <li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
-            
-                <li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
-            
-                <li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
-            
-                <li><a href="/notes/click-events/">Working with JavaScript click events</a>
-            
-                <li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
-            
-                <li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
-            
-                </ul>
-            </div>
-            <h3>Tags</h3>
-            <ul class='tags'>
-                
-                <li>
-                    <a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
-                </li>
-            
-            </ul>
-        </aside>
-    </div>
-    <script src="/js/main.js"></script>
-        
+			<hr>
+			<h2>Hey,</h2>
+			<p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
+			<p>
+			<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
+			<a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</p>
+		
+		</article>
+		<aside>
+			<h3>Github Repos</h3>
+			<ul>
+				<li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
+				<li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
+				<li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
+				<li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
+			</ul>
+			<div class='recent-posts'>
+				<h3>Blog Posts</h3>
+				<ul>
+					
+				<li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
+			
+				<li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
+			
+				<li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
+			
+				<li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
+			
+				<li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
+			
+				<li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
+			
+				<li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
+			
+				<li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
+			
+				<li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
+			
+				<li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
+			
+				<li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
+			
+				<li><a href="/notes/click-events/">Working with JavaScript click events</a>
+			
+				<li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
+			
+				<li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
+			
+				</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul class='tags'>
+				
+				<li>
+					<a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
+				</li>
+			
+			</ul>
+		</aside>
+	</div>
+	<script src="/js/main.js"></script>
+		

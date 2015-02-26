@@ -9,7 +9,7 @@ require('http').createServer(function (request, response) {
     request.addListener('end', function () {
         server.serve(request, response);
     }).resume();
-}).listen(3333);
+}).listen(8080);
 
 watch.watchTree('./', {
 	ignoreDirectoryPattern: /node_modules/,

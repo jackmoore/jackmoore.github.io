@@ -8,4 +8,4 @@ tags: [Illustration]
 	<img src='/img/tragedy-struck-on-threadless.png' alt='My Threadless print' style="margin:auto; display:block;">
 </div>
 
-Threadless [reprinted](<http://www.threadless.com/product/1051/Tragedy_Struck) the shirt design I submitted.
+Threadless [reprinted](http://www.threadless.com/product/1051/Tragedy_Struck) the shirt design I submitted.

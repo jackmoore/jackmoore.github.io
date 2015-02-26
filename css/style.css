@@ -42,6 +42,18 @@
   content: "\f09e";
 }
 
+.download, .download:link, .download:visited {
+  background: #1e87dd;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.download i {
+  margin-right: 5px;
+}
+
 html {
   min-width: 940px;
   background: #f5f4f2 url("/img/stripe.png") 0 22px repeat-x;
@@ -54,7 +66,7 @@ body {
 body,
 input,
 textarea {
-  font: 15px/1.5 sans-serif;
+  font: 14px/1.5 sans-serif;
   color: #333;
 }
 ::selection {
@@ -110,7 +122,9 @@ h4,
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5 {
   margin: 20px 0 10px;
   padding: 4px 0;
   font-weight: 600;
@@ -143,6 +157,14 @@ h2 {
 h3 {
   font-size: 18px;
 }
+h4 {
+  font-size: 16px;
+}
+h5 {
+  font-size: 14px;
+  margin-bottom: 0;
+  font-weight: normal;
+}
 ul {
   list-style: none;
   margin: 0 0 10px 0;
@@ -170,19 +192,24 @@ code {
   font: 13px/1 Consolas, monospace;
   line-height: 1.4;
   display: inline-block;
-  background: #f3fbff;
+  background: #f7f7f7;
   position: relative;
-  border-radius: 4px;
   padding: 0 5px;
 }
 pre code {
-  padding: 15px 25px;
+  padding: 15px;
   overflow: auto;
   display: block;
   line-height: inherit;
-  margin-left: -25px;
-  margin-right: -25px;
+  margin: 0 -25px;
+  padding: 15px 25px;
   border-radius: none;
+}
+
+td pre code {
+  padding: 15px;
+  margin: 0;
+  border-radius: 6px;
 }
 
 blockquote {
@@ -333,7 +360,6 @@ input,
 select,
 textarea {
   padding: 4px 6px;
-  background: #f5f4f2;
   border: 1px solid #ddd;
   margin-right: 10px;
   -webkit-transition: background-color linear 0.1s;
@@ -374,43 +400,15 @@ label {
 }
 table {
   background: #fff;
-  margin-left: -25px;
-  margin-right: -25px;
   border-collapse: collapse;
 }
-table tr th,
-table tr td {
+th, td {
   vertical-align: top;
   text-align: left;
-  padding: 8px 8px 8px 16px;
+  padding: 6px 13px;
+  border: 1px solid #E5E5E5;
 }
-table tr td {
-  border-top: 1px solid #f5f4f2;
-  border-bottom: 1px solid #f5f4f2;
-}
-table tr + tr td {
-  border-top: 0;
-}
-table tr th:first-child,
-table tr td:first-child {
-  padding-left: 25px;
-}
-table tr th:last-child,
-table tr td:last-child {
-  padding-right: 25px;
-}
-table tr th {
-  background: #f5f4f2;
-  font-weight: normal;
-}
-table tr th + th {
-  border-left: 1px solid #fff;
-}
-table tr td:first-child {
-  font-family: Consolas, monospace;
-  font-size: 13px;
-  color: #008000;
-}
+
 nav {
   margin-top: 14px;
   float: right;

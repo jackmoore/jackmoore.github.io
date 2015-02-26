@@ -1,179 +1,182 @@
 
 <!doctype html public '(╯°□°）╯︵ 8ƎI'>
 <html lang=en class=''>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
-    <link rel='stylesheet' href='/css/style.css'>
-    <link rel='stylesheet' href='/css/github.css'>
-    <!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
-    <title>Colorbox with Flickr Feed</title>
-    <header>
-        <a class='me' rel='author' href='/'>Jack Moore</a>
-        <a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
-        <a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
-        <nav>
-            <a href='/notes'><span>Archive</span></a>
-        </nav>
-    </header>
-    <div class='main' role='main'>
-        <article>
-            
-            <h1>Colorbox with Flickr Feed</h1>
-            <p class='description'>Here we'll use jQuery and Flickr to build a thumbnail gallery that will display full-size photos in Colorbox.</p>
-            <hr>
-            <p class='date'><span class='icon-calendar icon--inline'></span>October 10th, 2011</p>
-            <h3 id="step-1-include-jquery-and-colorbox">Step 1: Include jQuery and Colorbox</h3>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
+	<link rel='stylesheet' href='/css/style.css'>
+	<link rel='stylesheet' href='/css/github.css'>
+	<!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
+	<title>Colorbox with Flickr Feed</title>
+	<header>
+		<a class='me' rel='author' href='/'>Jack Moore</a>
+		<a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
+		<a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
+		<nav>
+			<a href='/notes'><span>Archive</span></a>
+		</nav>
+	</header>
+	<div class='main' role='main'>
+		<article>
+			
+			<h1>Colorbox with Flickr Feed</h1>
+			<p class='description'>Here we'll use jQuery and Flickr to build a thumbnail gallery that will display full-size photos in Colorbox.</p>
+			<hr>
+			<p class='date'><span class='icon-calendar icon--inline'></span>October 10th, 2011</p>
+			<h3>Step 1: Include jQuery and Colorbox</h3>
 <p>Feel free to jump straight to <a href='/demo/flickr.html'>the demo</a> to view-source. We will be building off of this basic HTML5 document:</p>
-<pre><code><span class="hljs-doctype">&lt;!doctype html&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"colorbox.css"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"jquery.min.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"jquery.colorbox-min.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
-            <span class="hljs-comment">// our code</span>
-        </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span>
-</code></pre><h3 id="step-2-get-flickr-s-json-data">Step 2: Get Flickr&#39;s JSON data</h3>
-<p>The first thing we will want to do is use jQuery to fetch the JSON object from Flickr&#39;s public feed.  We will use the data in that JSON object to create the markup for our gallery. The data set returned by the feed can be <a href='http://www.flickr.com/services/feeds/docs/photos_public/'>filtered by tags and can include multiple users</a>.  Properties for these can be added to the <code>params</code> object below, but this demo will just be using the default settings.</p>
-<pre><code><span class="hljs-keyword">var</span> params = {
-    id: <span class="hljs-string">'68459092@N06'</span>, <span class="hljs-comment">// my Flickr User ID</span>
-    format: <span class="hljs-string">'json'</span>,
-    jsoncallback: <span class="hljs-string">'?'</span>
+<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;colorbox.css&quot;&gt;
+        &lt;script src=&quot;jquery.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;jquery.colorbox-min.js&quot;&gt;&lt;/script&gt;
+        &lt;script&gt;
+            // our code
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3>Step 2: Get Flickr's JSON data</h3>
+<p>The first thing we will want to do is use jQuery to fetch the JSON object from Flickr's public feed.  We will use the data in that JSON object to create the markup for our gallery. The data set returned by the feed can be <a href='http://www.flickr.com/services/feeds/docs/photos_public/'>filtered by tags and can include multiple users</a>.  Properties for these can be added to the <code>params</code> object below, but this demo will just be using the default settings.</p>
+<pre><code>var params = {
+    id: '68459092@N06', // my Flickr User ID
+    format: 'json',
+    jsoncallback: '?'
 },
-feedURL = <span class="hljs-string">'http://api.flickr.com/services/feeds/photos_public.gne'</span>,
-feedQuery = <span class="hljs-built_in">decodeURIComponent</span>($.param(params));
+feedURL = 'http://api.flickr.com/services/feeds/photos_public.gne',
+feedQuery = decodeURIComponent($.param(params));
 
-$.getJSON(feedURL + <span class="hljs-string">'?'</span> + feedQuery, buildLinks);
-</code></pre><p>I recommend taking a moment to view the <a href='http://api.flickr.com/services/feeds/photos_public.gne?id=68459092@N06&amp;format=json&amp;jsoncallback=?' target='_blank'>raw JSON data</a>.  The <code>items</code> property contains an array of objects that contain all of the data needed to create the links and thumbnails.  The URL to the photo is found in the <code>media</code> object.  This URL is formatted to give the &#39;small&#39; size of the photo.  We will have to alter this URL to give us a larger size to display in Colorbox and again to give us a smaller size to use for a thumbnail.  Fortunately we just have to exchange the <a href="http://www.flickr.com/services/api/misc.urls.html">size suffix</a> with the suffix for the size we want.</p>
-<h3 id="step-3-build-the-links">Step 3: Build the Links</h3>
-<p>Let&#39;s create the anchor elements, assign Colorbox to them, and add them to our document:</p>
-<pre><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildLinks</span> <span class="hljs-params">(json)</span> </span>{
-    <span class="hljs-keyword">var</span> 
+$.getJSON(feedURL + '?' + feedQuery, buildLinks);
+</code></pre>
+<p>I recommend taking a moment to view the <a href='http://api.flickr.com/services/feeds/photos_public.gne?id=68459092@N06&amp;format=json&amp;jsoncallback=?' target='_blank'>raw JSON data</a>.  The <code>items</code> property contains an array of objects that contain all of the data needed to create the links and thumbnails.  The URL to the photo is found in the <code>media</code> object.  This URL is formatted to give the 'small' size of the photo.  We will have to alter this URL to give us a larger size to display in Colorbox and again to give us a smaller size to use for a thumbnail.  Fortunately we just have to exchange the <a href="http://www.flickr.com/services/api/misc.urls.html">size suffix</a> with the suffix for the size we want.</p>
+<h3>Step 3: Build the Links</h3>
+<p>Let's create the anchor elements, assign Colorbox to them, and add them to our document:</p>
+<pre><code>function buildLinks (json) {
+    var 
     photo,
-    <span class="hljs-variable">$links</span> = $(), 
-    <span class="hljs-variable">$thumb</span>,
-    <span class="hljs-variable">$anchor</span>;
+    $links = $(), 
+    $thumb,
+    $anchor;
 
-    <span class="hljs-keyword">while</span> ( photo = json.items.pop() ){
-        <span class="hljs-variable">$anchor</span> = $(<span class="hljs-string">'&lt;a&gt;'</span>).attr({
-            <span class="hljs-comment">// get the medium-large size photo</span>
-            href: photo.media.m.replace(<span class="hljs-string">'_m'</span>, <span class="hljs-string">'_z'</span>),
+    while ( photo = json.items.pop() ){
+        $anchor = $('&lt;a&gt;').attr({
+            // get the medium-large size photo
+            href: photo.media.m.replace('_m', '_z'),
             title: photo.title
         });
 
-        <span class="hljs-variable">$thumb</span> = $(<span class="hljs-string">'&lt;img&gt;'</span>).attr({
-            <span class="hljs-comment">// get the small-square size thumbnail photo</span>
-            src: photo.media.m.replace(<span class="hljs-string">'_m'</span>, <span class="hljs-string">'_s'</span>),
+        $thumb = $('&lt;img&gt;').attr({
+            // get the small-square size thumbnail photo
+            src: photo.media.m.replace('_m', '_s'),
             alt: photo.title
-        }).appendTo(<span class="hljs-variable">$anchor</span>);
+        }).appendTo($anchor);
 
-        <span class="hljs-variable">$links</span> = <span class="hljs-variable">$links</span>.add(<span class="hljs-variable">$anchor</span>);
+        $links = $links.add($anchor);
     }
 
-    <span class="hljs-variable">$links</span>.colorbox({rel:<span class="hljs-string">'flickr'</span>, speed:<span class="hljs-number">0</span>});
+    $links.colorbox({rel:'flickr', speed:0});
 
-    <span class="hljs-comment">// Wait until the DOM has loaded before trying to append to the body</span>
-    $(document).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-        $(<span class="hljs-string">'body'</span>).append(<span class="hljs-variable">$links</span>);
+    // Wait until the DOM has loaded before trying to append to the body
+    $(document).ready(function () {
+        $('body').append($links);
     });
 }
-</code></pre><p><a href="/demo/flickr.html">View the demo</a> and see it all put together.</p>
-<h3 id="notes">Notes</h3>
+</code></pre>
+<p><a href="/demo/flickr.html">View the demo</a> and see it all put together.</p>
+<h3>Notes</h3>
 <ul>
-<li>I&#39;m aware this code isn&#39;t the most efficient or robust, but hopefully it made for a clear demo.</li>
+<li>I'm aware this code isn't the most efficient or robust, but hopefully it made for a clear demo.</li>
 <li>Currently our thumbnails are in descending order by date.  To list the thumbnails in ascending order, replace <code>json.items.pop()</code> with <code>json.items.shift()</code>.</li>
 </ul>
 
-            <hr>
-            <h2>Hey,</h2>
-            <p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
-            <p>
-            <iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
-            <a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </p>
-        
-        </article>
-        <aside>
-            <h3>Github Repos</h3>
-            <ul>
-                <li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
-                <li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
-                <li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
-                <li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
-            </ul>
-            <div class='recent-posts'>
-                <h3>Blog Posts</h3>
-                <ul>
-                    
-                <li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
-            
-                <li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
-            
-                <li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
-            
-                <li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
-            
-                <li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
-            
-                <li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
-            
-                <li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
-            
-                <li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
-            
-                <li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
-            
-                <li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
-            
-                <li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
-            
-                <li><a href="/notes/click-events/">Working with JavaScript click events</a>
-            
-                <li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
-            
-                <li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
-            
-                </ul>
-            </div>
-            <h3>Tags</h3>
-            <ul class='tags'>
-                
-                <li>
-                    <a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
-                </li>
-            
-            </ul>
-        </aside>
-    </div>
-    <script src="/js/main.js"></script>
-        
+			<hr>
+			<h2>Hey,</h2>
+			<p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
+			<p>
+			<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
+			<a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</p>
+		
+		</article>
+		<aside>
+			<h3>Github Repos</h3>
+			<ul>
+				<li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
+				<li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
+				<li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
+				<li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
+			</ul>
+			<div class='recent-posts'>
+				<h3>Blog Posts</h3>
+				<ul>
+					
+				<li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
+			
+				<li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
+			
+				<li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
+			
+				<li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
+			
+				<li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
+			
+				<li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
+			
+				<li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
+			
+				<li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
+			
+				<li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
+			
+				<li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
+			
+				<li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
+			
+				<li><a href="/notes/click-events/">Working with JavaScript click events</a>
+			
+				<li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
+			
+				<li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
+			
+				</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul class='tags'>
+				
+				<li>
+					<a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
+				</li>
+			
+			</ul>
+		</aside>
+	</div>
+	<script src="/js/main.js"></script>
+		

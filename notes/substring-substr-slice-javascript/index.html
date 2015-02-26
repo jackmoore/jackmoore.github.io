@@ -1,40 +1,40 @@
 
 <!doctype html public '(╯°□°）╯︵ 8ƎI'>
 <html lang=en class=''>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
-    <link rel='stylesheet' href='/css/style.css'>
-    <link rel='stylesheet' href='/css/github.css'>
-    <!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
-    <title>JavaScript: Slice, Substring, or Substr?</title>
-    <header>
-        <a class='me' rel='author' href='/'>Jack Moore</a>
-        <a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
-        <a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
-        <nav>
-            <a href='/notes'><span>Archive</span></a>
-        </nav>
-    </header>
-    <div class='main' role='main'>
-        <article>
-            
-            <h1>JavaScript: Slice, Substring, or Substr?</h1>
-            <p class='description'>A comparison of substring methods.</p>
-            <hr>
-            <p class='date'><span class='icon-calendar icon--inline'></span>June 25th, 2011</p>
-            <p>In JavaScript, substrings are primarily extracted through one of following String methods:
-<a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/slice">slice</a>, 
-<a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/substring">substring</a>, 
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
+	<link rel='stylesheet' href='/css/style.css'>
+	<link rel='stylesheet' href='/css/github.css'>
+	<!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
+	<title>JavaScript: Slice, Substring, or Substr?</title>
+	<header>
+		<a class='me' rel='author' href='/'>Jack Moore</a>
+		<a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
+		<a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
+		<nav>
+			<a href='/notes'><span>Archive</span></a>
+		</nav>
+	</header>
+	<div class='main' role='main'>
+		<article>
+			
+			<h1>JavaScript: Slice, Substring, or Substr?</h1>
+			<p class='description'>A comparison of substring methods.</p>
+			<hr>
+			<p class='date'><span class='icon-calendar icon--inline'></span>June 25th, 2011</p>
+			<p>In JavaScript, substrings are primarily extracted through one of following String methods:
+<a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/slice">slice</a>,
+<a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/substring">substring</a>,
 <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/substr">substr</a>.</p>
-<pre><code class="lang-javascript"><span class="hljs-comment">// slice </span>
+<pre><code class="language-javascript"><span class="hljs-comment">// slice </span>
 <span class="hljs-comment">// syntax: string.slice(start [, stop])</span>
 <span class="hljs-string">"Good news, everyone!"</span>.slice(<span class="hljs-number">5</span>,<span class="hljs-number">9</span>); 
 <span class="hljs-comment">// 'news'</span>
 
 <span class="hljs-comment">// substring </span>
 <span class="hljs-comment">// syntax: string.substring(start [, stop])</span>
-<span class="hljs-string">"Good news, everyone!"</span>.<span class="hljs-keyword">substring</span>(<span class="hljs-number">5</span>,<span class="hljs-number">9</span>); 
+<span class="hljs-string">"Good news, everyone!"</span>.substring(<span class="hljs-number">5</span>,<span class="hljs-number">9</span>); 
 <span class="hljs-comment">// 'news'</span>
 
 <span class="hljs-comment">// substr</span>
@@ -45,107 +45,107 @@
 <p>All three of these methods take in a start index and an optional stop index (or length) parameter, but they differ in some important ways:</p>
 <ul>
 <li>substr can give inconsistent results.  Modern browers allow using a negative start index to indicate the number of characters from the end of the string, but IE8 and lower treat a negative start index as 0.</li>
-<li>substring&#39;s parameters are reversable, as it will always use it&#39;s smallest parameter value as the start index and largest value as the stop index.  substring will treat a negative start index as 0.</li>
+<li>substring's parameters are reversable, as it will always use it's smallest parameter value as the start index and largest value as the stop index.  substring will treat a negative start index as 0.</li>
 <li>slice extracts from the end of the string if the starting index is negative.</li>
 </ul>
-<h3 id="negative-start-index">Negative start index</h3>
-<pre><code class="lang-javascript"><span class="hljs-string">"Good news, everyone!"</span>.substring(-<span class="hljs-number">4</span>);
-<span class="hljs-regexp">//</span> <span class="hljs-string">"Good news, everyone!"</span>
+<h3>Negative start index</h3>
+<pre><code class="language-javascript"><span class="hljs-string">"Good news, everyone!"</span>.substring(-<span class="hljs-number">4</span>);
+<span class="hljs-comment">// "Good news, everyone!"</span>
 
-<span class="hljs-string">"Good news, everyone!"</span>.<span class="hljs-keyword">substr</span>(-<span class="hljs-number">4</span>);
-<span class="hljs-regexp">//</span> <span class="hljs-string">"one!"</span> modern browsers, including IE9
-// <span class="hljs-string">"Good news, everyone!"</span> IE8 <span class="hljs-keyword">and</span> lower
+<span class="hljs-string">"Good news, everyone!"</span>.substr(-<span class="hljs-number">4</span>);
+<span class="hljs-comment">// "one!" modern browsers, including IE9</span>
+<span class="hljs-comment">// "Good news, everyone!" IE8 and lower</span>
 
 <span class="hljs-string">"Good news, everyone!"</span>.slice(-<span class="hljs-number">4</span>); 
-<span class="hljs-regexp">//</span> <span class="hljs-string">"one!"</span>
+<span class="hljs-comment">// "one!"</span>
 </code></pre>
-<p>Since all three methods have <a href="http://jsperf.com/substring-extraction-methods-substring-substr-slice">roughly equivalent performance</a>, my preference is to use slice.  It supports extracting from the end of the string and I feel that returning an empty string when start index &gt; stop follows the <a href="http://en.wikipedia.org/wiki/Principle_of_least_astonishment">principle of least surprise</a> better than substring&#39;s swapping of parameters. I avoid substr because of the browser inconsistency.</p>
+<p>Since all three methods have <a href="http://jsperf.com/substring-extraction-methods-substring-substr-slice">roughly equivalent performance</a>, my preference is to use slice.  It supports extracting from the end of the string and I feel that returning an empty string when start index &gt; stop follows the <a href="http://en.wikipedia.org/wiki/Principle_of_least_astonishment">principle of least surprise</a> better than substring's swapping of parameters. I avoid substr because of the browser inconsistency.</p>
 
-            <hr>
-            <h2>Hey,</h2>
-            <p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
-            <p>
-            <iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
-            <a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </p>
-        
-        </article>
-        <aside>
-            <h3>Github Repos</h3>
-            <ul>
-                <li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
-                <li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
-                <li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
-                <li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
-            </ul>
-            <div class='recent-posts'>
-                <h3>Blog Posts</h3>
-                <ul>
-                    
-                <li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
-            
-                <li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
-            
-                <li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
-            
-                <li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
-            
-                <li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
-            
-                <li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
-            
-                <li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
-            
-                <li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
-            
-                <li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
-            
-                <li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
-            
-                <li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
-            
-                <li><a href="/notes/click-events/">Working with JavaScript click events</a>
-            
-                <li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
-            
-                <li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
-            
-                </ul>
-            </div>
-            <h3>Tags</h3>
-            <ul class='tags'>
-                
-                <li>
-                    <a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
-                </li>
-            
-            </ul>
-        </aside>
-    </div>
-    <script src="/js/main.js"></script>
-        
+			<hr>
+			<h2>Hey,</h2>
+			<p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
+			<p>
+			<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
+			<a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</p>
+		
+		</article>
+		<aside>
+			<h3>Github Repos</h3>
+			<ul>
+				<li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
+				<li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
+				<li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
+				<li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
+			</ul>
+			<div class='recent-posts'>
+				<h3>Blog Posts</h3>
+				<ul>
+					
+				<li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
+			
+				<li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
+			
+				<li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
+			
+				<li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
+			
+				<li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
+			
+				<li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
+			
+				<li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
+			
+				<li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
+			
+				<li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
+			
+				<li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
+			
+				<li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
+			
+				<li><a href="/notes/click-events/">Working with JavaScript click events</a>
+			
+				<li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
+			
+				<li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
+			
+				</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul class='tags'>
+				
+				<li>
+					<a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
+				</li>
+			
+			</ul>
+		</aside>
+	</div>
+	<script src="/js/main.js"></script>
+		

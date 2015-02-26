@@ -1,246 +1,247 @@
 
 <!doctype html public '(╯°□°）╯︵ 8ƎI'>
 <html lang=en class=''>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
-    <link rel='stylesheet' href='/css/style.css'>
-    <link rel='stylesheet' href='/css/github.css'>
-    <!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
-    <title>jQuery Autosize</title>
-    <header>
-        <a class='me' rel='author' href='/'>Jack Moore</a>
-        <a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
-        <a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
-        <nav>
-            <a href='/notes'><span>Archive</span></a>
-        </nav>
-    </header>
-    <div class='main' role='main'>
-        <article>
-            
-            <h1>jQuery Autosize</h1>
-            <p class='description'>A plugin to automatically adjust textarea height.</p>
-            <hr>
-            
-            <p><a href="http://github.com/jackmoore/autosize/tree/master" id='fork'>Fork me on GitHub</a></p>
-<h2 id="demo">Demo</h2>
-<textarea id='ta2' placeholder='Autosize with a CSS transition. Try typing something...'></textarea>
-<textarea id='ta1' placeholder='Autosize with no animation.'></textarea>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
+	<link rel='stylesheet' href='/css/style.css'>
+	<link rel='stylesheet' href='/css/github.css'>
+	<!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
+	<title>Autosize</title>
+	<header>
+		<a class='me' rel='author' href='/'>Jack Moore</a>
+		<a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
+		<a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
+		<nav>
+			<a href='/notes'><span>Archive</span></a>
+		</nav>
+	</header>
+	<div class='main' role='main'>
+		<article>
+			
+			<h1>Autosize</h1>
+			<p class='description'>A small, stand-alone script to automatically adjust textarea height.</p>
+			<hr>
+			
+			<p><a href="http://github.com/jackmoore/autosize/tree/master" id='fork'>Fork me on GitHub</a></p>
+<h2>Demo</h2>
+<textarea id='autosize-example' placeholder='Try typing something...'></textarea>
+<script src='/js/autosize.min.js'></script>
+<script>
+    autosize(document.getElementById('autosize-example'));
+</script>
+<hr>
+<p>Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a>, source on <a href='http://github.com/jackmoore/autosize'>Github</a> (<a href='http://github.com/jackmoore/autosize/blob/master/changelog.md'>changelog</a>) &nbsp;<iframe style='vertical-align: middle' src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=autosize&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="97" height="20"></iframe> <iframe style='vertical-align: middle' src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=autosize&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></p>
+<p><a class='download' href='https://github.com/jackmoore/autosize/archive/master.zip'><i class='icon-download-alt'></i> Download</a></p>
+<h5>Install via NPM</h5>
+<pre><code class="language-bash">npm install autosize
+</code></pre>
+<h5>Install via Bower</h5>
+<pre><code class="language-bash">bower install autosize
+</code></pre>
+<h4>Browser compatibility</h4>
+<table>
+<thead>
+<tr><th>Chrome</th><th>Firefox</th><th>IE</th><th>Safari</th><th>iOS Safari</th><th>Android</th><th>Opera Mini</th></tr>
+</thead>
+<tbody>
+<tr><td>yes</td><td>yes</td><td>9</td><td>yes</td><td>yes</td><td>4</td><td>?</td></tr>
+</tbody>
+</table>
+<h3>Usage</h3>
+<p>The autosize function accepts a single textarea element, or an array or array-like object (such as a NodeList or jQuery collection) of textarea elements.</p>
+<pre><code class="language-javascript"><span class="hljs-comment">// from a NodeList</span>
+autosize(<span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'textarea'</span>));
 
-<h2><a href='https://github.com/jackmoore/autosize/archive/master.zip' style='text-decoration: underline;'>Download</a></h2>
+<span class="hljs-comment">// from a single Node</span>
+autosize(<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'textarea'</span>));
 
-<p>Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a>.  Source on <a href='http://github.com/jackmoore/autosize'>Github</a> (<a href='http://github.com/jackmoore/autosize#changelog'>changelog</a>).<br>
-Compatible with: jQuery 1.7+ in Chrome, Firefox 4+, Safari 5+, Internet Explorer 6+, Opera 11+.<br>
-Bower Package: <code>jquery-autosize</code></p>
-<p>
-<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=autosize&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="97" height="20"></iframe>
-<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=autosize&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></p>
+<span class="hljs-comment">// from a jQuery collection</span>
+autosize($(<span class="hljs-string">'textarea'</span>));
+</code></pre>
+<h3>Lifecycle Events</h3>
+<table>
+<tr>
+<th>Event</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>autosize.update</td>
+<td>
+<p>Once you've assigned autosize to an element, you can manually trigger the resize event by using the 'autosize.update' event. Autosize has no way of knowing when a script has changed the value of a textarea element, or when the textarea element styles have changed, so this event would be used instruct autosize to resize the textarea.</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> ta = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'textarea'</span>);
 
-<h2 id="usage">Usage</h2>
-<pre><code class="lang-javascript"><span class="hljs-comment">// Example:</span>
-$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
-    $(<span class="hljs-string">'textarea'</span>).autosize();    
+autosize(ta);
+
+<span class="hljs-comment">// Change the value of the textarea</span>
+ta.value = <span class="hljs-string">"Something really long"</span>;
+ta.style.fontSize = <span class="hljs-string">'20px'</span>;
+
+<span class="hljs-comment">// Dispatch a 'autosize.update' event to trigger a resize:</span>
+<span class="hljs-keyword">var</span> evt = <span class="hljs-built_in">document</span>.createEvent(<span class="hljs-string">'Event'</span>);
+evt.initEvent(<span class="hljs-string">'autosize.update'</span>, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);
+ta.dispatchEvent(evt);
+</code></pre>
+</td>
+</tr>
+<tr>
+<td>autosize.destroy</td>
+<td>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> ta = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'textarea'</span>);
+
+<span class="hljs-comment">// assign autosize to ta</span>
+autosize(ta);
+
+<span class="hljs-comment">// remove autosize from ta</span>
+<span class="hljs-keyword">var</span> evt = <span class="hljs-built_in">document</span>.createEvent(<span class="hljs-string">'Event'</span>);
+evt.initEvent(<span class="hljs-string">'autosize.destroy'</span>, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);
+ta.dispatchEvent(evt);
+</code></pre>
+</td>
+</tr>
+<tr>
+<td>autosize.resized</td>
+<td>
+<p>This event is fired every time autosize adjusts the textarea height.</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> ta = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'textarea'</span>);
+
+ta.addEventListener(<span class="hljs-string">'autosize.resized'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'textarea height updated'</span>);
 });
 </code></pre>
-<p>Drop Autosize into any existing website and it should <em>Just Work</em>&trade;. <a href='https://raw.github.com/jackmoore/autosize/master/jquery.autosize.js'>The source</a> is short and well commented if you are curious to how it works.</p>
-<h2 id="manual-triggering">Manual Triggering</h2>
-<p>Autosize has no way of knowing when the value of a textarea has been changed through JavaScript.  If you do this, trigger the <code>autosize.resize</code> event immediately after to update the height.  Example:</p>
-<pre><code class="lang-javascript"><span class="hljs-variable">$(</span><span class="hljs-string">'#example'</span>).val(<span class="hljs-string">'New Text!'</span>).trigger(<span class="hljs-string">'autosize.resize'</span>);
-</code></pre>
-<p>The <code>autosize.resize</code> event only accounts for changes in value.  If you changed any of the typographic styles (font-size, line-height, etc), or the max-width, you can call <code>autosize.resizeIncludeStyle</code> and the textarea will resize with those styles accounted for:</p>
-<pre><code class="lang-javascript"><span class="hljs-variable">$(</span><span class="hljs-string">'#example'</span>).css({font-<span class="hljs-keyword">size</span>: <span class="hljs-string">'20px'</span>}).trigger(<span class="hljs-string">'autosize.resizeIncludeStyle'</span>);
-</code></pre>
-<h2 id="removing-autosize">Removing Autosize</h2>
-<p>Trigger the <code>autosize.destroy</code> event to remove autosize from a textarea element:</p>
-<pre><code class="lang-javascript"><span class="hljs-variable">$(</span><span class="hljs-string">'#example'</span>).trigger(<span class="hljs-string">'autosize.destroy'</span>);
-</code></pre>
-<h2 id="settings">Settings</h2>
-<table>
-    <tr>
-        <th>Property
-        <th>Default
-        <th>Description
-    <tr>
-        <td>className
-        <td>&#39;autosizejs&#39;
-        <td>The class name for the mirrored element, in case it&#39;s necessary to explicitly set a style on the mirrored element (see the note about line-height below).
-    <tr>
-        <td>id
-        <td>&#39;autosizejs&#39;
-        <td>The id of the hidden mirrored element, in case you prefer to access it by id.
-    <tr>
-        <td>callback
-        <td>false
-        <td>A function to call when the textarea is resized.
-    <tr>
-        <td>append
-        <td>&quot;\n&quot;
-        <td>By default, an extra newline is appended at the end of the text used in the height calculation.  This smooths out the height adjustment when animating.  This also avoids an issue with IE10+ briefly causing text to shift immediately before the height is increased.  You can set this property to <code>false</code> or other falsey value to remove the appended text.
-    <tr>
-        <td>placeholder
-        <td>true
-        <td>If the textarea is empty and has a placeholder value, autosize will use the length of the placeholder text to determine the height.  Set to false to ignore the placeholder value.
-    <tr>
-        <td>resizeDelay
-        <td>10
-        <td>Textareas with autosize assigned will have their height re-calculated when the window is resized. This property is the debounce delay in miliseconds to prevent the resize from triggering too frequently.  This can be set to false if the textarea has a static width that will not change during a window resize.
+</td>
+</tr>
 </table>
+<h3>Differences between v2 and v1</h3>
+<p>If you need the v1 version for whatever reason, you can find it in the v1 branch on Github:
+<a href="https://github.com/jackmoore/autosize/tree/v1">https://github.com/jackmoore/autosize/tree/v1</a></p>
+<p>Autosize v2 is a smaller, simplier script than v1.  It is now a stand-alone script instead of a jQuery plugin, and support for IE8 and lower has been dropped (legacy IE users will be presented with an unmodified textarea element).  Additionally, Autosize v2 does not take in any optional parameters at this time.</p>
+<p>Autosize v2 does not create a mirror textarea element in order to calculate the correct height, which was responsible for much of the original script's complexity.  This should be more efficient and reliable, but the new method prevents using a CSS transition to animate the height change.</p>
+<h3>Converting to a jQuery plugin</h3>
+<p>Autosize does not depend on jQuery, but it can easily be turned into a jQuery plugin if desired.</p>
+<pre><code class="language-javascript"><span class="hljs-comment">// Create the plugin:</span>
+<span class="hljs-built_in">window</span>.jQuery.fn.autosize = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> autosize(<span class="hljs-keyword">this</span>);
+};
 
-<h2 id="known-issues-amp-solutions">Known Issues &amp; Solutions</h2>
-<h3 id='faq-hidden-textarea'>Incorrect size with hidden textarea elements</h3>
-
-<p>Autosize needs to be able to calculate the width of the textarea element when it is assigned.  JavaScript cannot accurately calculate the width of an element that has been removed from the document flow.  If you want to assign Autosize to a hidden textarea element, be sure to either specify the pixel width of the element in your CSS, or trigger the <code>autosize.resize</code> event after you reveal the textarea element.</p>
+<span class="hljs-comment">// Use the plugin:</span>
+jQuery(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($)</span></span>{
+    $(<span class="hljs-string">'textarea'</span>).autosize();
+});
+</code></pre>
+<h3>Known Issues &amp; Solutions</h3>
+<h4>Incorrect size with hidden textarea elements</h4>
+<p>Autosize needs to be able to calculate the width of the textarea element when it is assigned.  JavaScript cannot accurately calculate the width of an element that has been removed from the document flow.  If you want to assign Autosize to a hidden textarea element, be sure to either specify the pixel width of the element in your CSS, or trigger the <code>autosize.update</code> event after you reveal the textarea element.</p>
 <p><strong>Possible ways to resolve:</strong></p>
 <ul>
-<li><p>Specify an exact width for the textarea element in your stylesheet.</p>
-</li>
-<li><p>Trigger the <code>autosize.resize</code> event after the element has been revealed.</p>
-</li>
-</ul>
-<pre><code class="lang-javascript">$<span class="hljs-comment">('textarea.example')</span>.autosize<span class="hljs-comment">()</span>.show<span class="hljs-comment">()</span>.trigger<span class="hljs-comment">('autosize.resize')</span>;
-</code></pre>
-<ul>
+<li>Specify an exact width for the textarea element in your stylesheet.</li>
 <li>Wait until after the textarea element has been revealed before assigning Autosize.</li>
+<li>Trigger the <code>autosize.update</code> event after the element has been revealed.</li>
 </ul>
-<pre><code class="lang-javascript">$(<span class="hljs-string">'textarea.example'</span>).fadeIn(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
-    $(<span class="hljs-keyword">this</span>).autosize();
-});
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> ta = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'textarea'</span>);
+ta.style.display = <span class="hljs-string">'none'</span>;
+autosize(ta);
+ta.style.display = <span class="hljs-string">''</span>;
+
+<span class="hljs-comment">// Trigger the autosize.update event to recalculate the size:</span>
+<span class="hljs-keyword">var</span> evt = <span class="hljs-built_in">document</span>.createEvent(<span class="hljs-string">'Event'</span>);
+evt.initEvent(<span class="hljs-string">'autosize.update'</span>, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);
+ta.dispatchEvent(evt);
 </code></pre>
 <ul>
 <li>Wait until the textarea has been focused by the user before assigning Autosize.</li>
 </ul>
-<pre><code class="lang-javascript">$(<span class="hljs-string">'textarea.example'</span>).on(<span class="hljs-string">'focus'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
-    $(<span class="hljs-keyword">this</span>).autosize();
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> ta = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'textarea'</span>);
+ta.addEventListener(<span class="hljs-string">'focus'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+    autosize(ta);
 });
 </code></pre>
-<h3 id='faq-chrome-zoom'>Incorrect size when zoomed in Chrome</h3>
 
-<p>Autosize may not be big enough to fit all text in Chrome if it is zoomed in.  This should only happen when  the line-height for textarea elements is set to a numeric value (ie. <code>line-height: 1.4</code>) rather than a length or percent value (ie. <code>line-height: 1.4em</code> or <code>line-height: 140%</code>).  There is apparently an issue with the getComputedStyle value that Chrome calculates for numeric line-height values for textarea elements when zoomed. There isn&#39;t anything the plugin can do to correct this behavior, however the bug can be avoided in a couple of ways.</p>
-<p><strong>Possible ways to resolve:</strong></p>
-<ul>
-<li><p>In your CSS, specify a non-number value for textarea line-height, such as <code>%</code>, <code>normal</code>, <code>em</code>, or <code>px</code>.</p>
-</li>
-<li><p>If all textarea elements on your site share the same line-height value, then you can use a numeric line-height value if you include the <code>!important</code> modifier.  This will cause Autosize not to account for possible line-height variation when calculating the textarea size, which is impacted by the getComputedStyle bug.  For example:</p>
-</li>
-</ul>
-<pre><code class="lang-css"><span class="hljs-tag">textarea</span> <span class="hljs-rules">{<span class="hljs-rule"><span class="hljs-attribute">line-height</span>:<span class="hljs-value"> <span class="hljs-number">1.4</span> <span class="hljs-important">!important</span></span></span>;<span class="hljs-rule">}</span></span>
-</code></pre>
-<h3 id="incorrect-size-in-ie8-">Incorrect size in IE8:</h3>
-<p>Autosize adds a hidden textarea element to your document that mirrors the original textarea&#39;s input.  This mirrored textarea is used to calculate the size that the original textarea should be.  The mirrored textarea copies the original textarea&#39;s styles that relate to text formatting.</p>
-<p>One copied style is <code>line-height</code>, and IE8 does not accurately report the line-height value for textarea elements. This is not an issue when the line-height is specified for the bare textarea selector (ie: <code>textarea { line-height:20px; }</code>), because that style is also applied to the mirrored element.  It&#39;s only a problem when using a more specific selector (ie: <code>#content textarea{ line-height:20px; }</code>).  This style isn&#39;t applied to the mirrored textarea that Autosize creates, and it cannot copy the style from the original textarea because IE8 reports the wrong value.  As a workaround, Autosize adds a class to the mirrored element so that it can be targeted for styling.  Example:</p>
-<pre><code class="lang-css"><span class="hljs-id">#content</span> <span class="hljs-tag">textarea</span>, <span class="hljs-class">.autosizejs</span> <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">line-height</span>:<span class="hljs-value"><span class="hljs-number">20px</span></span></span>; <span class="hljs-rule">}</span></span>
-</code></pre>
-<h3 id="incorrect-size-in-any-ie-">Incorrect size in any IE:</h3>
-<p>For all browsers, the font-family for form elements are not inherited from their parent elements, unless the style is explicitly set to inherit.  When JavaScript is used to get the computed style for a textarea&#39;s font-family, all versions of IE will incorrectly return the inherited font-family if a font-family style was not explicitly set.  This can cause Autosize&#39;s calculations to be off.  The solution is to set a font-family for textarea elements in your stylesheet:</p>
-<pre><code class="lang-css"><span class="hljs-comment">/* set to a specific font-family */</span>
-<span class="hljs-tag">textarea</span> <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">font-family</span>:<span class="hljs-value"> Tahoma, sans-serif</span></span>; <span class="hljs-rule">}</span></span>
-
-<span class="hljs-comment">/* or explicitly inherit */</span>
-<span class="hljs-tag">textarea</span> <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">font-family</span>:<span class="hljs-value"> inherit</span></span>; <span class="hljs-rule">}</span></span>
-</code></pre>
-<h3 id="about-css-transitions">About CSS transitions</h3>
-<p>You may want to use a CSS transition on the height of a textarea, but not want to show the transition when Autosize is first applied.  For example, if you had a textarea that was already pre-filled with text and you wanted to show a non-transitioned Autosize on page load.  The easiest solution would to add the class associated with the transition <em>after</em> Autosize has been assigned:</p>
-<pre><code class="lang-javascript">var <span class="hljs-variable">$ta</span> = <span class="hljs-variable">$(</span><span class="hljs-string">'textarea'</span>);
-
-<span class="hljs-variable">$ta</span>.autosize();
-document.body.offsetWidth; <span class="hljs-regexp">//</span> force a reflow before the <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">gets</span> <span class="hljs-title">applied</span></span>
-<span class="hljs-variable">$ta</span>.addClass(<span class="hljs-string">'textarea-transition'</span>);
-</code></pre>
-<script src='/js/jquery.js'></script>
-<script src='/js/jquery.autosize.js'></script>
-
-<script>
-    if ($ && $.fn.autosize) {
-        $('#ta1').autosize();
-        $('#ta2').autosize({append: "\n"});
-    }
-</script>
-            <hr>
-            <h2>Hey,</h2>
-            <p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
-            <p>
-            <iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
-            <a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </p>
-        
-        </article>
-        <aside>
-            <h3>Github Repos</h3>
-            <ul>
-                <li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
-                <li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
-                <li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
-                <li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
-            </ul>
-            <div class='recent-posts'>
-                <h3>Blog Posts</h3>
-                <ul>
-                    
-                <li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
-            
-                <li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
-            
-                <li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
-            
-                <li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
-            
-                <li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
-            
-                <li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
-            
-                <li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
-            
-                <li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
-            
-                <li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
-            
-                <li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
-            
-                <li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
-            
-                <li><a href="/notes/click-events/">Working with JavaScript click events</a>
-            
-                <li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
-            
-                <li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
-            
-                </ul>
-            </div>
-            <h3>Tags</h3>
-            <ul class='tags'>
-                
-                <li>
-                    <a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
-                </li>
-            
-            </ul>
-        </aside>
-    </div>
-    <script src="/js/main.js"></script>
-        
+			<hr>
+			<h2>Hey,</h2>
+			<p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
+			<p>
+			<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
+			<a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</p>
+		
+		</article>
+		<aside>
+			<h3>Github Repos</h3>
+			<ul>
+				<li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
+				<li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
+				<li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
+				<li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
+			</ul>
+			<div class='recent-posts'>
+				<h3>Blog Posts</h3>
+				<ul>
+					
+				<li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
+			
+				<li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
+			
+				<li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
+			
+				<li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
+			
+				<li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
+			
+				<li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
+			
+				<li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
+			
+				<li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
+			
+				<li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
+			
+				<li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
+			
+				<li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
+			
+				<li><a href="/notes/click-events/">Working with JavaScript click events</a>
+			
+				<li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
+			
+				<li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
+			
+				</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul class='tags'>
+				
+				<li>
+					<a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
+				</li>
+			
+			</ul>
+		</aside>
+	</div>
+	<script src="/js/main.js"></script>
+		

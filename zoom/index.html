@@ -1,49 +1,47 @@
 
 <!doctype html public '(╯°□°）╯︵ 8ƎI'>
 <html lang=en class=''>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
-    <link rel='stylesheet' href='/css/style.css'>
-    <link rel='stylesheet' href='/css/github.css'>
-    <!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
-    <title>jQuery Zoom</title>
-    <header>
-        <a class='me' rel='author' href='/'>Jack Moore</a>
-        <a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
-        <a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
-        <nav>
-            <a href='/notes'><span>Archive</span></a>
-        </nav>
-    </header>
-    <div class='main' role='main'>
-        <article>
-            
-            <h1>jQuery Zoom</h1>
-            <p class='description'>A plugin to enlarge images on touch, click, or mouseover.</p>
-            <hr>
-            
-            <p><a href="http://github.com/jackmoore/zoom/tree/master" id='fork'>Fork me on GitHub</a></p>
-<h2 id="demo">Demo</h2>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
+	<link rel='stylesheet' href='/css/style.css'>
+	<link rel='stylesheet' href='/css/github.css'>
+	<!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
+	<title>jQuery Zoom</title>
+	<header>
+		<a class='me' rel='author' href='/'>Jack Moore</a>
+		<a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
+		<a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
+		<nav>
+			<a href='/notes'><span>Archive</span></a>
+		</nav>
+	</header>
+	<div class='main' role='main'>
+		<article>
+			
+			<h1>jQuery Zoom</h1>
+			<p class='description'>A plugin to enlarge images on touch, click, or mouseover.</p>
+			<hr>
+			
+			<p><a href="http://github.com/jackmoore/zoom/tree/master" id='fork'>Fork me on GitHub</a></p>
+<h2>Demo</h2>
 <p><span class='zoom' id='ex1'>
-  <span>Hover</span>
-  <img src='/img/daisy.jpg' width='555' height='320' alt='Daisy on the Ohoopee'>
+<span>Hover</span>
+<img src='/img/daisy.jpg' width='555' height='320' alt='Daisy on the Ohoopee'>
 </span><span class='zoom' id='ex2'>
-  <span>Grab</span>
-  <img src='/img/roxy.jpg' width='290' height='320' alt='Roxy on the Ohoopee'>
+<span>Grab</span>
+<img src='/img/roxy.jpg' width='290' height='320' alt='Roxy on the Ohoopee'>
 </span></p>
-<h2><a href='https://github.com/jackmoore/zoom/archive/master.zip' style='text-decoration: underline;'>Download</a></h2>
-
-<p>Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a>.  Source on <a href='http://github.com/jackmoore/zoom'>Github</a> (<a href='http://github.com/jackmoore/zoom#changelog'>changelog</a>).<br>
-Compatible with: jQuery 1.7+ in Chrome, Firefox, Safari, Opera, Internet Explorer 7+.<br>
-Bower Package: <code>jquery-zoom</code></p>
-<p>
-<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=zoom&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="97" height="20"></iframe>
-<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=zoom&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></p>
-
-<h2 id="instructions">Instructions</h2>
+<hr>
+<p>Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a>, source on <a href='http://github.com/jackmoore/zoom'>Github</a> (<a href='http://github.com/jackmoore/zoom#changelog'>changelog</a>) &nbsp;<iframe style='vertical-align: middle' src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=zoom&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="97" height="20"></iframe> <iframe style='vertical-align: middle' src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=zoom&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></p>
+<p><a class='download' href='https://github.com/jackmoore/zoom/archive/master.zip'><i class='icon-download-alt'></i> Download</a></p>
+<p>Compatible with: jQuery 1.7+ in Chrome, Firefox, Safari, Opera, Internet Explorer 7+.</p>
+<h5>Install via Bower</h5>
+<pre><code class="language-bash">bower install jquery-zoom
+</code></pre>
+<h2>Instructions</h2>
 <p><strong>Zoom appends html inside the element it is assigned to, so that element has to be able to accept html</strong>, like <code>&lt;a&gt;</code>, <code>&lt;span&gt;</code>, <code>&lt;li&gt;</code>, <code>&lt;div&gt;</code>, etc.  This excludes <code>&lt;img&gt;</code> elements (see below).</p>
-<pre><code class="lang-javascript"><span class="hljs-comment">// Example:</span>
+<pre><code class="language-javascript"><span class="hljs-comment">// Example:</span>
 $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
   $(<span class="hljs-string">'a.photo'</span>).zoom({url: <span class="hljs-string">'photo-big.jpg'</span>});
 });
@@ -59,7 +57,7 @@ $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"
 });
 </code></pre>
 <p>To use zoom with <code>img</code> elements, they will need to be wrapped with another element. It is impossible to read some layout related CSS styles from JavaScript (percent-based width and height, margins set to auto, etc.) so the safe thing to do is to defer this change to individual site owners.  The following is all that is needed in some cases:</p>
-<pre><code class="lang-javascript">$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+<pre><code class="language-javascript">$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
   $(<span class="hljs-string">'img'</span>)
     .wrap(<span class="hljs-string">'&lt;span style="display:inline-block"&gt;&lt;/span&gt;'</span>)
     .css(<span class="hljs-string">'display'</span>, <span class="hljs-string">'block'</span>)
@@ -67,12 +65,12 @@ $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"
     .zoom();
 });
 </code></pre>
-<h2 id="removing-zoom">Removing Zoom</h2>
+<h2>Removing Zoom</h2>
 <p>Trigger the <code>zoom.destroy</code> event to remove zoom from an element:</p>
-<pre><code class="lang-javascript"><span class="hljs-variable">$(</span><span class="hljs-string">'#example'</span>).zoom(); <span class="hljs-regexp">//</span> add zoom
-<span class="hljs-variable">$(</span><span class="hljs-string">'#example'</span>).trigger(<span class="hljs-string">'zoom.destroy'</span>); <span class="hljs-regexp">//</span> remove zoom
+<pre><code class="language-javascript">$(<span class="hljs-string">'#example'</span>).zoom(); <span class="hljs-comment">// add zoom</span>
+$(<span class="hljs-string">'#example'</span>).trigger(<span class="hljs-string">'zoom.destroy'</span>); <span class="hljs-comment">// remove zoom</span>
 </code></pre>
-<h2 id="settings">Settings</h2>
+<h2>Settings</h2>
 <table>
   <tr>
     <th>Property
@@ -84,7 +82,7 @@ $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"
     <td>The url of the large photo to be displayed.  If no url is provided, zoom uses the src of the first child IMG element inside the element it is assigned to.
   <tr>
     <td>on
-    <td>&#39;mouseover&#39;
+    <td>'mouseover'
     <td>The type of event that triggers zooming.  Choose from <code>mouseover</code>, <code>grab</code>, <code>click</code>, or <code>toggle</code>.
   <tr>
     <td>duration
@@ -101,115 +99,113 @@ $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"
   <tr>
     <td>magnify
     <td>1
-    <td>This value is multiplied against the full size of the zoomed image.  The default value is 1, meaning the zoomed image should be at 100% of it&#39;s natural width and height.
+    <td>This value is multiplied against the full size of the zoomed image.  The default value is 1, meaning the zoomed image should be at 100% of it's natural width and height.
   <tr>
     <td>callback
     <td>false
-    <td>A function to be called when the image has loaded.  Inside the function, <code>this</code> references the image element.
+    <td>A function to be called when the image has loaded.  Inside the function, `this` references the image element.
   <tr>
     <td>onZoomIn
     <td>false
-    <td>A function to be called when the image has zoomed in.  Inside the function, <code>this</code> references the image element.
+    <td>A function to be called when the image has zoomed in.  Inside the function, `this` references the image element.
   <tr>
     <td>onZoomOut
     <td>false
-    <td>A function to be called when the image has zoomed out.  Inside the function, <code>this</code> references the image element.
+    <td>A function to be called when the image has zoomed out.  Inside the function, `this` references the image element.
 </table>
-
 <script src='/js/jquery.js'></script>
 <script src='/js/jquery.zoom.js'></script>
-
 <script>
   if ($ && $.fn.zoom) {
     $('#ex1').zoom();
     $('#ex2').zoom({ on:'grab' });
   }
 </script>
-            <hr>
-            <h2>Hey,</h2>
-            <p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
-            <p>
-            <iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
-            <a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </p>
-        
-        </article>
-        <aside>
-            <h3>Github Repos</h3>
-            <ul>
-                <li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
-                <li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
-                <li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
-                <li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
-            </ul>
-            <div class='recent-posts'>
-                <h3>Blog Posts</h3>
-                <ul>
-                    
-                <li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
-            
-                <li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
-            
-                <li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
-            
-                <li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
-            
-                <li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
-            
-                <li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
-            
-                <li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
-            
-                <li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
-            
-                <li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
-            
-                <li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
-            
-                <li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
-            
-                <li><a href="/notes/click-events/">Working with JavaScript click events</a>
-            
-                <li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
-            
-                <li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
-            
-                </ul>
-            </div>
-            <h3>Tags</h3>
-            <ul class='tags'>
-                
-                <li>
-                    <a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
-                </li>
-            
-            </ul>
-        </aside>
-    </div>
-    <script src="/js/main.js"></script>
-        
+			<hr>
+			<h2>Hey,</h2>
+			<p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
+			<p>
+			<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
+			<a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</p>
+		
+		</article>
+		<aside>
+			<h3>Github Repos</h3>
+			<ul>
+				<li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
+				<li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
+				<li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
+				<li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
+			</ul>
+			<div class='recent-posts'>
+				<h3>Blog Posts</h3>
+				<ul>
+					
+				<li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
+			
+				<li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
+			
+				<li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
+			
+				<li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
+			
+				<li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
+			
+				<li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
+			
+				<li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
+			
+				<li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
+			
+				<li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
+			
+				<li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
+			
+				<li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
+			
+				<li><a href="/notes/click-events/">Working with JavaScript click events</a>
+			
+				<li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
+			
+				<li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
+			
+				</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul class='tags'>
+				
+				<li>
+					<a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
+				</li>
+			
+			</ul>
+		</aside>
+	</div>
+	<script src="/js/main.js"></script>
+		

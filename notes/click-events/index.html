@@ -1,145 +1,148 @@
 
 <!doctype html public '(╯°□°）╯︵ 8ƎI'>
 <html lang=en class=''>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
-    <link rel='stylesheet' href='/css/style.css'>
-    <link rel='stylesheet' href='/css/github.css'>
-    <!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
-    <title>Working with JavaScript click events</title>
-    <header>
-        <a class='me' rel='author' href='/'>Jack Moore</a>
-        <a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
-        <a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
-        <nav>
-            <a href='/notes'><span>Archive</span></a>
-        </nav>
-    </header>
-    <div class='main' role='main'>
-        <article>
-            
-            <h1>Working with JavaScript click events</h1>
-            <p class='description'>Fine tuning click events.</p>
-            <hr>
-            <p class='date'><span class='icon-calendar icon--inline'></span>August 20th, 2011</p>
-            <h2 id="a-greedy-click-event">A Greedy Click Event</h2>
-<pre><code><span class="hljs-comment">// Example of a typical click-event binding:</span>
-jQuery(<span class="hljs-string">'a#example'</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span></span>{
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'click!'</span>);
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin'>
+	<link rel='stylesheet' href='/css/style.css'>
+	<link rel='stylesheet' href='/css/github.css'>
+	<!--[if lt IE 9]><script src='/js/html5.js'></script><![endif]-->
+	<title>Working with JavaScript click events</title>
+	<header>
+		<a class='me' rel='author' href='/'>Jack Moore</a>
+		<a class='twitter' href='http://twitter.com/jacklmoore' rel='me'><i class='icon-twitter'></i></a>
+		<a class='github' href='http://github.com/jackmoore' rel='me'>Github</a>
+		<nav>
+			<a href='/notes'><span>Archive</span></a>
+		</nav>
+	</header>
+	<div class='main' role='main'>
+		<article>
+			
+			<h1>Working with JavaScript click events</h1>
+			<p class='description'>Fine tuning click events.</p>
+			<hr>
+			<p class='date'><span class='icon-calendar icon--inline'></span>August 20th, 2011</p>
+			<h2>A Greedy Click Event</h2>
+<pre><code>// Example of a typical click-event binding:
+jQuery('a#example').click(function(e){
+    console.log('click!');
     e.preventDefault();
 });
-</code></pre><p>Here the click event has been intercepted and the default behavior canceled to prevent the browser from being directed to a new location.  Depending on the situation, this may cancel more actions than intended.  <strong>A middle-button click or ctrl+click/command+click (open in new tab), shift+click (open in new window), or alt+click (download) would be canceled as well</strong>.  The e.metaKey <a href="http://www.w3.org/TR/DOM-Level-3-Events/#events-KeyboardEvent-metaKey">represents the command key</a> on Mac systems.</p>
+</code></pre>
+<p>Here the click event has been intercepted and the default behavior canceled to prevent the browser from being directed to a new location.  Depending on the situation, this may cancel more actions than intended.  <strong>A middle-button click or ctrl+click/command+click (open in new tab), shift+click (open in new window), or alt+click (download) would be canceled as well</strong>.  The e.metaKey <a href="http://www.w3.org/TR/DOM-Level-3-Events/#events-KeyboardEvent-metaKey">represents the command key</a> on Mac systems.</p>
 <p>If the intention was to only cancel an unmodified left-click, then other mouse buttons and event modifiers should be filtered out.</p>
-<h2 id="a-discriminating-click-event">A Discriminating Click Event</h2>
-<pre><code>$(<span class="hljs-string">'a#example'</span>).mousedown(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span></span>{
-    <span class="hljs-keyword">if</span> (e.which == <span class="hljs-number">1</span> &amp;&amp; !(e.shiftKey || e.altKey || e.metaKey || e.ctrlKey)) {
-        $(<span class="hljs-keyword">this</span>).unbind(<span class="hljs-string">'click.lc'</span>).bind(<span class="hljs-string">'click.lc'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(event)</span></span>{
-            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'click!'</span>);
+<h2>A Discriminating Click Event</h2>
+<pre><code>$('a#example').mousedown(function(e){
+    if (e.which == 1 &amp;&amp; !(e.shiftKey || e.altKey || e.metaKey || e.ctrlKey)) {
+        $(this).unbind('click.lc').bind('click.lc', function(event){
+            console.log('click!');
             event.preventDefault();
         });
     }
 });
-</code></pre><p>This would be much more involved if it were not for jQuery normalizing the event object to W3C standards:</p>
+</code></pre>
+<p>This would be much more involved if it were not for jQuery normalizing the event object to W3C standards:</p>
 <ul>
-<li>Event.which is the normalized button identifier (left-click will be &#39;1&#39; for all browsers).</li>
-<li>Event.preventDefault() is the normalized method for stopping the browser&#39;s default action.</li>
+<li>Event.which is the normalized button identifier (left-click will be '1' for all browsers).</li>
+<li>Event.preventDefault() is the normalized method for stopping the browser's default action.</li>
 </ul>
-<p>The reason to detect the mousedown separately from the click event itself is that IE only provides button identification for mousedown and mouseup events.  There is no way to detect which mouse button was clicked from a click event object in IE.  Since the mousedown event does not necessarily precede a click event, the click event handler should be unbound first to insure that it is not applied multiple times. I named-spaced the event (&#39;.lc&#39; for &#39;left-click&#39;) so that any unrelated event handlers would not be unbound as well.</p>
-<p>A <em>Good Enough</em> approach would be to simply ignore IE&#39;s lack of button identification:</p>
-<pre><code>$(<span class="hljs-string">'a#example'</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span></span>{
-    <span class="hljs-keyword">if</span> (!(e.which &gt; <span class="hljs-number">1</span> || e.shiftKey || e.altKey || e.metaKey || e.ctrlKey)) {
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'click!'</span>);
+<p>The reason to detect the mousedown separately from the click event itself is that IE only provides button identification for mousedown and mouseup events.  There is no way to detect which mouse button was clicked from a click event object in IE.  Since the mousedown event does not necessarily precede a click event, the click event handler should be unbound first to insure that it is not applied multiple times. I named-spaced the event ('.lc' for 'left-click') so that any unrelated event handlers would not be unbound as well.</p>
+<p>A <em>Good Enough</em> approach would be to simply ignore IE's lack of button identification:</p>
+<pre><code>$('a#example').click(function(e){
+    if (!(e.which &gt; 1 || e.shiftKey || e.altKey || e.metaKey || e.ctrlKey)) {
+        console.log('click!');
         e.preventDefault();
     }
 });
-</code></pre><p>This works perfectly for non-IE browsers because the lowest button identifier is 1, and that is for the left-mouse-button.  If e.which is greater than 1, then it had to have been from another mouse-button.  For click events, jQuery sets e.which to 0 for every mouse-button in IE.  Not being able to identify which mouse-button is not that important in most cases.  The right-mouse-button does not need to be identified because it does not generate a click event, it generates a contextmenu event.  In IE the default behavior of a middle-click on anchor elements with a valid non-fragment href property cannot be canceled, so there is no need to identify it for purposes of exclusion.</p>
+</code></pre>
+<p>This works perfectly for non-IE browsers because the lowest button identifier is 1, and that is for the left-mouse-button.  If e.which is greater than 1, then it had to have been from another mouse-button.  For click events, jQuery sets e.which to 0 for every mouse-button in IE.  Not being able to identify which mouse-button is not that important in most cases.  The right-mouse-button does not need to be identified because it does not generate a click event, it generates a contextmenu event.  In IE the default behavior of a middle-click on anchor elements with a valid non-fragment href property cannot be canceled, so there is no need to identify it for purposes of exclusion.</p>
 
-            <hr>
-            <h2>Hey,</h2>
-            <p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
-            <p>
-            <iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
-            <a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </p>
-        
-        </article>
-        <aside>
-            <h3>Github Repos</h3>
-            <ul>
-                <li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
-                <li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
-                <li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
-                <li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
-            </ul>
-            <div class='recent-posts'>
-                <h3>Blog Posts</h3>
-                <ul>
-                    
-                <li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
-            
-                <li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
-            
-                <li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
-            
-                <li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
-            
-                <li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
-            
-                <li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
-            
-                <li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
-            
-                <li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
-            
-                <li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
-            
-                <li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
-            
-                <li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
-            
-                <li><a href="/notes/click-events/">Working with JavaScript click events</a>
-            
-                <li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
-            
-                <li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
-            
-                </ul>
-            </div>
-            <h3>Tags</h3>
-            <ul class='tags'>
-                
-                <li>
-                    <a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
-                </li>
-            
-                <li>
-                    <a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
-                </li>
-            
-            </ul>
-        </aside>
-    </div>
-    <script src="/js/main.js"></script>
-        
+			<hr>
+			<h2>Hey,</h2>
+			<p>Follow me on <a href="http://twitter.com/jacklmoore" rel='me'>Twitter</a> and <a href="http://github.com/jackmoore" rel='me'>Github</a>, that's where I'm most active these days.  I welcome email (<span class='email'></span>), but I'm afraid I no longer have time to answer personal requests for help regarding my plugins or posts.  Thanks!</p>
+			<p>
+			<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20"></iframe>
+			<a href="https://twitter.com/jacklmoore" class="twitter-follow-button" data-show-count="true">Follow @jacklmoore</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</p>
+		
+		</article>
+		<aside>
+			<h3>Github Repos</h3>
+			<ul>
+				<li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
+				<li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
+				<li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
+				<li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
+			</ul>
+			<div class='recent-posts'>
+				<h3>Blog Posts</h3>
+				<ul>
+					
+				<li><a href="/notes/rounding-in-javascript/">Rounding Decimals in JavaScript</a>
+			
+				<li><a href="/notes/mouse-position/">Cross-browser mouse positioning</a>
+			
+				<li><a href="/notes/css3-ribbon-menu/">CSS Ribbon Menu</a>
+			
+				<li><a href="/notes/jquery-modal-tutorial/">jQuery Modal Tutorial</a>
+			
+				<li><a href="/notes/jquery-accordion-tutorial/">A Better jQuery Accordion</a>
+			
+				<li><a href="/notes/ie-opacity-inheritance/">Fixing IE's Opacity Inheritance</a>
+			
+				<li><a href="/notes/jquery-tabs/">jQuery Tabs Tutorial</a>
+			
+				<li><a href="/notes/form-placeholder-text/">HTML5 Placeholder Attribute</a>
+			
+				<li><a href="/notes/naturalwidth-and-naturalheight-in-ie/">NaturalWidth and NaturalHeight in IE</a>
+			
+				<li><a href="/notes/colorbox-with-json-or-flickr/">Colorbox with Flickr Feed</a>
+			
+				<li><a href="/notes/tragedy-struck-on-threadless/">Tragedy Struck On Threadless</a>
+			
+				<li><a href="/notes/click-events/">Working with JavaScript click events</a>
+			
+				<li><a href="/notes/ie-transparency-problems/">Solving IE7 &amp; IE8 PNG Opacity Problems</a>
+			
+				<li><a href="/notes/substring-substr-slice-javascript/">JavaScript: Slice, Substring, or Substr?</a>
+			
+				</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul class='tags'>
+				
+				<li>
+					<a href='/notes/#tag-javascript' class='tag-javascript'>JavaScript <span>x8</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-css' class='tag-css'>CSS <span>x4</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-html5' class='tag-html5'>HTML5 <span>x2</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-jquery' class='tag-jquery'>jQuery <span>x7</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-internet-explorer' class='tag-internet-explorer'>Internet Explorer <span>x3</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-colorbox' class='tag-colorbox'>Colorbox <span>x1</span></a>
+				</li>
+			
+				<li>
+					<a href='/notes/#tag-illustration' class='tag-illustration'>Illustration <span>x1</span></a>
+				</li>
+			
+			</ul>
+		</aside>
+	</div>
+	<script src="/js/main.js"></script>
+		

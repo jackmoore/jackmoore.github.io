@@ -15,15 +15,18 @@ permalink: /colorbox/
 <a href='/colorbox/example4/' class='demo'>4</a>
 <a href='/colorbox/example5/' class='demo'>5</a>
 
-<h2><a href='https://github.com/jackmoore/colorbox/archive/master.zip' style='text-decoration: underline;'>Download</a></h2>
+___
 
-Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a>.  Source on <a href='http://github.com/jackmoore/colorbox'>Github</a> (<a href='http://github.com/jackmoore/colorbox#changelog'>changelog</a>).<br>
+<p>Released under the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT License</a>, source on <a href='http://github.com/jackmoore/colorbox'>Github</a> (<a href='http://github.com/jackmoore/colorbox#changelog'>changelog</a>) &nbsp;<iframe style='vertical-align: middle' src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=colorbox&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="97" height="20"></iframe> <iframe style='vertical-align: middle' src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=colorbox&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></p>
+
+<a class='download' href='https://github.com/jackmoore/colorbox/archive/master.zip'><i class='icon-download-alt'></i> Download</a>
+
+##### Install via Bower
+```bash
+bower install jquery-colorbox
+```
+
 Compatible with: jQuery 1.3.2+ in Firefox, Safari, Chrome, Opera, Internet Explorer 7+<br>
-Bower Package: `jquery-colorbox`
-
-<p>
-<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=colorbox&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="97" height="20"></iframe>
-<iframe src="http://ghbtns.com/github-btn.html?user=jackmoore&amp;repo=colorbox&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
 
 * Supports photos, grouping, slideshow, ajax, inline, and iframed content.
 * Lightweight: 10KB of JavaScript (less than 5KBs gzipped).
@@ -31,7 +34,7 @@ Bower Package: `jquery-colorbox`
 * Can be extended with callbacks & event-hooks without altering the source files.
 * Completely unobtrusive, options are set in the JS and require no changes to existing HTML.
 * Preloads upcoming images in a photo group.
-* Currently used on more than <a href='http://trends.builtwith.com/javascript/jQuery-Colorbox'>1.9 million websites</a>.
+* Currently used on more than <a href='http://trends.builtwith.com/javascript/jQuery-Colorbox'>2 million websites</a>.
 
 ## Instructions & Help
 
@@ -182,9 +185,7 @@ $("a.gallery").colorbox({rel: 'gal', title: function(){
 
 
   <tr>
-    <th>Internationalization
-    <th>
-    <th>
+    <th colspan='999'>Internationalization
 
   <tr id='setting-current'>
     <td>current
@@ -218,9 +219,7 @@ $("a.gallery").colorbox({rel: 'gal', title: function(){
 
 
   <tr>
-    <th>Content Type
-    <th>
-    <th>
+    <th colspan='999'>Content Type
 
   <tr id='setting-iframe'>
     <td>iframe
@@ -256,9 +255,7 @@ $("#inline").colorbox({inline:true, href:$form});
     <td>This property isn't actually used as Colorbox assumes all hrefs should be treated as either ajax or photos, unless one of the other content types were specified.
 
   <tr id='setting-dimensions'>
-    <th>Dimensions
-    <th>
-    <th>
+    <th colspan='999'>Dimensions
 
   <tr id='setting-width'>
     <td>width
@@ -301,9 +298,7 @@ $("#inline").colorbox({inline:true, href:$form});
     <td>Set a maximum height for loaded content. Example: "100%", 500, "500px"
 
   <tr>
-    <th>Slideshow
-    <th>
-    <th>
+    <th colspan='999'>Slideshow
 
   <tr id='setting-slideshow'>
     <td>slideshow
@@ -331,9 +326,7 @@ $("#inline").colorbox({inline:true, href:$form});
     <td>Text for the slideshow stop button
 
   <tr>
-    <th>Positioning
-    <th>
-    <th>
+    <th colspan='999'>Positioning
 
   <tr id='setting-fixed'>
     <td>fixed
@@ -366,9 +359,7 @@ $("#inline").colorbox({inline:true, href:$form});
     <td>Repositions Colorbox if the window's resize event is fired.
 
   <tr id='setting-retina'>
-    <th>Retina Images
-    <th>
-    <th>
+    <th colspan='999'>Retina Images
 
   <tr id='setting-retinaImage'>
     <td>retinaImage
@@ -386,9 +377,7 @@ $("#inline").colorbox({inline:true, href:$form});
     <td>If retinaUrl is true and the device has a high resolution display, the href value will have it's extention extended with this suffix.  For example, the default value would change `my-photo.jpg` to `my-photo@2x.jpg`
 
   <tr>
-    <th>Callbacks
-    <th>
-    <th>
+    <th colspan='999'>Callbacks
 
   <tr id='setting-onopen'>
     <td>onOpen
