@@ -143,6 +143,17 @@ jQuery(function($){
 
 ### Known Issues &amp; Solutions
 
+#### Sluggish performance in Safari
+
+In Webkit, the default focus style for input and textarea elements includes `outline-style: auto`, which has a blurred drop-shadow like appearance.  Completely independent of autosize, Safari is terrible at animating anything with this blur on it.  My recommendation would be to use a non-blurred outline-style.  For example:
+
+```css
+input:focus, textarea:focus {
+	outline-style: solid;
+	outline-width: 2px;
+}
+```
+
 #### Incorrect size with hidden textarea elements
 
 Autosize needs to be able to calculate the width of the textarea element when it is assigned.  JavaScript cannot accurately calculate the width of an element that has been removed from the document flow.  If you want to assign Autosize to a hidden textarea element, be sure to either specify the pixel width of the element in your CSS, or trigger the `autosize.update` event after you reveal the textarea element.
