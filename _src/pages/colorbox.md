@@ -21,6 +21,11 @@ ___
 
 <a class='download' href='https://github.com/jackmoore/colorbox/archive/master.zip'><i class='icon-download-alt'></i> Download</a>
 
+##### Install via NPM
+```bash
+npm install jquery-colorbox
+```
+
 ##### Install via Bower
 ```bash
 bower install jquery-colorbox

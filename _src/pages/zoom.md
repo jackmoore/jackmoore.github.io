@@ -25,6 +25,11 @@ ___
 
 Compatible with: jQuery 1.7+ in Chrome, Firefox, Safari, Opera, Internet Explorer 7+.
 
+##### Install via NPM
+```bash
+npm install jquery-zoom
+```
+
 ##### Install via Bower
 ```bash
 bower install jquery-zoom
