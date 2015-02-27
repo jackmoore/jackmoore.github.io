@@ -115,12 +115,64 @@ ta.addEventListener('autosize.resized', function(){
 </tr>
 </table>
 
+## Trouble shooting
+
+* [Setting a min-height or max-height](#faq-min-max)
+* [Fixing slow or sluggish performance](#faq-slow)
+* [Initial height is incorrect](#faq-hidden)
+
+
+<h4 id='faq-min-max'>Setting a min-height or max-height</h4>
+
+Use CSS to specify a min-height and max-height for the textarea element.  Once the height exceeds the max-height, autosize will re-enable the vertical scrollbar.
+
+The rows attribute can also be used to specify a minimum height.  The rows attribute has a default value of `2`, so to make the textarea smaller than that you'll need to set the value to `1`.  Example: `<textarea rows='1'></textarea>`
+
+<h4 id='faq-slow'>Fixing slow or sluggish performance</h4>
+
+In Webkit, the default focus style for input and textarea elements includes `outline-style: auto`, which has a blurred drop-shadow like appearance.  Completely independent of autosize, Safari is terrible at animating anything with this blur on it.  My recommendation would be to use a non-blurred outline-style, and to remove any blurred box-shadow or other taxing CSS effect.  For example:
+
+```css
+input:focus, textarea:focus {
+	outline-style: solid;
+	outline-width: 2px;
+}
+```
+
+<h4 id='faq-hidden'>Initial height is incorrect</h4>
+
+Autosize needs to be able to calculate the width of the textarea element when it is assigned.  JavaScript cannot accurately calculate the width of an element that has been removed from the DOM or had it's display set to none.  If you want to assign Autosize to a hidden textarea element that you plan to reveal later, be sure to either specify the pixel width of the element in your CSS, or trigger the `autosize.update` event after you reveal the textarea element.
+
+**Possible ways to resolve:**
+
+* Specify an exact width for the textarea element in your stylesheet.
+* Delay assigning autosize until the textarea has been revealed.  Alternatively, wait until the user focuses the textarea element:
+	```javascript
+	var ta = document.querySelector('textarea');
+	ta.addEventListener('focus', function(){
+		autosize(ta);
+	});
+	```
+
+* Trigger the `autosize.update` event after the element has been revealed.
+	```javascript
+	var ta = document.querySelector('textarea');
+	ta.style.display = 'none';
+	autosize(ta);
+	ta.style.display = '';
+
+	// Trigger the autosize.update event to recalculate the size:
+	var evt = document.createEvent('Event');
+	evt.initEvent('autosize.update', true, false);
+	ta.dispatchEvent(evt);
+	```
+
 ### Differences between v2 and v1
 
 If you need the v1 version for whatever reason, you can find it in the v1 branch on Github:
 [https://github.com/jackmoore/autosize/tree/v1](https://github.com/jackmoore/autosize/tree/v1)
 
-Autosize v2 is a smaller, simplier script than v1.  It is now a stand-alone script instead of a jQuery plugin, and support for IE8 and lower has been dropped (legacy IE users will be presented with an unmodified textarea element).  Additionally, Autosize v2 does not take in any optional parameters at this time.
+Autosize v2 is a smaller, simpler script than v1.  It is now a stand-alone script instead of a jQuery plugin, and support for IE8 and lower has been dropped (legacy IE users will be presented with an unmodified textarea element).  Additionally, Autosize v2 does not take in any optional parameters at this time.
 
 Autosize v2 does not create a mirror textarea element in order to calculate the correct height, which was responsible for much of the original script's complexity.  This should be more efficient and reliable, but the new method prevents using a CSS transition to animate the height change.
 
@@ -138,49 +190,5 @@ window.jQuery.fn.autosize = function() {
 // Use the plugin:
 jQuery(function($){
 	$('textarea').autosize();
-});
-```
-
-### Known Issues &amp; Solutions
-
-#### Sluggish performance in Safari
-
-In Webkit, the default focus style for input and textarea elements includes `outline-style: auto`, which has a blurred drop-shadow like appearance.  Completely independent of autosize, Safari is terrible at animating anything with this blur on it.  My recommendation would be to use a non-blurred outline-style.  For example:
-
-```css
-input:focus, textarea:focus {
-	outline-style: solid;
-	outline-width: 2px;
-}
-```
-
-#### Incorrect size with hidden textarea elements
-
-Autosize needs to be able to calculate the width of the textarea element when it is assigned.  JavaScript cannot accurately calculate the width of an element that has been removed from the document flow.  If you want to assign Autosize to a hidden textarea element, be sure to either specify the pixel width of the element in your CSS, or trigger the `autosize.update` event after you reveal the textarea element.
-
-**Possible ways to resolve:**
-
-* Specify an exact width for the textarea element in your stylesheet.
-* Wait until after the textarea element has been revealed before assigning Autosize.
-* Trigger the `autosize.update` event after the element has been revealed.
-
-```javascript
-var ta = document.querySelector('textarea');
-ta.style.display = 'none';
-autosize(ta);
-ta.style.display = '';
-
-// Trigger the autosize.update event to recalculate the size:
-var evt = document.createEvent('Event');
-evt.initEvent('autosize.update', true, false);
-ta.dispatchEvent(evt);
-```
-
-* Wait until the textarea has been focused by the user before assigning Autosize.
-
-```javascript
-var ta = document.querySelector('textarea');
-ta.addEventListener('focus', function(){
-	autosize(ta);
 });
 ```

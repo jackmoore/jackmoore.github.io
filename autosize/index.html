@@ -112,10 +112,55 @@ ta.addEventListener(<span class="hljs-string">'autosize.resized'</span>, <span c
 </td>
 </tr>
 </table>
+<h2>Trouble shooting</h2>
+<ul>
+<li><a href="#faq-min-max">Setting a min-height or max-height</a></li>
+<li><a href="#faq-slow">Fixing slow or sluggish performance</a></li>
+<li><a href="#faq-hidden">Initial height is incorrect</a></li>
+</ul>
+<p><h4 id='faq-min-max'>Setting a min-height or max-height</h4></p>
+<p>Use CSS to specify a min-height and max-height for the textarea element.  Once the height exceeds the max-height, autosize will re-enable the vertical scrollbar.</p>
+<p>The rows attribute can also be used to specify a minimum height.  The rows attribute has a default value of <code>2</code>, so to make the textarea smaller than that you'll need to set the value to <code>1</code>.  Example: <code>&lt;textarea rows='1'&gt;&lt;/textarea&gt;</code></p>
+<p><h4 id='faq-slow'>Fixing slow or sluggish performance</h4></p>
+<p>In Webkit, the default focus style for input and textarea elements includes <code>outline-style: auto</code>, which has a blurred drop-shadow like appearance.  Completely independent of autosize, Safari is terrible at animating anything with this blur on it.  My recommendation would be to use a non-blurred outline-style, and to remove any blurred box-shadow or other taxing CSS effect.  For example:</p>
+<pre><code class="language-css"><span class="hljs-tag">input</span><span class="hljs-pseudo">:focus</span>, <span class="hljs-tag">textarea</span><span class="hljs-pseudo">:focus</span> <span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">outline-style</span>:<span class="hljs-value"> solid</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">outline-width</span>:<span class="hljs-value"> <span class="hljs-number">2px</span></span></span>;
+<span class="hljs-rule">}</span></span>
+</code></pre>
+<p><h4 id='faq-hidden'>Initial height is incorrect</h4></p>
+<p>Autosize needs to be able to calculate the width of the textarea element when it is assigned.  JavaScript cannot accurately calculate the width of an element that has been removed from the DOM or had it's display set to none.  If you want to assign Autosize to a hidden textarea element that you plan to reveal later, be sure to either specify the pixel width of the element in your CSS, or trigger the <code>autosize.update</code> event after you reveal the textarea element.</p>
+<p><strong>Possible ways to resolve:</strong></p>
+<ul>
+<li>
+<p>Specify an exact width for the textarea element in your stylesheet.</p>
+</li>
+<li>
+<p>Delay assigning autosize until the textarea has been revealed.  Alternatively, wait until the user focuses the textarea element:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> ta = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'textarea'</span>);
+ta.addEventListener(<span class="hljs-string">'focus'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+    autosize(ta);
+});
+</code></pre>
+</li>
+<li>
+<p>Trigger the <code>autosize.update</code> event after the element has been revealed.</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> ta = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'textarea'</span>);
+ta.style.display = <span class="hljs-string">'none'</span>;
+autosize(ta);
+ta.style.display = <span class="hljs-string">''</span>;
+
+<span class="hljs-comment">// Trigger the autosize.update event to recalculate the size:</span>
+<span class="hljs-keyword">var</span> evt = <span class="hljs-built_in">document</span>.createEvent(<span class="hljs-string">'Event'</span>);
+evt.initEvent(<span class="hljs-string">'autosize.update'</span>, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);
+ta.dispatchEvent(evt);
+</code></pre>
+</li>
+</ul>
 <h3>Differences between v2 and v1</h3>
 <p>If you need the v1 version for whatever reason, you can find it in the v1 branch on Github:
 <a href="https://github.com/jackmoore/autosize/tree/v1">https://github.com/jackmoore/autosize/tree/v1</a></p>
-<p>Autosize v2 is a smaller, simplier script than v1.  It is now a stand-alone script instead of a jQuery plugin, and support for IE8 and lower has been dropped (legacy IE users will be presented with an unmodified textarea element).  Additionally, Autosize v2 does not take in any optional parameters at this time.</p>
+<p>Autosize v2 is a smaller, simpler script than v1.  It is now a stand-alone script instead of a jQuery plugin, and support for IE8 and lower has been dropped (legacy IE users will be presented with an unmodified textarea element).  Additionally, Autosize v2 does not take in any optional parameters at this time.</p>
 <p>Autosize v2 does not create a mirror textarea element in order to calculate the correct height, which was responsible for much of the original script's complexity.  This should be more efficient and reliable, but the new method prevents using a CSS transition to animate the height change.</p>
 <h3>Converting to a jQuery plugin</h3>
 <p>Autosize does not depend on jQuery, but it can easily be turned into a jQuery plugin if desired.</p>
@@ -127,40 +172,6 @@ ta.addEventListener(<span class="hljs-string">'autosize.resized'</span>, <span c
 <span class="hljs-comment">// Use the plugin:</span>
 jQuery(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($)</span></span>{
     $(<span class="hljs-string">'textarea'</span>).autosize();
-});
-</code></pre>
-<h3>Known Issues &amp; Solutions</h3>
-<h4>Sluggish performance in Safari</h4>
-<p>In Webkit, the default focus style for input and textarea elements includes <code>outline-style: auto</code>, which has a blurred drop-shadow like appearance.  Completely independent of autosize, Safari is terrible at animating anything with this blur on it.  My recommendation would be to use a non-blurred outline-style.  For example:</p>
-<pre><code class="language-css"><span class="hljs-tag">input</span><span class="hljs-pseudo">:focus</span>, <span class="hljs-tag">textarea</span><span class="hljs-pseudo">:focus</span> <span class="hljs-rules">{
-    <span class="hljs-rule"><span class="hljs-attribute">outline-style</span>:<span class="hljs-value"> solid</span></span>;
-    <span class="hljs-rule"><span class="hljs-attribute">outline-width</span>:<span class="hljs-value"> <span class="hljs-number">2px</span></span></span>;
-<span class="hljs-rule">}</span></span>
-</code></pre>
-<h4>Incorrect size with hidden textarea elements</h4>
-<p>Autosize needs to be able to calculate the width of the textarea element when it is assigned.  JavaScript cannot accurately calculate the width of an element that has been removed from the document flow.  If you want to assign Autosize to a hidden textarea element, be sure to either specify the pixel width of the element in your CSS, or trigger the <code>autosize.update</code> event after you reveal the textarea element.</p>
-<p><strong>Possible ways to resolve:</strong></p>
-<ul>
-<li>Specify an exact width for the textarea element in your stylesheet.</li>
-<li>Wait until after the textarea element has been revealed before assigning Autosize.</li>
-<li>Trigger the <code>autosize.update</code> event after the element has been revealed.</li>
-</ul>
-<pre><code class="language-javascript"><span class="hljs-keyword">var</span> ta = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'textarea'</span>);
-ta.style.display = <span class="hljs-string">'none'</span>;
-autosize(ta);
-ta.style.display = <span class="hljs-string">''</span>;
-
-<span class="hljs-comment">// Trigger the autosize.update event to recalculate the size:</span>
-<span class="hljs-keyword">var</span> evt = <span class="hljs-built_in">document</span>.createEvent(<span class="hljs-string">'Event'</span>);
-evt.initEvent(<span class="hljs-string">'autosize.update'</span>, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);
-ta.dispatchEvent(evt);
-</code></pre>
-<ul>
-<li>Wait until the textarea has been focused by the user before assigning Autosize.</li>
-</ul>
-<pre><code class="language-javascript"><span class="hljs-keyword">var</span> ta = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'textarea'</span>);
-ta.addEventListener(<span class="hljs-string">'focus'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
-    autosize(ta);
 });
 </code></pre>
 
