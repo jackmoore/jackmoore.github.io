@@ -219,7 +219,7 @@ $('a.example').colorbox({
 	onOpen: function(){
 	  $('body').css({ overflow: 'hidden' });
 	},
-	onClosed(){
+	onClosed: function(){
 	   $('body').css({ overflow: '' });
 	}
 });
