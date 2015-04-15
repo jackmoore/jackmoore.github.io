@@ -51,7 +51,7 @@ autosize(document.querySelector('textarea'));
 autosize($('textarea'));
 ```
 
-### Lifecycle Events
+### Life-cycle Events
 
 <table>
 <tr>
@@ -59,10 +59,10 @@ autosize($('textarea'));
 <th>Description</th>
 </tr>
 <tr>
-<td>autosize.update</td>
+<td>autosize:update</td>
 <td>
 
-Once you've assigned autosize to an element, you can manually trigger the resize event by using the 'autosize.update' event. Autosize has no way of knowing when a script has changed the value of a textarea element, or when the textarea element styles have changed, so this event would be used instruct autosize to resize the textarea.
+Once you've assigned autosize to an element, you can manually trigger the resize event by using the 'autosize:update' event. Autosize has no way of knowing when a script has changed the value of a textarea element, or when the textarea element styles have changed, so this event would be used instruct autosize to resize the textarea.
 
 
 ```javascript
@@ -70,19 +70,17 @@ var ta = document.querySelector('textarea');
 
 autosize(ta);
 
-// Change the value of the textarea
-ta.value = "Something really long";
-ta.style.fontSize = '20px';
+ta.value = "Some new value";
 
-// Dispatch a 'autosize.update' event to trigger a resize:
+// Dispatch a 'autosize:update' event to trigger a resize:
 var evt = document.createEvent('Event');
-evt.initEvent('autosize.update', true, false);
+evt.initEvent('autosize:update', true, false);
 ta.dispatchEvent(evt);
 ```
 </td>
 </tr>
 <tr>
-<td>autosize.destroy</td>
+<td>autosize:destroy</td>
 <td>
 
 ```javascript
@@ -93,13 +91,13 @@ autosize(ta);
 
 // remove autosize from ta
 var evt = document.createEvent('Event');
-evt.initEvent('autosize.destroy', true, false);
+evt.initEvent('autosize:destroy', true, false);
 ta.dispatchEvent(evt);
 ```
 </td>
 </tr>
 <tr>
-<td>autosize.resized</td>
+<td>autosize:resized</td>
 <td>
 
 This event is fired every time autosize adjusts the textarea height.
@@ -107,9 +105,57 @@ This event is fired every time autosize adjusts the textarea height.
 ```javascript
 var ta = document.querySelector('textarea');
 
-ta.addEventListener('autosize.resized', function(){
+ta.addEventListener('autosize:resized', function(){
 	console.log('textarea height updated');
 });
+```
+
+If you are using jQuery, you can use the on/off methods to listen to this event:
+
+```javascript
+$('textarea').each(function(){
+	autosize(this);
+}).on('autosize:resized', function(){
+	console.log('textarea height updated');
+});
+```
+</td>
+</tr>
+</table>
+
+
+### Methods
+
+These methods are provided as an alternative to using the life-cycle events.
+
+<table>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>autosize.update(elements)</td>
+<td>
+For manually recalculating the height for a textarea element, array, or array-like object.
+
+```javascript
+var ta = document.querySelector('textarea');
+
+autosize(ta);
+
+ta.value = "Some new value";
+
+autosize.update(ta);
+```
+</td>
+</tr>
+<tr>
+<td>autosize.delete(elements)</td>
+<td>
+Removes autosize and reverts it's changes from a textarea element, array, or array-like object.
+
+```javascript
+autosize.delete(document.querySelectorAll('textarea'));
 ```
 </td>
 </tr>
@@ -141,7 +187,7 @@ input:focus, textarea:focus {
 
 <h4 id='faq-hidden'>Initial height is incorrect</h4>
 
-Autosize needs to be able to calculate the width of the textarea element when it is assigned.  JavaScript cannot accurately calculate the width of an element that has been removed from the DOM or had it's display set to none.  If you want to assign Autosize to a hidden textarea element that you plan to reveal later, be sure to either specify the pixel width of the element in your CSS, or trigger the `autosize.update` event after you reveal the textarea element.
+Autosize needs to be able to calculate the width of the textarea element when it is assigned.  JavaScript cannot accurately calculate the width of an element that has been removed from the DOM or had it's display set to none.  If you want to assign Autosize to a hidden textarea element that you plan to reveal later, be sure to either specify the pixel width of the element in your CSS, or use the autosize.update method after you reveal the textarea element.
 
 **Possible ways to resolve:**
 
@@ -154,17 +200,15 @@ Autosize needs to be able to calculate the width of the textarea element when it
 	});
 	```
 
-* Trigger the `autosize.update` event after the element has been revealed.
+* Use the autosize.update method (or trigger the `autosize:update` event) after the element has been revealed.
 	```javascript
 	var ta = document.querySelector('textarea');
 	ta.style.display = 'none';
 	autosize(ta);
 	ta.style.display = '';
 
-	// Trigger the autosize.update event to recalculate the size:
-	var evt = document.createEvent('Event');
-	evt.initEvent('autosize.update', true, false);
-	ta.dispatchEvent(evt);
+	// Call the update method to recalculate the size:
+	autosize.update(ta);
 	```
 
 ### Differences between v2 and v1
@@ -175,20 +219,3 @@ If you need the v1 version for whatever reason, you can find it in the v1 branch
 Autosize v2 is a smaller, simpler script than v1.  It is now a stand-alone script instead of a jQuery plugin, and support for IE8 and lower has been dropped (legacy IE users will be presented with an unmodified textarea element).  Additionally, Autosize v2 does not take in any optional parameters at this time.
 
 Autosize v2 does not create a mirror textarea element in order to calculate the correct height, which was responsible for much of the original script's complexity.  This should be more efficient and reliable, but the new method prevents using a CSS transition to animate the height change.
-
-
-### Converting to a jQuery plugin
-
-Autosize does not depend on jQuery, but it can easily be turned into a jQuery plugin if desired.
-
-```javascript
-// Create the plugin:
-window.jQuery.fn.autosize = function() {
-	return autosize(this);
-};
-
-// Use the plugin:
-jQuery(function($){
-	$('textarea').autosize();
-});
-```
