@@ -150,12 +150,12 @@ autosize.update(ta);
 </td>
 </tr>
 <tr>
-<td>autosize.delete(elements)</td>
+<td>autosize.destroy(elements)</td>
 <td>
 Removes autosize and reverts it's changes from a textarea element, array, or array-like object.
 
 ```javascript
-autosize.delete(document.querySelectorAll('textarea'));
+autosize.destroy(document.querySelectorAll('textarea'));
 ```
 </td>
 </tr>
