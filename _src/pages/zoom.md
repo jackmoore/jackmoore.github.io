@@ -30,11 +30,6 @@ Compatible with: jQuery 1.7+ in Chrome, Firefox, Safari, Opera, Internet Explore
 npm install jquery-zoom
 ```
 
-##### Install via Bower
-```bash
-bower install jquery-zoom
-```
-
 ## Instructions
 
 **Zoom appends html inside the element it is assigned to, so that element has to be able to accept html**, like `<a>`, `<span>`, `<li>`, `<div>`, etc.  This excludes `<img>` elements (see below).

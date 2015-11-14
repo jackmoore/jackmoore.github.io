@@ -25,10 +25,6 @@ ___
 ```bash
 npm install autosize
 ```
-##### Install via Bower
-```bash
-bower install autosize
-```
 
 #### Browser compatibility
 

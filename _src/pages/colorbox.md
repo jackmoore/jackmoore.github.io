@@ -26,11 +26,6 @@ ___
 npm install jquery-colorbox
 ```
 
-##### Install via Bower
-```bash
-bower install jquery-colorbox
-```
-
 Compatible with: jQuery 1.3.2+ in Firefox, Safari, Chrome, Opera, Internet Explorer 7+<br>
 
 * Supports photos, grouping, slideshow, ajax, inline, and iframed content.
