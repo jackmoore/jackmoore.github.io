@@ -148,7 +148,7 @@ autosize.update(ta);
 <tr>
 <td>autosize.destroy(elements)</td>
 <td>
-Removes autosize and reverts it's changes from a textarea element, array, or array-like object.
+Removes autosize and reverts its changes from a textarea element, array, or array-like object.
 
 ```javascript
 autosize.destroy(document.querySelectorAll('textarea'));
@@ -183,7 +183,7 @@ input:focus, textarea:focus {
 
 <h4 id='faq-hidden'>Initial height is incorrect</h4>
 
-Autosize needs to be able to calculate the width of the textarea element when it is assigned.  JavaScript cannot accurately calculate the width of an element that has been removed from the DOM or had it's display set to none.  If you want to assign Autosize to a hidden textarea element that you plan to reveal later, be sure to either specify the pixel width of the element in your CSS, or use the autosize.update method after you reveal the textarea element.
+Autosize needs to be able to calculate the width of the textarea element when it is assigned.  JavaScript cannot accurately calculate the width of an element that has been removed from the DOM or had its display set to none.  If you want to assign Autosize to a hidden textarea element that you plan to reveal later, be sure to either specify the pixel width of the element in your CSS, or use the autosize.update method after you reveal the textarea element.
 
 **Possible ways to resolve:**
 
