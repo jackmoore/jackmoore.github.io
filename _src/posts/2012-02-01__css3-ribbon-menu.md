@@ -104,9 +104,9 @@ The links and the forked ends are all floated left so that they fit flush agains
 
 A nifty trick for vertically centering text inside of an element is to set the line-height to be the desired height of the element, and remove any vertical padding. This will keep the height fixed and the text centered, even if the font-face, font-size, or font-weight changes.
 
-The top-margin gives the span space to be animated while staying within the anchor element. The span is given a relative position so that it will be the positioning reference for it's absolutely positioned `:before` and `:after` pseudo-elements.
+The top-margin gives the span space to be animated while staying within the anchor element. The span is given a relative position so that it will be the positioning reference for its absolutely positioned `:before` and `:after` pseudo-elements.
 
-A CSS3 transition animates the transition between the span's normal state and it's hover state. Transitions are an experimental feature and are not yet part of the CSS3 specification.  As such, each browser has implemented transitions using their respective vendor prefix. The non-prefixed transition property is used under the assumption that, in the future, the property will be a part of the CSS specification.
+A CSS3 transition animates the transition between the span's normal state and its hover state. Transitions are an experimental feature and are not yet part of the CSS3 specification.  As such, each browser has implemented transitions using their respective vendor prefix. The non-prefixed transition property is used under the assumption that, in the future, the property will be a part of the CSS specification.
 
 The :before and :after pseudo-elements create the folded edges when hovering a link.  They are absolutely positioned underneath the span element, and will normally be hidden due to the anchor element having a hidden overflow.  The pseudo-elements contain only a bottom border and a left or right border. Since the borders are as thick as they are long (0.5 x 0.5) and are adjacent, it creates two triangles for us to apply a color to.  The bottom borders will be the same color as the ribbon, and the left or right borders will have the color of the folded edge.
 

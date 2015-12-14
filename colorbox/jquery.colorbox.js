@@ -646,7 +646,7 @@
 
 		$box.css({top: offset.top, left: offset.left, visibility:'visible'});
 		
-		// this gives the wrapper plenty of breathing room so it's floated contents can move around smoothly,
+		// this gives the wrapper plenty of breathing room so its floated contents can move around smoothly,
 		// but it has to be shrank down around the size of div#colorbox when it's done.  If not,
 		// it can invoke an obscure IE bug when using iframes.
 		$wrap[0].style.width = $wrap[0].style.height = "9999px";

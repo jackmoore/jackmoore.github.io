@@ -29,7 +29,7 @@ In JavaScript, substrings are primarily extracted through one of following Strin
 All three of these methods take in a start index and an optional stop index (or length) parameter, but they differ in some important ways:
 
 * substr can give inconsistent results.  Modern browers allow using a negative start index to indicate the number of characters from the end of the string, but IE8 and lower treat a negative start index as 0.
-* substring's parameters are reversable, as it will always use it's smallest parameter value as the start index and largest value as the stop index.  substring will treat a negative start index as 0.
+* substring's parameters are reversable, as it will always use its smallest parameter value as the start index and largest value as the stop index.  substring will treat a negative start index as 0.
 * slice extracts from the end of the string if the starting index is negative.
 
 ### Negative start index

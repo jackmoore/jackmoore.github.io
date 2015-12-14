@@ -16,7 +16,7 @@ Modern browsers (including IE9) provide naturalWidth and naturalHeight propertie
 
 ### Actual width and height in IE8 and IE7
 
-The naturalWidth and naturalHeight properties are not supported in IE8 or lower.  The height and width property will give the apparent width and height after stylesheet and inline styles, inline width and height attributes, and the display property of the image and the image's parent elements have been applied.  The simplest way to get the unmodified width and height is to create a new image element, and use it's width and height property.
+The naturalWidth and naturalHeight properties are not supported in IE8 or lower.  The height and width property will give the apparent width and height after stylesheet and inline styles, inline width and height attributes, and the display property of the image and the image's parent elements have been applied.  The simplest way to get the unmodified width and height is to create a new image element, and use its width and height property.
 
 {% highlight javascript %}
   function getNatural (DOMelement) {

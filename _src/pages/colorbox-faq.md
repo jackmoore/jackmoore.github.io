@@ -104,7 +104,7 @@ Colorbox leverages jQuery's <a href='http://docs.jquery.com/Ajax/load'>.load()</
 
 <h3 id='faq-conflict'>Colorbox only works the first time it is opened:</h3>
 
-This is often due to loading a document with script elements with Colorbox's ajax mode instead of using an iframe.  And iframe would prevent those scripts from interfering with the scripts in the host document.  Often it's due to the parent document's version of jQuery being overwritten  by the loaded in document's version of jQuery.
+This is often due to loading a document with script elements with Colorbox's ajax mode.  jQuery will automatically add script elements in ajax content to the document.  For example, if your ajax content had included its own copy of jQuery in a script tag, it would end up replacing your current version of jQuery that had been extended to include the Colorbox plugin.  Typically, you would use an iframe instead of ajax for content containing JavaScript or CSS that is not intended to be added to the main document.
 
 <h3 id='faq-ajax'>Trying to load an external page results in "Request unsuccessful"</h3>
 
@@ -255,7 +255,7 @@ $('a[rel="examples"]').colorbox({rel:'nofollow'});
 
 <h3 id='faq-parent'>Close from iframe / Control from iframe</h3>
 
-An iframe can access it's parent document's window object via `window.parent`.  This gives you access to variables that exist within the parent document's global scope, such as jQuery.
+An iframe can access its parent document's window object via `window.parent`.  This gives you access to variables that exist within the parent document's global scope, such as jQuery.
 
 ```html
 <!-- calling close method from within an iframe: -->
@@ -319,7 +319,7 @@ $.extend($.colorbox.settings, {opacity:0.5, speed:0, close:'Exit'});
 
 <h3 id='faq-titlelink'>Make the title a link</h3>
 
-Colorbox can be passed a function to be evaluated in place of a static value for any of it's properties.  Through that any sort of string formatting or markup building can be done and displayed as the title:
+Colorbox can be passed a function to be evaluated in place of a static value for any of its properties.  Through that any sort of string formatting or markup building can be done and displayed as the title:
 
 ```javascript
 $('a.gallery').colorbox({title:function () {

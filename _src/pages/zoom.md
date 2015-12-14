@@ -102,7 +102,7 @@ $('#example').trigger('zoom.destroy'); // remove zoom
   <tr>
     <td>magnify
     <td>1
-    <td>This value is multiplied against the full size of the zoomed image.  The default value is 1, meaning the zoomed image should be at 100% of it's natural width and height.
+    <td>This value is multiplied against the full size of the zoomed image.  The default value is 1, meaning the zoomed image should be at 100% of its natural width and height.
   <tr>
     <td>callback
     <td>false

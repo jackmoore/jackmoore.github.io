@@ -72,7 +72,7 @@ I gave `#modal` a larger border-radius than `#content`.  This made a border that
 }
 ```
 
-The close button is absolutely positioned relative #modal, since `#modal` is it's closest ancestor element with positioning.  Since I used an anchor element for the close button, it's default display of `inline` must be changed to `block` in order to apply a fixed width and height to it.  Text-indent moves the anchor's text offscreen so that it will not overlay the background image.
+The close button is absolutely positioned relative #modal, since `#modal` is its closest ancestor element with positioning.  Since I used an anchor element for the close button, its default display of `inline` must be changed to `block` in order to apply a fixed width and height to it.  Text-indent moves the anchor's text offscreen so that it will not overlay the background image.
 
 ### See The <a href='/demo/modal/modal1.html'>Work In Progress</a>
 
@@ -80,7 +80,7 @@ The close button is absolutely positioned relative #modal, since `#modal` is it'
 
 I would like the modal to handle the following things:
 
-* Create it's own HTML and append it to the document
+* Create its own HTML and append it to the document
 * Display specified content
 * Open on command
 * Close on command

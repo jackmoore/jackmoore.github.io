@@ -42,6 +42,6 @@ document.querySelector('img').dispatchEvent(new CustomEvent('wheelzoom.destroy')
 ```
 ### Wheelzoom doesn't change the DOM.  It works by sizing and positioning background-size and background-position styles.
 
-Wheelzoom replaces an img's background-image with it's src.  Then the src is set to a transparent image.  The benefit to using a background-image is that plugin does not change the DOM or the positioning of the img element. This means that the plugin should Just Work™ regardless of your specific CSS or markup.  The drawback that there is no support for background-sizing in older browsers (IE8).  The img element is left unmodified for unsupported browsers.
+Wheelzoom replaces an img's background-image with its src.  Then the src is set to a transparent image.  The benefit to using a background-image is that plugin does not change the DOM or the positioning of the img element. This means that the plugin should Just Work™ regardless of your specific CSS or markup.  The drawback that there is no support for background-sizing in older browsers (IE8).  The img element is left unmodified for unsupported browsers.
 
 The [source](https://raw.github.com/jackmoore/wheelzoom/master/wheelzoom.js) is short and well commented if you are curious to how it works. Email me if you run into any bugs.

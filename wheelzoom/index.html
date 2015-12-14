@@ -48,7 +48,7 @@ wheelzoom(<span class="hljs-built_in">document</span>.querySelectorAll(<span cla
 <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'img'</span>).dispatchEvent(<span class="hljs-keyword">new</span> CustomEvent(<span class="hljs-string">'wheelzoom.destroy'</span>));
 </code></pre>
 <h3>Wheelzoom doesn't change the DOM.  It works by sizing and positioning background-size and background-position styles.</h3>
-<p>Wheelzoom replaces an img's background-image with it's src.  Then the src is set to a transparent image.  The benefit to using a background-image is that plugin does not change the DOM or the positioning of the img element. This means that the plugin should Just Work™ regardless of your specific CSS or markup.  The drawback that there is no support for background-sizing in older browsers (IE8).  The img element is left unmodified for unsupported browsers.</p>
+<p>Wheelzoom replaces an img's background-image with its src.  Then the src is set to a transparent image.  The benefit to using a background-image is that plugin does not change the DOM or the positioning of the img element. This means that the plugin should Just Work™ regardless of your specific CSS or markup.  The drawback that there is no support for background-sizing in older browsers (IE8).  The img element is left unmodified for unsupported browsers.</p>
 <p>The <a href="https://raw.github.com/jackmoore/wheelzoom/master/wheelzoom.js">source</a> is short and well commented if you are curious to how it works. Email me if you run into any bugs.</p>
 
 			<hr>

@@ -38,7 +38,7 @@ Rather than describing the code, I am just going to include it with comments tha
 ```javascript
   $('ul.tabs').each(function(){
     // For each set of tabs, we want to keep track of
-    // which tab is active and it's associated content
+    // which tab is active and its associated content
     var $active, $content, $links = $(this).find('a');
 
     // If the location.hash matches one of the links, use that as the active tab.

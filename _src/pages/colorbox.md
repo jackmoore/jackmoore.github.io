@@ -374,7 +374,7 @@ $("#inline").colorbox({inline:true, href:$form});
   <tr id='setting-retinaSuffix'>
     <td>retinaSuffix
     <td>"@2x.$1"
-    <td>If retinaUrl is true and the device has a high resolution display, the href value will have it's extention extended with this suffix.  For example, the default value would change `my-photo.jpg` to `my-photo@2x.jpg`
+    <td>If retinaUrl is true and the device has a high resolution display, the href value will have its extention extended with this suffix.  For example, the default value would change `my-photo.jpg` to `my-photo@2x.jpg`
 
   <tr>
     <th colspan='999'>Callbacks
@@ -427,10 +427,10 @@ $("#inline").colorbox({inline:true, href:$form});
 
   <tr>
     <td>$.colorbox.resize()
-    <td>This allows Colorbox to be resized based on it's own auto-calculations, or to a specific size.
+    <td>This allows Colorbox to be resized based on its own auto-calculations, or to a specific size.
     This must be called manually after Colorbox's content has loaded.
     The optional parameters object can accept <code>width</code> or <code>innerWidth</code> and <code>height</code> or <code>innerHeight</code>.
-    Without specifying a width or height, Colorbox will attempt to recalculate the height of it's current content.
+    Without specifying a width or height, Colorbox will attempt to recalculate the height of its current content.
 
   <tr>
     <td>$.colorbox.remove()

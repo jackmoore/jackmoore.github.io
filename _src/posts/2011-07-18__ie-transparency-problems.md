@@ -41,7 +41,7 @@ Colorbox uses this technique for alpha channel support in IE8 and IE7.  Credit f
 
 This is a less robust solution than the gradient filter, however it works well and is supported for IE6-IE8.  The AlphaImageLoader filter displays an image between the background and the content.
 
-**It is treated like an image element and not a CSS background-image, so it loses CSS properties like background-position and background-repeat.  Also, it's src is relative to the current HTML document unlike a CSS background-image which path is relative to the CSS document.**  An absolute path or path that is relative to the root can be used to avoid some of the document to document path confusion.  A CSS expression can be used to create a path that is relative to the CSS document as having paths relative to the HTML document can impractical, especially for code that is distributed or reuable.
+**It is treated like an image element and not a CSS background-image, so it loses CSS properties like background-position and background-repeat.  Also, its src is relative to the current HTML document unlike a CSS background-image which path is relative to the CSS document.**  An absolute path or path that is relative to the root can be used to avoid some of the document to document path confusion.  A CSS expression can be used to create a path that is relative to the CSS document as having paths relative to the HTML document can impractical, especially for code that is distributed or reuable.
 
 	#demo {
 		background:url(ie8-logo.png) 0 0 no-repeat;

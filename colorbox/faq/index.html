@@ -95,7 +95,7 @@
 <pre><code>$('#example').colorbox({href:'document.html div#content'});
 </code></pre>
 <p><h3 id='faq-conflict'>Colorbox only works the first time it is opened:</h3></p>
-<p>This is often due to loading a document with script elements with Colorbox's ajax mode instead of using an iframe.  And iframe would prevent those scripts from interfering with the scripts in the host document.  Often it's due to the parent document's version of jQuery being overwritten  by the loaded in document's version of jQuery.</p>
+<p>This is often due to loading a document with script elements with Colorbox's ajax mode.  jQuery will automatically add script elements in ajax content to the document.  For example, if your ajax content had included its own copy of jQuery in a script tag, it would end up replacing your current version of jQuery that had been extended to include the Colorbox plugin.  Typically, you would use an iframe instead of ajax for content containing JavaScript or CSS that is not intended to be added to the main document.</p>
 <p><h3 id='faq-ajax'>Trying to load an external page results in &quot;Request unsuccessful&quot;</h3></p>
 <p>This could be due to an invalid URL or trying to load ajax content from a different domain.  Ajax will only work with documents that are on the same domain as your current document due to browser restrictions.  Ajax has to be run from a server to function (e.g., ajax content is not going to work from your desktop unless you are running a web server such as Apache for local development).</p>
 <p><h3 id='faq-jquery'>JS Error: <code>$(selector).colorbox is not a function</code> or <code>$.colorbox is not a function</code></h3></p>
@@ -198,7 +198,7 @@ $(<span class="hljs-string">'a#example'</span>).colorbox();
 <pre><code class="language-javascript">$(<span class="hljs-string">'a[rel="examples"]'</span>).colorbox({rel:<span class="hljs-string">'nofollow'</span>});
 </code></pre>
 <p><h3 id='faq-parent'>Close from iframe / Control from iframe</h3></p>
-<p>An iframe can access it's parent document's window object via <code>window.parent</code>.  This gives you access to variables that exist within the parent document's global scope, such as jQuery.</p>
+<p>An iframe can access its parent document's window object via <code>window.parent</code>.  This gives you access to variables that exist within the parent document's global scope, such as jQuery.</p>
 <pre><code class="language-html"><span class="hljs-comment">&lt;!-- calling close method from within an iframe: --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">'#'</span> <span class="hljs-attribute">onclick</span>=<span class="hljs-value">'window.parent.jQuery.colorbox.close(); return false;'</span>&gt;</span>
     close this iframe
@@ -246,7 +246,7 @@ $.colorbox.settings.close = <span class="hljs-string">'Exit'</span>;
 $.extend($.colorbox.settings, {opacity:<span class="hljs-number">0.5</span>, speed:<span class="hljs-number">0</span>, close:<span class="hljs-string">'Exit'</span>});
 </code></pre>
 <p><h3 id='faq-titlelink'>Make the title a link</h3></p>
-<p>Colorbox can be passed a function to be evaluated in place of a static value for any of it's properties.  Through that any sort of string formatting or markup building can be done and displayed as the title:</p>
+<p>Colorbox can be passed a function to be evaluated in place of a static value for any of its properties.  Through that any sort of string formatting or markup building can be done and displayed as the title:</p>
 <pre><code class="language-javascript">$(<span class="hljs-string">'a.gallery'</span>).colorbox({title:<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
     <span class="hljs-keyword">return</span> <span class="hljs-string">"To view full size, "</span> + <span class="hljs-string">"click here!"</span>.link(<span class="hljs-keyword">this</span>.href);
 }});
