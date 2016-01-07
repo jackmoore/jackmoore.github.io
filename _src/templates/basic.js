@@ -1,10 +1,6 @@
 module.exports = {
 	render(props) {
-		var postList = props.posts.map((el)=>{
-			return `
-				<li><a href="${el.attributes.permalink}">${el.attributes.title}</a>
-			`;	
-		});
+		var postList = props.posts.map((el)=>`<li><a href="${el.attributes.permalink}">${el.attributes.title}</a></li>`);
 
 		var tags = {};
 
@@ -21,12 +17,7 @@ module.exports = {
 
 		var tagList = Object.keys(tags).map((key)=>{
 			var tagClass = 'tag-'+key.replace(' ','-').toLowerCase();
-
-			return `
-				<li>
-					<a href='/notes/#${tagClass}' class='${tagClass}'>${key} <span>x${tags[key]}</span></a>
-				</li>
-			`;
+			return `<li><a href='/notes/#${tagClass}' class='${tagClass}'>${key} <span>x${tags[key]}</span></a></li>`;
 		});
 
 		return `
@@ -57,17 +48,17 @@ module.exports = {
 				<li><a href='/colorbox'>Colorbox</a> &raquo; jQuery lightbox. Need the <a href='/colorbox/faq/'>FAQ</a>?
 				<li><a href='/autosize'>Autosize</a> &raquo; Automatically resize textarea height
 				<li><a href='/zoom'>Zoom</a> &raquo; jQuery plugin to enlarge images
-				<li><a href='/wheelzoom'>Wheelzoom</a> &raquo; enlarge images on mousewheel
+				<li><a href='/wheelzoom'>Wheelzoom</a> &raquo; Enlarge images using scroll
 			</ul>
 			<div class='recent-posts'>
 				<h3>Blog Posts</h3>
-				<ul>
-					${postList.join('')}
+				<ul class='post-list'>
+					${postList.join("\n")}
 				</ul>
 			</div>
 			<h3>Tags</h3>
 			<ul class='tags'>
-				${tagList.join('')}
+				${tagList.join("\n")}
 			</ul>
 		</aside>
 	</div>

@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /* Reset */
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
@@ -448,6 +450,11 @@ nav a:hover span {
   background-color: #ffd204;
   margin-top: 0;
 }
+
+.post-list a {
+  display: block;
+}
+
 .tags {
   overflow: auto;
   margin-left: -5px;
