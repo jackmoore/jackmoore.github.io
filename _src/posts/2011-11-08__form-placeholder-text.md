@@ -59,12 +59,11 @@ To enable styling, this script adds a class of 'placeholder' while the placehold
 
 ### Styling The Placeholder
 
-Since placeholder has yet to be standardized, styles are applied through vendor-specific prefixes.  Even though Opera 11 supports the placeholder attribute, it does not offer any way to style it at this time. It's a good idea to go ahead and specify at least the color property to normalize the color between browsers.  Otherwise, a default style will be provided which will vary from browser to browser.
+Since placeholder has yet to be standardized, styles are applied through vendor-specific prefixes. It's a good idea to go ahead and specify at least the color property to normalize the color between browsers, as the default color varies.
 
 ```css
 ::-webkit-input-placeholder { color:#999; }
-::-moz-placeholder { color:#999; } /* FF 19+ */
-:-moz-placeholder { color:#999; } /* FF 18- */
+::-moz-placeholder { color:#999; }
 :-ms-input-placeholder { color:#999; }
 .placeholder { color:#999; } /* for the polyfill */
 ```

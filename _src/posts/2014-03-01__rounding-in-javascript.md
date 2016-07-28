@@ -31,10 +31,8 @@ And to abstract that into something more usable:
 
 ```javascript
 function round(value, decimals) {
-	return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
 
 round(1.005, 2); // 1.01
 ```
-
-A much more robust function can be found in MDN's [Math.round()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) documentation page.

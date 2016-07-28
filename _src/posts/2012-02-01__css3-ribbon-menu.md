@@ -14,10 +14,10 @@ IE8 and IE9 do not support CSS3 transitions, so the hover state will not be anim
 
 ```html
 <div class='ribbon'>
-	<a href='#'><span>Home</span></a>
-	<a href='#'><span>About</span></a>
-	<a href='#'><span>Services</span></a>
-	<a href='#'><span>Contact</span></a>
+  <a href='#'><span>Home</span></a>
+  <a href='#'><span>About</span></a>
+  <a href='#'><span>Services</span></a>
+  <a href='#'><span>Contact</span></a>
 </div>
 ```
 
@@ -29,18 +29,18 @@ The forked ends and folds are created with CSS pseudo-elements, allowing for ver
 
 ```css
 .ribbon:after, .ribbon:before {
-	margin-top:0.5em;
-	content: "";
-	float:left;
-	border:1.5em solid #fff;
+  margin-top:0.5em;
+  content: "";
+  float:left;
+  border:1.5em solid #fff;
 }
 
 .ribbon:after {
-	border-right-color:transparent;
+  border-right-color:transparent;
 }
 
 .ribbon:before {
-	border-left-color:transparent;
+  border-left-color:transparent;
 }
 ```
 
@@ -50,11 +50,11 @@ Here the `:before` and `:after` pseudo-elements are used to create empty element
 
 ```css
 .ribbon a:link, .ribbon a:visited { 
-	color:#000;
-	text-decoration:none;
-	float:left;
-	height:3.5em;
-	overflow:hidden;
+  color:#000;
+  text-decoration:none;
+  float:left;
+  height:3.5em;
+  overflow:hidden;
 }
 ```
 
@@ -64,41 +64,36 @@ The links and the forked ends are all floated left so that they fit flush agains
 
 ```css
 .ribbon span {
-	background:#fff;
-	display:inline-block;
-	line-height:3em;
-	padding:0 1em;
-	margin-top:0.5em;
-	position:relative;
-
-	-webkit-transition: background-color 0.2s, margin-top 0.2s;  /* Saf3.2+, Chrome */
-	-moz-transition: background-color 0.2s, margin-top 0.2s;  /* FF4+ */
-	-ms-transition: background-color 0.2s, margin-top 0.2s;  /* IE10 */
-	-o-transition: background-color 0.2s, margin-top 0.2s;  /* Opera 10.5+ */
-	transition: background-color 0.2s, margin-top 0.2s;
+  background:#fff;
+  display:inline-block;
+  line-height:3em;
+  padding:0 1em;
+  margin-top:0.5em;
+  position:relative;
+  transition: background-color 0.2s, margin-top 0.2s;
 }
 
 .ribbon a:hover span {
-	background:#FFD204;
-	margin-top:0;
+  background:#FFD204;
+  margin-top:0;
 }
 
 .ribbon span:before {
-	content: "";
-	position:absolute;
-	top:3em;
-	left:0;
-	border-right:0.5em solid #9B8651;
-	border-bottom:0.5em solid #fff;
+  content: "";
+  position:absolute;
+  top:3em;
+  left:0;
+  border-right:0.5em solid #9B8651;
+  border-bottom:0.5em solid #fff;
 }
 
 .ribbon span:after {
-	content: "";
-	position:absolute;
-	top:3em;
-	right:0;
-	border-left:0.5em solid #9B8651;
-	border-bottom:0.5em solid #fff;
+  content: "";
+  position:absolute;
+  top:3em;
+  right:0;
+  border-left:0.5em solid #9B8651;
+  border-bottom:0.5em solid #fff;
 }
 ```
 

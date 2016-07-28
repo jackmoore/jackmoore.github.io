@@ -13,8 +13,8 @@ I like to create a rough draft just using HTML and CSS, leaving the scripting fo
 ```html
 <div id='overlay'></div>
 <div id='modal'>
-	<div id='content'>No JavaScript Yet!</div>
-	<a href='#' id='close'>close</a>
+  <div id='content'>No JavaScript Yet!</div>
+  <a href='#' id='close'>close</a>
 </div>
 ```
 
@@ -24,14 +24,14 @@ This modal will have two root elements: `#overlay` and `#modal`.  The overlay is
 
 ```css
 #overlay {
-	position: fixed; 
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: #000;
-	opacity: 0.5;
-	filter: alpha(opacity=50);
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
 }
 ```
 
@@ -39,17 +39,17 @@ The overlay has a fixed position that is relative to the visitor's viewport.  Th
 
 ```css
 #modal {
-	position:absolute;
-	background:url(tint20.png) 0 0 repeat;
-	background:rgba(0,0,0,0.2);
-	border-radius:14px;
-	padding:8px;
+  position:absolute;
+  background:url(tint20.png) 0 0 repeat;
+  background:rgba(0,0,0,0.2);
+  border-radius:14px;
+  padding:8px;
 }
 
 #content {
-	border-radius:8px;
-	background:#fff;
-	padding:20px;
+  border-radius:8px;
+  background:#fff;
+  padding:20px;
 }
 ```
 
@@ -61,14 +61,14 @@ I gave `#modal` a larger border-radius than `#content`.  This made a border that
 
 ```css
 #close {
-	position:absolute;
-	background:url(close.png) 0 0 no-repeat;
-	width:24px;
-	height:27px;
-	display:block;
-	text-indent:-9999px;
-	top:-7px;
-	right:-7px;
+  position:absolute;
+  background:url(close.png) 0 0 no-repeat;
+  width:24px;
+  height:27px;
+  display:block;
+  text-indent:-9999px;
+  top:-7px;
+  right:-7px;
 }
 ```
 
@@ -91,25 +91,25 @@ Let's stub out the function and variable names:
 
 ```javascript
 var modal = (function(){
-	var 
-	method = {},
-	$overlay,
-	$modal,
-	$content,
-	$close;
+  var 
+  method = {},
+  $overlay,
+  $modal,
+  $content,
+  $close;
 
-	// Append the HTML
+  // Append the HTML
 
-	// Center the modal in the viewport
-	method.center = function () {};
+  // Center the modal in the viewport
+  method.center = function () {};
 
-	// Open the modal
-	method.open = function (settings) {};
+  // Open the modal
+  method.open = function (settings) {};
 
-	// Close the modal
-	method.close = function () {};
+  // Close the modal
+  method.close = function () {};
 
-	return method;
+  return method;
 }());
 ```
 
@@ -128,7 +128,7 @@ $overlay.hide();
 $modal.append($content, $close);
 
 $(document).ready(function(){
-	$('body').append($overlay, $modal);
+  $('body').append($overlay, $modal);
 });
 ```
 
@@ -138,15 +138,15 @@ This generates the same HTML structure we drafted previously, and adds it to the
 
 ```javascript
 method.center = function () {
-	var top, left;
+  var top, left;
 
-	top = Math.max($(window).height() - $modal.outerHeight(), 0) / 2;
-	left = Math.max($(window).width() - $modal.outerWidth(), 0) / 2;
+  top = Math.max($(window).height() - $modal.outerHeight(), 0) / 2;
+  left = Math.max($(window).width() - $modal.outerWidth(), 0) / 2;
 
-	$modal.css({
-		top:top + $(window).scrollTop(), 
-		left:left + $(window).scrollLeft()
-	});
+  $modal.css({
+    top:top + $(window).scrollTop(), 
+    left:left + $(window).scrollLeft()
+  });
 };
 ```
 
@@ -156,19 +156,19 @@ Here we balance the distance between each side of the viewport and each side of 
 
 ```javascript
 method.open = function (settings) {
-	$content.empty().append(settings.content);
+  $content.empty().append(settings.content);
 
-	$modal.css({
-		width: settings.width || 'auto', 
-		height: settings.height || 'auto'
-	})
+  $modal.css({
+    width: settings.width || 'auto', 
+    height: settings.height || 'auto'
+  })
 
-	method.center();
+  method.center();
 
-	$(window).bind('resize.modal', method.center);
+  $(window).bind('resize.modal', method.center);
 
-	$modal.show();
-	$overlay.show();
+  $modal.show();
+  $overlay.show();
 };
 ```
 
@@ -178,10 +178,10 @@ The open method accepts an object of our settings.  It can contain three propert
 
 ```javascript
 method.close = function () {
-	$modal.hide();
-	$overlay.hide();
-	$content.empty();
-	$(window).unbind('resize.modal');
+  $modal.hide();
+  $overlay.hide();
+  $content.empty();
+  $(window).unbind('resize.modal');
 };
 ```
 
@@ -191,8 +191,8 @@ Here we hide the #modal and the #overlay and remove the content.  Then we unbind
 
 ```javascript
 $close.click(function(e){
-	e.preventDefault();
-	method.close();
+  e.preventDefault();
+  method.close();
 });
 ```
 
@@ -209,7 +209,7 @@ modal.open({content: $("<p>Howdy</p>"), width: "500px", height: "200px"});
 
 // Ajax
 $.get('ajax.html', function(data){
-	modal.open({content: data});
+  modal.open({content: data});
 });
 ```
 

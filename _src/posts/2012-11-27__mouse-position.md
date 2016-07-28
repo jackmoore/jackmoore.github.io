@@ -40,9 +40,9 @@ The only major browser that does not support these properties is IE8. If you are
 
 ```javascript
 document.body.onclick = function(e) {
-	e = e || window.event;
-	e = jQuery.event.fix(e);
-	console.log([e.pageX, e.pageY]);
+  e = e || window.event;
+  e = jQuery.event.fix(e);
+  console.log([e.pageX, e.pageY]);
 };
 ```
 
@@ -50,16 +50,16 @@ Without jQuery, the clientX and clientY properties can be added to the viewports
 
 ```javascript
 document.body.onclick = function(e) {
-	e = e || window.event;
+  e = e || window.event;
 
-	var pageX = e.pageX;
-	var pageY = e.pageY;
-	if (pageX === undefined) {
-		pageX = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-		pageY = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-	}
+  var pageX = e.pageX;
+  var pageY = e.pageY;
+  if (pageX === undefined) {
+    pageX = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+    pageY = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+  }
 
-	console.log([pageX, pageY]);
+  console.log([pageX, pageY]);
 };
 ```
 
@@ -71,14 +71,14 @@ Normalizing to the border edge is easiest to do, thanks to the nifty [element.ge
 
 ```javascript
 document.body.onclick = function(e) {
-	e = e || window.event;
+  e = e || window.event;
 
-	var target = e.target || e.srcElement,
-		rect = target.getBoundingClientRect(),
-		offsetX = e.clientX - rect.left,
-		offsetY = e.clientY - rect.top;
+  var target = e.target || e.srcElement,
+    rect = target.getBoundingClientRect(),
+    offsetX = e.clientX - rect.left,
+    offsetY = e.clientY - rect.top;
 
-	console.log([offsetX, offsetY]);
+  console.log([offsetX, offsetY]);
 };
 ```
 
