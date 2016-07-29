@@ -37,24 +37,24 @@ if (typeof document.addEventListener === 'function') {
 
 	// Filter by tag for archive page
 	(function() {
-		var items = document.querySelectorAll('.archive__item');
-		var tags = document.querySelectorAll('.tags a');
+		var items = document.querySelectorAll('.Archive_item');
+		var tags = document.querySelectorAll('.Tags a');
 
 		if (!items.length) { return; }
 
 		function filter() {
-			var selector = /^#tag-/.test(location.hash) ? location.hash.replace('#', '.') : false;
+			var tag = /^#tag-/.test(location.hash) ? location.hash.replace('#tag-', '') : false;
 
-			if (selector) {
+			if (tag) {
 				[].forEach.call(tags, function(i){
 					i.removeAttribute('data-active');
 				});
 
-				[].forEach.call(document.querySelectorAll(selector), function(i) {
+				[].forEach.call(document.querySelectorAll('[data-tag="'+tag+'"]'), function(i) {
 					i.setAttribute('data-active', true);
 				});
 
-				if (selector === '.tag-all') {
+				if (tag === 'all') {
 					[].forEach.call(items, function(i){
 						i.style.display = 'block';
 					});
@@ -63,7 +63,7 @@ if (typeof document.addEventListener === 'function') {
 						i.style.display = 'none';
 					});
 
-					[].forEach.call(document.querySelectorAll(selector), function(i){
+					[].forEach.call(document.querySelectorAll('.tag-'+tag), function(i){
 						i.style.display = 'block';
 					});
 				}

@@ -1,0 +1,642 @@
+@charset "UTF-8";
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+  -webkit-text-size-adjust: none; }
+
+.hljs-comment,
+.hljs-template_comment,
+.diff .hljs-header,
+.hljs-javadoc {
+  color: #998;
+  font-style: italic; }
+
+.hljs-keyword,
+.css .rule .hljs-keyword,
+.hljs-winutils,
+.nginx .hljs-title,
+.hljs-subst,
+.hljs-request,
+.hljs-status {
+  color: #333;
+  font-weight: bold; }
+
+.hljs-number,
+.hljs-hexcolor,
+.ruby .hljs-constant {
+  color: #008080; }
+
+.hljs-string,
+.hljs-tag .hljs-value,
+.hljs-phpdoc,
+.hljs-dartdoc,
+.tex .hljs-formula {
+  color: #d14; }
+
+.hljs-title,
+.hljs-id,
+.scss .hljs-preprocessor {
+  color: #900;
+  font-weight: bold; }
+
+.hljs-list .hljs-keyword,
+.hljs-subst {
+  font-weight: normal; }
+
+.hljs-class .hljs-title,
+.hljs-type,
+.vhdl .hljs-literal,
+.tex .hljs-command {
+  color: #458;
+  font-weight: bold; }
+
+.hljs-tag,
+.hljs-tag .hljs-title,
+.hljs-rules .hljs-property,
+.django .hljs-tag .hljs-keyword {
+  color: #000080;
+  font-weight: normal; }
+
+.hljs-attribute,
+.hljs-variable,
+.lisp .hljs-body {
+  color: #008080; }
+
+.hljs-regexp {
+  color: #009926; }
+
+.hljs-symbol,
+.ruby .hljs-symbol .hljs-string,
+.lisp .hljs-keyword,
+.clojure .hljs-keyword,
+.scheme .hljs-keyword,
+.tex .hljs-special,
+.hljs-prompt {
+  color: #990073; }
+
+.hljs-built_in {
+  color: #0086b3; }
+
+.hljs-preprocessor,
+.hljs-pragma,
+.hljs-pi,
+.hljs-doctype,
+.hljs-shebang,
+.hljs-cdata {
+  color: #999;
+  font-weight: bold; }
+
+.hljs-deletion {
+  background: #fdd; }
+
+.hljs-addition {
+  background: #dfd; }
+
+.diff .hljs-change {
+  background: #0086b3; }
+
+.hljs-chunk {
+  color: #aaa; }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box; }
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
+html {
+  font-size: 15px;
+  line-height: 1.5;
+  font-family: 'Source Sans Pro', 'Open Sans', 'Helvetica', Arial, Lucida Grande, sans-serif;
+  height: 100%; }
+  @media (max-width: 992px) {
+    html {
+      font-size: 13px; } }
+
+body {
+  min-height: 100%;
+  color: #444444; }
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 20px 0 10px;
+  padding: 4px 0; }
+
+h1 {
+  font-family: 'open sans', sans-serif;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-size: 36px;
+  margin-top: 0; }
+
+h2 {
+  font-family: 'open sans', sans-serif;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-size: 22px;
+  font-weight: 600; }
+
+h3 {
+  font-family: 'open sans', sans-serif;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-size: 18px;
+  font-weight: 600; }
+
+h4 {
+  font-family: 'open sans', sans-serif;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-size: 16px; }
+
+small {
+  font-size: 12px; }
+
+a {
+  color: #1e87dd;
+  text-decoration: none; }
+  a:hover {
+    background-color: #ffface; }
+
+p,
+ul,
+ol,
+pre,
+fieldset,
+figure,
+table {
+  margin: 0 0 30px 0; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+td, th {
+  border-width: 1px;
+  padding: 12px;
+  vertical-align: top; }
+
+/* Reset */
+.download, .download:link, .download:visited {
+  background: #1e87dd;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 5px;
+  color: #fff; }
+
+.download i {
+  margin-right: 5px; }
+
+body,
+input,
+textarea {
+  font: 14px/1.5 sans-serif;
+  color: #333; }
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #CAE5F8;
+  box-shadow: 0 0 0 2px #CAE5F8; }
+
+::-moz-selection {
+  background: #fff8b4;
+  color: #000; }
+
+::selection {
+  background: #fff8b4;
+  color: #000; }
+
+:target {
+  background-color: #fff8b4 !important; }
+
+input,
+textarea,
+select,
+p,
+table,
+pre,
+blockquote {
+  margin-bottom: 14px; }
+
+ul {
+  list-style: none;
+  margin: 0 0 10px 0; }
+
+li {
+  margin: 0 0 4px 12px;
+  position: relative; }
+
+li:before {
+  content: '•';
+  color: #bbb;
+  font-size: 18px;
+  position: absolute;
+  left: -12px;
+  line-height: 1; }
+
+hr {
+  height: 1px;
+  background: #f5f4f2;
+  color: #f5f4f2;
+  border: 0;
+  margin: 0 -25px 10px; }
+
+code {
+  font: 13px/1 Consolas, monospace;
+  line-height: 1.4;
+  display: inline-block;
+  background: #f7f7f7;
+  position: relative;
+  padding: 0 5px; }
+
+pre code {
+  padding: 15px;
+  overflow: auto;
+  display: block;
+  line-height: inherit;
+  margin: 0 -25px;
+  padding: 15px 25px; }
+
+td pre code, li pre code {
+  padding: 15px;
+  margin: 0;
+  border-radius: 6px; }
+
+a.demo {
+  display: inline-block;
+  width: 24px;
+  font: bold 14px/24px sans-serif;
+  text-align: center;
+  text-indent: -1px;
+  margin-right: 1px;
+  border-radius: 100%;
+  text-decoration: none;
+  background: #1e87dd; }
+
+a.demo:visited,
+a.demo:link {
+  color: #fff; }
+
+a.demo:hover {
+  background: #000; }
+
+iframe.demo {
+  width: 100%;
+  overflow: hidden;
+  display: block; }
+
+img {
+  max-width: 100%; }
+
+input,
+select,
+textarea {
+  padding: 4px 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px; }
+
+input[type=text] {
+  width: 260px; }
+
+input[type=submit] {
+  padding: 6px 8px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background: #222; }
+
+input[type=submit]:hover,
+input[type=submit]:focus {
+  background: #1e87dd; }
+
+textarea {
+  width: 98%;
+  height: 80px; }
+
+label {
+  display: block; }
+
+table {
+  background: #fff;
+  border-collapse: collapse; }
+
+th, td {
+  vertical-align: top;
+  text-align: left;
+  padding: 6px 13px;
+  border: 1px solid #E5E5E5; }
+
+#ta1, #ta2 {
+  width: 42%;
+  padding: 10px 10px 0 10px;
+  background: #fff;
+  overflow: hidden;
+  vertical-align: top; }
+
+#ta2 {
+  transition: height 0.2s; }
+
+.zoom {
+  display: inline-block;
+  position: relative; }
+
+/* magnifying glass icon */
+.zoom:after {
+  content: '';
+  display: block;
+  width: 33px;
+  height: 33px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: url(https://raw.github.com/jackmoore/zoom/master/icon.png); }
+
+.zoom img {
+  display: block; }
+
+.zoom img::-moz-selection {
+  background-color: transparent; }
+
+.zoom img::selection {
+  background-color: transparent; }
+
+#ex1 {
+  margin-right: 5px; }
+
+#ex2 img:hover {
+  cursor: url(grab.cur), default; }
+
+#ex2 img:active {
+  cursor: url(grabbed.cur), default; }
+
+#ex1 span, #ex2 span {
+  position: absolute;
+  top: 3px;
+  right: 28px;
+  color: #555;
+  font: bold 13px/1 sans-serif; }
+
+/* Anti-spam measure */
+.Root {
+  min-width: 740px;
+  min-height: 100vh;
+  background: #f5f4f2; }
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out; }
+
+@keyframes octocat-wave {
+  0%, 100% {
+    transform: rotate(0); }
+  20%, 60% {
+    transform: rotate(-25deg); }
+  40%, 80% {
+    transform: rotate(10deg); } }
+
+@media (max-width: 500px) {
+  .github-corner:hover .octo-arm {
+    animation: none; }
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out; } }
+.Header {
+  font-family: 'open sans', sans-serif;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: 15px;
+  background: linear-gradient(transparent, transparent 21px, #fff 21px, #fff 57px, transparent 57px, transparent); }
+  .Header_pic {
+    display: block;
+    background: url("/img/jackmoore.jpg") center center no-repeat;
+    background-size: contain;
+    border: 3px solid #fff;
+    border-radius: 100%;
+    width: 74px;
+    height: 74px;
+    margin: 3px 10px 0 0; }
+  .Header_me:hover {
+    background: none; }
+  .Header_body {
+    margin: 0 auto;
+    display: -ms-flexbox;
+    display: flex;
+    max-width: 1240px;
+    -ms-flex-align: center;
+        align-items: center; }
+  .Header a {
+    color: #222; }
+  .Header_icon {
+    font-size: 24px; }
+  .Header nav {
+    -ms-flex-positive: 1;
+        flex-grow: 1;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: end;
+        justify-content: flex-end; }
+  .Header nav a {
+    background: #f5f4f2;
+    height: 44px;
+    overflow: hidden;
+    margin-top: -8px; }
+    .Header nav a:hover {
+      background: #f5f4f2; }
+  .Header .Header_ribbon {
+    background-color: #fff;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    height: 36px;
+    padding: 0 10px;
+    margin-top: 8px;
+    position: relative;
+    transition: all 0.2s; }
+    .Header .Header_ribbon:before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: 0;
+      border-right: 8px solid #9b8651;
+      border-bottom: 8px solid #fff; }
+    .Header .Header_ribbon:after {
+      content: '';
+      position: absolute;
+      top: 36px;
+      right: 0;
+      border-left: 8px solid #9b8651;
+      border-bottom: 8px solid #fff; }
+  .Header a:hover .Header_ribbon {
+    background-color: #ffd204;
+    margin-top: 0; }
+.Icon {
+  display: -ms-inline-flexbox;
+  display: inline-flex; }
+  .Icon svg {
+    height: 1em;
+    width: 1em;
+    -ms-flex-item-align: center;
+        align-self: center;
+    fill: currentColor;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    pointer-events: none; }
+.Main {
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 1240px;
+  margin: 0 auto;
+  -ms-flex-align: start;
+      align-items: flex-start; }
+  .Main_body {
+    width: calc(100% - 320px - 0.4rem);
+    margin-right: 0.4rem;
+    position: relative; }
+  .Main_aside {
+    width: 320px;
+    padding: 1px 15px;
+    background: #fff;
+    border-radius: 4px;
+    min-height: 495px; }
+  @media (max-width: 1100px) {
+    .Main {
+      -ms-flex-direction: column;
+          flex-direction: column; }
+      .Main_body {
+        width: 100%; }
+      .Main_aside {
+        width: 100%;
+        margin-top: 15px;
+        padding: 1px 25px;
+        min-height: auto; } }
+.SideBar {
+  font-size: 13px; }
+.Tags {
+  padding: 0;
+  margin: 0 0 1rem -0.3rem;
+  list-style-type: none; }
+  .Tags li {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    margin: 0 0 0.3rem 0.3rem; }
+    .Tags li:before {
+      display: none; }
+  .Tags a {
+    border-radius: 4px;
+    background: #f4efe9;
+    display: block;
+    padding: 0.1rem 0.5rem; }
+    .Tags a[data-active] {
+      background: #1e87dd;
+      cursor: default;
+      color: #fff; }
+      .Tags a[data-active] span {
+        color: #e8e8e8; }
+    .Tags a span {
+      font-size: 11px;
+      color: #949494;
+      margin-left: 0.25rem; }
+.Home {
+  background: #191c35 url("/img/howdy.jpg") center center no-repeat;
+  background-size: cover;
+  color: #fff;
+  height: 495px;
+  padding: 25px;
+  border-radius: 4px; }
+  .Home_welcome {
+    font-family: 'open sans', sans-serif;
+    text-rendering: optimizeLegibility;
+    font-size: 18px;
+    width: 50%;
+    min-width: 320px; }
+.Post {
+  padding: 25px;
+  background: #fff;
+  border-radius: 4px; }
+  .Post_desc {
+    font-family: 'open sans', sans-serif;
+    text-rendering: optimizeLegibility;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    font-size: 20px;
+    margin-bottom: 15px;
+    margin-top: -5px;
+    color: #777; }
+  .Post_date {
+    color: #999;
+    margin: -5px 0 15px;
+    font-size: 13px; }
+.Bio_email:before {
+  content: 'hello'; }
+
+.Bio_email:after {
+  content: '@jacklmoore.com'; }
+.SubHeading {
+  font-family: 'open sans', sans-serif;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-size: 20px;
+  margin-bottom: 15px;
+  margin-top: -5px;
+  color: #777; }
+.Archive {
+  padding: 25px;
+  background: #fff;
+  border-radius: 4px; }
+  .Archive_item {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    padding: 1.2rem 0;
+    border-top: 1px solid #e8e8e8; }
+    .Archive_item_date {
+      width: 90px;
+      font-size: 12px;
+      color: #b3b3b3; }
+    .Archive_item_title {
+      font-family: 'open sans', sans-serif;
+      text-rendering: optimizeLegibility;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      font-size: 18px;
+      font-weight: 600;
+      -ms-flex-positive: 1;
+          flex-grow: 1; }
+.Page {
+  padding: 25px;
+  background: #fff;
+  border-radius: 4px; }
+.Error404 {
+  height: 575px;
+  background: url("/img/404.png") center center no-repeat; }
+
+/*# sourceMappingURL=app.css.map*/
