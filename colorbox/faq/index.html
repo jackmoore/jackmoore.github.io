@@ -22,7 +22,7 @@
 <li><a href="#faq-conflict">Colorbox only works the first time it is opened.</a></li>
 <li><a href="#faq-ajax">Trying to load an external page results in &quot;Request unsuccessful&quot;</a></li>
 <li><a href="#faq-jquery">JS Error: <code>$(selector).colorbox is not a function</code> or <code>$.colorbox is not a function</code></a></li>
-<li><a href="#faq-focus">Closing Colorbox breaks accordians/tabs/animations</a></li>
+<li><a href="#faq-focus">Closing Colorbox breaks accordions/tabs/animations</a></li>
 <li><a href="#faq-timing">JavaScript/jQuery is not working inside of Colorbox</a></li>
 <li><a href="#faq-img">Colorbox is sized too small the first time ajax/inline content is opened</a></li>
 <li><a href="#faq-sharepoint">Colorbox is not working with Microsoft SharePoint</a></li>
@@ -84,7 +84,7 @@
 <p>Double check your script paths and look for accidentally including multiple versions of jQuery.</p>
 <p>This most often happens when users load multiple versions of jQuery which overwrites the version that was extended with the Colorbox plugin.  Check out source to see if a version of jQuery is being loaded after Colorbox has been loaded.</p>
 <p>If your HTML document only contains one link to the jQuery library, the same error could also be caused by loading HTML snippets (through ajax) or HTML documents that load the jQuery library.  If you are loading HTML snippets with ajax or through Colorbox, be sure that they do not contain a link to the jQuery library. HTML documents should be contained within iframes or opened with Colorbox's iframe property.</p>
-<p><h3 id='faq-focus'>Closing Colorbox breaks accordians/tabs/animations</h3></p>
+<p><h3 id='faq-focus'>Closing Colorbox breaks accordions/tabs/animations</h3></p>
 <p>Try setting <code>returnFocus</code> to <code>false</code>.  Colorbox returns focus to the element it was launched from upon closing.  This is intended to provide better accessibility to users who use their keyboard to navigate through the document's links, but it can cause problems with some JS effects.  The problem isn't Colorbox specific and can be reproduced without Colorbox by pressing the TAB key to cycle through the available links.</p>
 <p><h3 id='faq-timing'>JavaScript/jQuery is not working inside of Colorbox.</h3></p>
 <p>This is often due to trying to access an element before it has been loaded into the document and can be resolved by moving the JavaScript into Colorbox's onComplete callback.</p>

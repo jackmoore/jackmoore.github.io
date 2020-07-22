@@ -14,7 +14,7 @@
   <span class="hljs-attribute">background</span>:<span class="hljs-built_in">url</span>(ie8-logo.png) <span class="hljs-number">0</span> <span class="hljs-number">0</span> no-repeat;
 }
 </code></pre>
-<p>IE7 and IE8 have native PNG support for alpha-transparencies, but it falls to pieces as soon as opacity comes into the picture.  When setting any value for opacity, even 100% (i.e. <code>filter: alpha(opacity = 100)</code>), IE fills in the alpha-transparency of the PNG with a pure black fill.  This is sometimes refered to as a 'black halo'.  The alpha filter can be removed at any time to remove the fill and restore the alpha transparency, but supporting both requires using more of IE's propriatary filters.  All of the follow examples should be placed in a IE-targeted <a href="http://www.quirksmode.org/css/condcom.html">conditional comment</a>.</p>
+<p>IE7 and IE8 have native PNG support for alpha-transparencies, but it falls to pieces as soon as opacity comes into the picture.  When setting any value for opacity, even 100% (i.e. <code>filter: alpha(opacity = 100)</code>), IE fills in the alpha-transparency of the PNG with a pure black fill.  This is sometimes referred to as a 'black halo'.  The alpha filter can be removed at any time to remove the fill and restore the alpha transparency, but supporting both requires using more of IE's proprietary filters.  All of the follow examples should be placed in a IE-targeted <a href="http://www.quirksmode.org/css/condcom.html">conditional comment</a>.</p>
 <h3>Screenshot</h3>
 <p><img src="/img/alpha-demo.png" alt=""></p>
 <h3>Gradient filter fix</h3>
